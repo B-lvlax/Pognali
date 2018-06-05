@@ -1,0 +1,56 @@
+/*===================================================================
+  LAYOUT
+=====================================================================*/
+
+/* Vars
+=====================================================================*/
+$minWidth = 320px
+$maxWidth = 1280px
+$maxWidth--lg = 1350px
+
+$gridSize = 12
+
+$gutter = 16px
+$gutter--sm = $gutter / 2
+$gutter--lg = $gutter * 2
+
+
+/* Mixins
+=====================================================================*/
+gridTest($side = $gutter--sm)
+  background: 'repeating-linear-gradient(to right, #9babb4, #9babb4 %s, #e9ecef %s, #e9ecef calc(8.333333% - %s), #9babb4 calc(8.333333% - %s), #9babb4 calc(8.333333%))' % ($side $side $side $side)
+
+debug()
+  *
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .6)
+
+layoutCenter($minW = $minWidth, $maxW = $maxWidth, $i = $gutter)
+  min-width: $minW
+  max-width: $maxW
+  margin: 0 auto
+  padding: 0 $i
+
+
+/* Columns
+=====================================================================*/
+row($wrap = wrap)
+  display: flex
+  flex-wrap: $wrap
+
+// Don't forget to add overflow to parent
+row-0($wrap = wrap, $sides = $gutter--sm)
+  display: flex
+  flex-wrap: $wrap
+  margin-right: -($sides)
+  margin-left: -($sides)
+
+col($col, $sides = $gutter--sm, $bottom = $gutter)
+  flex-basis: 'calc(100% / %s * %s - %s)' % ($gridSize $col $sides * 2)
+  margin: 0 $sides $bottom
+
+
+
+/* Offsets
+=====================================================================*/
+offset($offset, $side = $gutter--sm)
+  margin-left: 'calc(100% / %s * %s + %s)' % ($gridSize $offset $side)

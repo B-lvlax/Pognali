@@ -1,0 +1,93 @@
+/*===================================================================*/
+
+onActive()
+  &:focus-within
+    box-shadow: 0px 0.2em 2.5em #c4c4c4
+    transform: scale(1.025)
+
+/*===================================================================*/
+
+shadow()
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23)
+
+/*===================================================================*/
+
+imgFluid()
+  width: 100%
+  height: auto
+
+/*===================================================================*/
+
+videoFluid()
+  position: relative
+  overflow: hidden
+  width: 100%
+  height: 0
+  margin-bottom: $indent
+  padding-bottom: 56.25% // Preserve aspect ratio from source 16/9 => 9/16=0.5625 or '100 / (w / h)'
+  background-color: $primaryClr
+
+  iframe, object, embed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+/*===================================================================*/
+
+hidden()
+  position: absolute
+  top: -4000px
+  left: -4000px
+  overflow: hidden
+  width: 0
+  height: 0
+  opacity: 0
+
+/*===================================================================*/
+
+clearfix()
+  &::after
+    content: ''
+    display: table
+    clear: both
+
+/*===================================================================*/
+
+phWithOpacity()
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder
+    transition: opacity .3s ease
+    opacity: 1
+
+  &:focus::-webkit-input-placeholder,
+  &:-ms-input-placeholder
+    transition: opacity .3s ease
+    opacity: 0
+
+phMoveRight()
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder
+    transition: text-indent .3s ease
+    text-indent: 0
+
+  &:focus::-webkit-input-placeholder,
+  &:-ms-input-placeholder
+    transition: text-indent .5s ease
+    text-indent: 500px
+
+phMoveDown()
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder
+    transition: line-height .5s ease
+    line-height: 20px
+
+  &:focus::-webkit-input-placeholder,
+  &:-ms-input-placeholder
+    transition: line-height .5s ease
+    line-height: 100px
+
+/*===================================================================*/

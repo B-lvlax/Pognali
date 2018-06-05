@@ -1,0 +1,563 @@
+// This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss 
+
+.title 
+  .title-txt Pognali
+
+h1.mainTitle Magic happens here
+section.text
+  header
+    h1 - Text
+  article.text-headings
+    header
+      h2 Headings
+    div
+      -for(var i=1; i<=6; i++)
+        #{'h'+i}= 'Heading ' + i
+      
+
+  article.text-paragraphs
+    header
+      h2 Paragraphs
+    div
+      p A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.
+      p A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.
+      p.text-ellipsis A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.
+
+      p.text-p1 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      p.text-p2 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      p.text-p3 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      p.text-p4 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      p.text-p5 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+
+  article.text-blockquotes
+    header
+      h2 Blockquotes
+    div
+      blockquote
+        p A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.
+        p It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom.
+        cite
+          a(href='#!') Said no one, ever.
+
+  div.text-innerWrap
+    article.text-lists
+      header
+        h2 Lists
+      div
+        h3 Definition list
+        dl
+          dt Definition List Title
+          dd This is a definition list division.
+        h3 Ordered List
+        ol
+          li List Item 1
+          li List Item 2
+          li List Item 3
+        h3 Unordered List
+        ul
+          li List Item 1
+          li List Item 2
+          li List Item 3
+        h3 Nested List
+        ol
+          -for(var i=1; i<=3; i++)
+            li= 'List Item ' + i
+              ul
+                -for(var j=1; j<=3; j++)
+                  li= li= 'List Item ' + j
+
+    article.text-inline
+      header
+        h2 Inline elements
+      ul
+        li Links
+          ul
+            li
+              a(href='#!') This is a text link
+              | .
+            li
+              a.disabled(href='#!') This is a disabled text link
+              | .
+        li
+          strong Strong is used to indicate strong importance.
+        li
+          em This text has added emphasis.
+        li
+          | The
+          b b element
+          | is stylistically different text from normal text, without any special importance.
+        li
+          | The
+          i i element
+          | is text that is offset from the normal text.
+        li
+          | The
+          u u element
+          | is text with an unarticulated, though explicitly rendered, non-textual annotation.
+        li
+          del This text is deleted
+          | and
+          ins This text is inserted
+          | .
+        li
+          s This text has a strikethrough
+          | .
+        li
+          | Superscript
+          sup ®
+          | .
+        li
+          | Subscript for things like H
+          sub 2
+          | O.
+        li
+          small This small text is small for for fine print, etc.
+        li
+          | Abbreviation: 
+          abbr(title='HyperText Markup Language') HTML
+        li
+          q(cite='https://developer.mozilla.org/en-US/docs/HTML/Element/q') This text is a short inline quotation.
+        li
+          cite This is a citation.
+        li
+          | The
+          dfn dfn element
+          | indicates a definition.
+        li
+          | The
+          mark mark element
+          | indicates a highlight.
+        li
+          | The
+          var variable element
+          | , such as
+          var x
+          | =
+          var y
+          | .
+        li
+          | The time element:
+          time(datetime='2013-04-06T12:32+00:00') 2 weeks ago
+
+  article.text-hr
+    header
+      h2 Horizontal rules
+    div
+      hr
+
+  article.text-tables
+    header
+      h2 Tabular data
+    table
+      caption Table Caption
+      thead
+        tr
+          -for(var i=1; i<=5; i++)
+            th= 'Table Heading ' + i
+      tfoot
+        tr
+          -for(var i=1; i<=5; i++)
+            th= 'Table Footer ' + i
+      tbody
+        -for(var i=0; i<4; i++)
+          tr
+            -for(var j=1; j<=5; j++)
+              td= 'Table Cell ' + j
+
+  article.text-code
+    header
+      h2 Code
+    div
+      strong Keyboard input: 
+      kbd Cmd
+    div
+      strong Inline code: 
+      code &lt;div&gt;code&lt;/div&gt;
+    div
+      strong Sample output:
+      samp This is sample output from a computer program.
+    h3 Pre-formatted text
+    pre.
+        P R E F O R M A T T E D T E X T
+        ! " # $ % & ' ( ) * + , - . /
+        0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+        @ A B C D E F G H I J K L M N O
+        P Q R S T U V W X Y Z [ \ ] ^ _
+        ` a b c d e f g h i j k l m n o
+        p q r s t u v w x y z { | } ~
+
+hr
+
+section.forms
+  header
+    h1 - Form elements
+  form
+    //- fieldset.forms-input
+    //-   legend Input fields
+    //-   div
+    //-     label(for='inputText') Text Input
+    //-     input#inputText(type='text' placeholder='Text Input')
+    //-   div
+    //-     label(for='inputPassword') Password
+    //-     input#inputPassword(type='password' placeholder='Type your Password')
+    //-   div
+    //-     label(for='inputWebaddress') Web Address
+    //-     input#inputWebaddress(type='url' placeholder='http://yoursite.com')
+    //-   div
+    //-     label(for='inputEmailaddress') Email Address
+    //-     input#inputEmailaddress(type='email' placeholder='name@email.com')
+    //-   div
+    //-     label(for='inputPhone') Phone Number
+    //-     input#inputPhone(type='tel' placeholder='(999) 999-9999')
+    //-   div
+    //-     label(for='inputSearch') Search
+    //-     input#inputSearch(type='search' placeholder='Enter Search Term')
+    //-   div
+    //-     label(for='inputText2') Number Input
+    //-     input#inputText2(type='number' placeholder='Enter a Number')
+    //-   div
+    //-     label(for='textarea') Textarea
+    //-     textarea#textarea(rows='8' cols='48' placeholder='Enter your //-message here')
+    
+    fieldset.forms-inputs.inputs
+      legend Input fields
+      label.inputs-inputGroup
+        input.input(type='text' placeholder='Text Input' required)
+        span Text input
+      label.inputs-inputGroup
+        input(type='password' placeholder='Type your Password' required)
+        span Password
+      label.inputs-inputGroup
+        input(type='url' placeholder='http://yoursite.com' required)
+        span Web Address
+      label.inputs-inputGroup
+        input(type='email' placeholder='name@email.com' required)
+        span Email Address
+      label.inputs-inputGroup
+        input(type='tel' placeholder='(999) 999-9999' required)
+        span Phone Number
+      label.inputs-inputGroup
+        input(type='search' placeholder='Enter Search Term' required)
+        span Search
+      label.inputs-inputGroup
+        input(type='number' placeholder='Enter a Number' required)
+        span Number Input
+      label.inputs-inputGroup
+        textarea(placeholder='Enter your //-message here' required)
+        span Textarea
+
+    //- fieldset.forms-inputStates
+    //-   legend States for input fields
+    //-   div
+    //-     label.valid(for='inputText3') Valid
+    //-     input#inputText3.is-valid(type='text' placeholder='Text Input')
+    //-   div
+    //-     label.error(for='inputText4') Error
+    //-     input#inputText4(type='text' placeholder='Text Input')
+    //-   div
+    //-     label.disabled(for='inputText5') Disabled
+    //-     input#inputText5(type='text' placeholder='Text Input' disabled)
+
+    fieldset.forms-inputStates.inputStates
+      legend States for input fields
+      label.inputStates-inputGroup
+        input.is-valid(type='text' placeholder='Valid Text Input')
+        span.valid Valid
+      label.inputStates-inputGroup
+        input(type='text' placeholder='Invalid Text Input')
+        span.error Error
+      label.inputStates-inputGroup.disabled
+        input(type='text' placeholder='Disabled Text Input' disabled)
+        span.disabled Disabled
+
+    //- fieldset.forms-select
+    //-   legend Select menus
+    //-   div
+    //-     label(for='select') Select
+    //-     select#select
+    //-       optgroup(label='Group 1')
+    //-         option Option 1.1
+    //-         option Option 1.2
+    //-         option Option 1.3
+    //-       optgroup(label='Group 2')
+    //-         option Option 2.1
+    //-         option Option 2.2
+    //-         option Option 2.3
+    //-       optgroup(label='Group 3' disabled)
+    //-         option Option 3.1
+    //-         option Option 3.2
+    //-         option Option 3.3
+
+    fieldset.forms-select.select
+      legend Select menus
+      label.select-inputGroup
+        select
+          optgroup(label='Group 1')
+            option Option 1.1
+            option Option 1.2
+            option Option 1.3
+          optgroup(label='Group 2')
+            option Option 2.1
+            option Option 2.2
+            option Option 2.3
+          optgroup(label='Group 3' disabled)
+            option Option 3.1
+            option Option 3.2
+            option Option 3.3
+        span Select
+
+    //- fieldset.forms-checkbox
+    //-   legend Checkboxes
+    //-   ul
+    //-     li
+    //-       label(for='checkbox1')
+    //-         input#checkbox1(name='checkbox' type='checkbox' checked)
+    //-         |  Choice A
+    //-     li
+    //-       label(for='checkbox2')
+    //-         input#checkbox2(name='checkbox' type='checkbox')
+    //-         |  Choice B
+    //-     li
+    //-       label(for='checkbox3')
+    //-         input#checkbox3(name='checkbox' type='checkbox')
+    //-         |  Choice C
+    //-     li
+    //-       label.disabled(for='checkbox4')
+    //-         input#checkbox4(name='checkbox' type='checkbox' disabled)
+    //-         |  Disabled
+
+    fieldset.forms-checkboxInputs.checkboxInputs
+      legend Checkboxes
+      label.checkboxInputs-inputGroup
+        input(name='checkbox' type='checkbox' checked)
+        span Choice A
+      label.checkboxInputs-inputGroup
+        input(name='checkbox' type='checkbox')
+        span Choice B
+      label.checkboxInputs-inputGroup
+        input(name='checkbox' type='checkbox')
+        span Choice C
+      label.checkboxInputs-inputGroup.disabled
+        input(name='checkbox' type='checkbox' disabled)
+        span Disabled
+
+    //- fieldset.forms-radio
+    //-   legend Radio buttons
+    //-   ul
+    //-     li
+    //-       label(for='radio1')
+    //-         input#radio1.radio(name='radio' type='radio' checked)
+    //-         |  Option 1
+    //-     li
+    //-       label(for='radio2')
+    //-         input#radio2.radio(name='radio' type='radio')
+    //-         |  Option 2
+    //-     li
+    //-       label(for='radio3')
+    //-         input#radio3.radio(name='radio' type='radio')
+    //-         |  Option 3
+    //-     li
+    //-       label.disabled(for='radio4')
+    //-         input#radio4.radio(name='radio' type='radio' disabled)
+    //-         |  Disabled
+
+    fieldset.forms-radioInputs.radioInputs
+      legend Radio buttons
+      label.radioInputs-inputGroup
+        input(name='radio' type='radio' checked)
+        span Option 1
+      label.radioInputs-inputGroup
+        input(name='radio' type='radio')
+        span Option 2
+      label.radioInputs-inputGroup
+        input(name='radio' type='radio')
+        span Option 3
+      label.radioInputs-inputGroup.disabled
+        input(name='radio' type='radio' disabled)
+        span Disabled
+
+    //- fieldset.forms-html5
+    //-   legend HTML5 inputs
+    //-   div
+    //-     label(for='ic') Color input
+    //-     input#ic(type='color' value='#000000')
+    //-   div
+    //-     label(for='in') Number input
+    //-     input#in(type='number' min='0' max='10' value='5')
+    //-   div
+    //-     label(for='it') ??? Number input for mobile devices ???
+    //-     input#it(type='text' value='5' inputmode='numeric' pattern='[0-9]*' name='someNumbers')
+    //-   div
+    //-     label(for='ir') Range input
+    //-     input#ir(type='range' value='10')
+    //-   div
+    //-     label(for='idd') Date input
+    //-     input#idd(type='date' value='1970-01-01')
+    //-   div
+    //-     label(for='idm') Month input
+    //-     input#idm(type='month' value='1970-01')
+    //-   div
+    //-     label(for='idw') Week input
+    //-     input#idw(type='week' value='1970-W01')
+    //-   div
+    //-     label(for='idtl') Datetime-local input
+    //-     input#idtl(type='datetime-local' value='1970-01-01T00:00')
+
+    fieldset.forms-html5Inputs.html5Inputs
+      legend HTML5 inputs
+      label.html5Inputs-inputGroup
+        input(type='color' value='#000000')
+        span Color input
+      label.html5Inputs-inputGroup
+        input(type='number' min='0' max='10' value='5')
+        span Number input
+      label.html5Inputs-inputGroup
+        input(type='text' value='5' inputmode='numeric' pattern='[0-9]*' name='someNumbers')
+        span ??? Number input for mobile devices ???
+      label.html5Inputs-inputGroup
+        input(type='range' value='10')
+        span Range input
+      label.html5Inputs-inputGroup
+        input(type='date' value='1970-01-01')
+        span Date input
+      label.html5Inputs-inputGroup
+        input(type='month' value='1970-01')
+        span Month input
+      label.html5Inputs-inputGroup
+        input(type='week' value='1970-W01')
+        span Week input
+      label.html5Inputs-inputGroup
+        input(type='datetime-local' value='1970-01-01T00:00')
+        span Datetime-local input
+
+    fieldset.forms-action
+      legend Action buttons
+      div
+        input(type='submit' value='<input type=submit>')
+        input(type='button' value='<input type=button>')
+        input(type='reset' value='<input type=reset>')
+        input(type='submit' value='<input disabled>' disabled)
+      div
+        button(type="submit") &lt;button type=submit&gt;
+        button(type="button") &lt;button type=button&gt;
+        button(type="reset") &lt;button type=reset&gt;
+        button(type="button" disabled) &lt;button disabled&gt;
+
+hr
+
+section.grid
+  header
+    h1 - Grid System
+  h2 Columns
+  // Twelwe Columns Per Row
+  div.grid-row.grid-row--1
+    -for(var i=1; i<=12; i++)
+      div= 'Column ' + i
+  // Six Columns Per Row
+  div.grid-row.grid-row--2
+    -for(var i=1; i<=6; i++)
+      div= 'Column ' + i
+  // Four Columns Per Row
+  div.grid-row.grid-row--3
+    div Column 1
+    div Column 2
+    div Column 3
+    div Column 4
+  // Three Columns Per Row
+  div.grid-row.grid-row--4
+    div Column 1
+    div Column 2
+    div Column 3
+  // Two Columns Per Row
+  div.grid-row.grid-row--5
+    div Column 1
+    div Column 2
+  // One Column Per Row
+  div.grid-row.grid-row--6
+    div Column 1
+  h2 Offsets
+  div.grid-row.grid-row--7
+    -for(var i=1; i<=11; i++)
+      div(class='grid-offset--#{i}')= 'Column ' + i
+
+hr
+
+section.embedded
+  header
+    h1 - Embedded content
+  article.embedded-images
+    header
+      h2 Images
+    div
+      h3
+        | No 
+        code &lt;figure&gt; 
+        | element
+      div
+        img(src='https://monosnap.com/image/Hc3wZ7kqvNHJVBPUoaiY73eFP2LJMw' alt='Image alt text' )
+    div
+      h3 Broken link in image source
+      div
+        img(src='ttps://monosnap.com/image/U0c1q6I89dyQQAybov5WZTI2l0NsqN' alt='Image alt text')
+    div.embedded-figureWrap
+      div
+        h3
+          | Wrapped in a 
+          code &lt;figure&gt; 
+          | element, no 
+          code &lt;figcaption&gt;
+        figure
+          img(src='https://monosnap.com/image/DjOLBVPNRfMdxPqPpgDDWFTwKI9FaL' alt='Image alt text')
+      div
+        h3
+          | Wrapped in a 
+          code &lt;figure&gt; 
+          | element, with a 
+          code &lt;figcaption&gt;
+        figure
+          img(src='https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf' alt='Image alt text')
+          figcaption Here is a caption for this image.
+
+  div.embedded-rest
+    article.embedded-audio
+      header
+        h2 Audio
+      div
+        audio(controls='') audio
+
+    article.embedded-video
+      header
+        h2 Video
+      div
+        video(controls='') video
+
+    article.embedded-canvas
+      header
+        h2 Canvas
+      div
+        canvas canvas
+
+    article.embedded-meter
+      header
+        h2 Meter
+      div
+        meter(value='2' min='0' max='10') 2 out of 10
+
+    article.embedded-progress
+      header
+        h2 Progress
+      div
+        progress progress
+
+    article.embedded-svg
+      header
+        h2 Inline SVG
+      div
+        svg(width='100px' height='100px')
+          circle(cx='100' cy='100' r='100' fill='#1fa3ec')
+
+    article.embedded-iframe
+      header
+        h2 IFrame
+      div
+        iframe(src='index.html' height='300')

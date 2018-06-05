@@ -1,0 +1,32 @@
+mixin social(name = '')
+  div(class="#{name}")
+    a(class="#{name}-link" href="#" title="Вконтакте" target="_blanc")
+      span(class="#{name}-txt--hidden") Вконтакте
+      svg(class="#{name}-icon #{name}-icon--vk" width="" height="" aria-label='Вконтакте')
+        use(xlink:href="#vk")
+    a(class="#{name}-link" href="#" title="GitHub" target="_blanc")
+      span(class="#{name}-txt--hidden") GitHub
+      svg(class="#{name}-icon #{name}-icon--gh" width="" height="" aria-label='GitHub')
+        use(xlink:href="#github")
+    a(class="#{name}-link" href="mailto:" title="Почта")
+      span(class="#{name}-txt--hidden") Почта
+      svg(class="#{name}-icon #{name}-icon--in" width="" height="" aria-label='Почта')
+        use(xlink:href="#envelope")
+
+//-===================================================================
+
+mixin menu(name = '')
+  div(class="#{name}-menu menu")
+    img(class="#{name}-logo logo" src="img/logo.png" title="" alt="" width="" height="")
+    nav(class="#{name}-nav nav")
+      ul.nav-list
+        li.nav-item
+          a.nav-link(href="#")
+        li.nav-item
+          a.nav-link(href="#")
+        li.nav-item
+          a.nav-link(href="#")
+        li.nav-item
+          a.nav-link(href="#")
+
+//-===================================================================

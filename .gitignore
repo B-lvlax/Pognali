@@ -34,7 +34,7 @@ bower_components
 dist
 dest
 build
-
+src
 
 # Node.JS
 node_modules

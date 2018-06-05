@@ -8,3 +8,5 @@ document.addEventListener("dragstart", function( event ) {
   document.getElementsByTagName('img', 'a');
 }, false);
 
+
+//# sourceMappingURL=bundle.js.map

@@ -753,7 +753,7 @@ AddDefaultCharset utf-8
 </IfModule>
 
 # Защищаем от доступа сам файл .htaccess.
-# Возможно, в этом правиле не необходимости, так как следующие две являются универсальными.
+# Возможно, в этом правиле не необходимости, так как следующие два являются универсальными.
 
 # <Files .htaccess>
 #   order allow,deny
@@ -1624,6 +1624,15 @@ FileETag None
 # # PHP Section                                                        #
 # ######################################################################
 
+# Switch to Another PHP Version
+
+# AddHandler application/x-httpd-php56 .php
+
+# Alternatively, you can use AddType
+# AddType application/x-httpd-php56 .php
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # php_value upload_max_filesize 32M
 # php_value post_max_size   10M
 # php_value default_charset utf-8
@@ -1649,6 +1658,8 @@ FileETag None
 # # php_value error_log /tmp/php_error.log
 # # php_value error_prepend_string " "
 # # php_value error_append_string " "
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # <Files php_error.log>
 #   Order allow,deny

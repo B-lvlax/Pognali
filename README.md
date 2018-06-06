@@ -22,6 +22,7 @@ __NPM-модули, устанавливаемые локально__
 - [gulp-jade](https://github.com/gulp-community/gulp-pug)
 - [gulp-jsbeautifier](https://github.com/tarunc/gulp-jsbeautifier)
 - [gulp-minifier](https://github.com/webyom/gulp-minifier)
+- [gulp-html-minify](https://github.com/whxaxes/gulp-html-minify)
 - [gulp-notify](https://github.com/mikaelbr/gulp-notify)
 - [gulp-rename](https://github.com/hparra/gulp-rename)
 - [gulp-sourcemaps](https://github.com/gulp-sourcemaps/gulp-sourcemaps)

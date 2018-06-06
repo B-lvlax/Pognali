@@ -21,6 +21,7 @@ var
   prefixes = require('gulp-autoprefixer'),
   csscomb = require('gulp-csscomb'),
   minifier = require('gulp-minifier'),
+  htmlmin = require('gulp-html-minify'),
   beautifier = require('gulp-jsbeautifier'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
@@ -67,10 +68,14 @@ gulp.task('markup', function () {
 gulp.task('minifyMarkup', function () {
   return gulp.src('build/*.html')
     // When working with PHP comment minifying
-    .pipe(minifier({
-      minify: true,
-      collapseWhitespace: true
-    }))
+    // .pipe(minifier({
+    //   minify: true,
+    //   minifyHTML: {
+    //     collapseWhitespace: true,
+    //     conservativeCollapse: true
+    //   }
+    // }))
+    .pipe(htmlmin())
     .pipe(gulp.dest('public/'));
 });
 
@@ -193,8 +198,8 @@ gulp.task('toBuild', function () {
 });
 
 gulp.task('toPublic', function () {
-  var moveRootFiles = gulp.src(['.htaccess', '.gitignore', '.csscomb.json'])
-  .pipe(gulp.dest('build/'));
+  var moveRootFiles = gulp.src(['.htaccess', '.gitignore', 'robots.txt'])
+  .pipe(gulp.dest('public/'));
 
   var movePhp = gulp.src('build/*.php')
     .pipe(gulp.dest('public/'));

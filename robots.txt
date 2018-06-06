@@ -1,0 +1,43 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /backups/
+Disallow: /cgi-bin          # каталог скриптов на сервере
+Disallow: /wp-          # все файлы WP: /wp-json/, /wp-includes, /wp-content/plugins
+Disallow: /wp/          # если есть подкаталог /wp/, где установлена CMS (если нет, правило можно удалить)
+Disallow: /?          # все параметры запроса на главной
+Disallow: *?*
+Disallow: /?p=          # поиск
+Disallow: *?s=          # поиск
+Disallow: *&s=          # поиск
+Disallow: /search/          # поиск
+Disallow: /author/          # архив автора
+Disallow: /users/          # архив авторов
+Disallow: */trackback          # уведомления в комментариях о появлении открытой ссылки на статью
+Disallow: */feed          # все фиды
+Disallow: */rss          # rss фид
+Disallow: */embed          # все встраивания
+Disallow: */attachment          # вложения
+Disallow: */tag/          # метки
+Disallow: */page/           # все виды пагинации
+Disallow: */print/          # для печати
+Disallow: *?print=*          # для печати
+Disallow: */wlwmanifest.xml          # xml-файл манифеста Windows Live Writer (если не используете, правило можно удалить)
+Disallow: /xmlrpc.php          # файл WordPress API
+Disallow: *utm*=          # ссылки с utm-метками
+Disallow: *openstat=          # ссылки с метками openstat
+Allow: /*/*.js          # открываем js-скрипты внутри /wp- (/*/ - для приоритета)
+Allow: /*/*.css          # открываем css-файлы внутри /wp- (/*/ - для приоритета)
+Allow: /wp-*.png          # картинки в плагинах, cache папке и т.д.
+Allow: /wp-*.jpg          # картинки в плагинах, cache папке и т.д.
+Allow: /wp-*.jpeg          # картинки в плагинах, cache папке и т.д.
+Allow: /wp-*.gif          # картинки в плагинах, cache папке и т.д.
+Allow: /wp-*.svg          # картинки в плагинах, cache папке и т.д.
+Allow: /wp-*.pdf          # файлы в плагинах, cache папке и т.д.
+Allow: /wp-admin/admin-ajax.php          # используется плагинами, чтобы не блокировать JS и CSS
+# Allow: */uploads          # открываем папку с файлами uploads
+
+Host: mysite.com
+# Sitemap: http://mysite.com/sitemap.xml.gz
+# Sitemap: http://ваш_сайт.com/sitemap.xml
+

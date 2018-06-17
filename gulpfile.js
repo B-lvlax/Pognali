@@ -69,11 +69,11 @@ gulp.task('minifyMarkup', function () {
   return gulp.src('build/*.html')
     // When working with PHP comment minifying
     // .pipe(minifier({
-    //   minify: true,
-    //   minifyHTML: {
-    //     collapseWhitespace: true,
-    //     conservativeCollapse: true
-    //   }
+      // minify: true,
+      // minifyHTML: {
+      //   collapseWhitespace: true,
+      //   conservativeCollapse: true
+      // }
     // }))
     .pipe(htmlmin())
     .pipe(gulp.dest('public/'));

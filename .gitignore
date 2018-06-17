@@ -10,7 +10,6 @@
 *.swo
 *.swp
 *.vi
-*.gitkeep
 *~
 
 # OS or Editor folders

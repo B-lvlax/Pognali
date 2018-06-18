@@ -2,27 +2,53 @@
 
 console.log('Погнали!');
 
+/*===================================================================
+  GLOBAL FUNCTIONS
+=====================================================================*/
+
 /* DOM
 =====================================================================*/
+// function select(selector, parent) {
+//   parent = parent || document;
+//   return parent.querySelector(selector);
+// }
+// function selectAll(selector, parent) {
+//   parent = parent || document;
+//   return parent.querySelectorAll(selector);
+// }
 function select(selector, parent) {
   parent = parent || document;
-  return parent.querySelector(selector);
-}
-function selectAll(selector, parent) {
-  parent = parent || document;
-  return parent.querySelectorAll(selector);
+  var selected = parent.querySelectorAll(selector);
+  if (selected.length === 1) return selected[0];
+  return selected;
 }
 
-function removeClass(elem, className) {
-  if (elem.classList) elem.classList.remove(className);
+function addEvent(elems, event, func) {
+  console.log(elems.length);
+  if (elems.length === undefined) elems.addEventListener(event, func);
+  elems.forEach(function(elem) {
+    elem.addEventListener(event, func);
+  });
 }
+function removeEvent(elems, event, func) {
+  if (elems.length === undefined) elems.removeEventListener(event, func);
+  elems.forEach(function(elem) {
+    elem.removeEventListener(event, func);
+  });
+}
+
 function addClass(elem, className) {
-  if (elem.classList) elem.classList.add(className);
+  elem.classList.add(className);
+}
+function removeClass(elem, className) {
+  elem.classList.remove(className);
+}
+function toggleClass(elem, className) {
+  elem.classList.toggle(className);
 }
 function hasClass(elem, className) {
-  if (elem.classList) return elem.classList.contains(className);
+  return elem.classList.contains(className);
 }
-
 
 /* TESTING
 =====================================================================*/
@@ -76,7 +102,6 @@ function bgPrlx(elems, size, step) {
 function elemPrlx(e) {
   if (!isMobile.any()) {
     var elem = this.querySelector('.caption');
-
     elem.style.transform =
       'translate3d(' +
       (e.clientX / 8 - (elem.offsetWidth / 4)) + 'px, ' +
@@ -84,7 +109,9 @@ function elemPrlx(e) {
   }
 }
 
-/* OTHER SCRIPTS
+
+/*===================================================================
+  OTHER SCRIPTS
 =====================================================================*/
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -93,9 +120,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // bgPrlx('.bgPrlx--1', 140, 5);
   };
 
+  /*===================================================================*/
+
   var parents = document.querySelectorAll('.bgPrlx');
   parents.forEach(function(elem) {
     elem.onmousemove = elemPrlx;
   });
+
+  /*===================================================================*/
+
+  function test() {
+    var elem = this;
+    elem.style.border = '5px dashed red';
+    removeEvent(elem, 'click', test);
+    console.log(1);
+  }
+
+  var one = document.querySelectorAll('p');
+  var two = document.querySelector('p');
+
+  // addEvent(one, 'click', test);
+  addEvent(two, 'click', test);
 
 });

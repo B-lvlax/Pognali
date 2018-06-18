@@ -146,14 +146,15 @@ button[type='button']
   border: 1px solid $borderClr
   border-radius: $borderRad
   background-color: $btnBg
-
   &:hover
     color: $lightClr
     background-color: $primaryClr
-  &:active, &:focus
+  &:active
     outline: none
     transform: translateY(4px)
     shadow()
+  &:focus
+    outline: none
 
 /*! Input fields */
 
@@ -284,7 +285,9 @@ a
     @extend $disabled
     text-decoration: underline
 a:visited
-  text-decoration: none
+  color: darken($linkClr, 40%)
+  &.disabled
+    @extend $disabled
 a:hover
   color: $primaryClr
 a:active

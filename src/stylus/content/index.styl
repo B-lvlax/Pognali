@@ -39,6 +39,10 @@ img
   line-height: 2.2
   &::before
     content: 'Картинка (' attr(src) ') не загрузилась: '
+    padding-left: $indent--lg
+  &::after
+    content: ''
+    padding-right: $indent--lg
 
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section
   display: block
@@ -146,6 +150,10 @@ button[type='button']
   &:hover
     color: $lightClr
     background-color: $primaryClr
+  &:active, &:focus
+    outline: none
+    transform: translateY(4px)
+    shadow()
 
 /*! Input fields */
 
@@ -193,7 +201,7 @@ $inputGroup
     min-width: 150px
     margin-right: $indent
   input[type='radio'],
-  input[type='checkbox']
+  input[type='checkbox'],
   input[type='color'],
   select + span
     flex-grow: 0
@@ -269,6 +277,7 @@ label.disabled
 /*! Links and Buttons
 =====================================================================*/
 a
+  display: inline-block
   cursor: pointer
   color: $linkClr
   &.disabled
@@ -279,7 +288,8 @@ a:visited
 a:hover
   color: $primaryClr
 a:active
-  text-decoration: none
+  transform: translateY(4px)
+  text-shadow: 0 6px 6px rgba(0, 0, 0, .23)
 
 
 /*! Animations

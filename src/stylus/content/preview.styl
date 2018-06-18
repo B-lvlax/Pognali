@@ -3,10 +3,18 @@ body
 
 .layoutCenter
   margin-top: $indent--lg
-  margin-bottom: $indent-lg
+  margin-bottom: $indent--lg * 1.5
+  padding-bottom: $indent--lg
   border-radius: $borderRad
   background-color: $lightClr
   shadow()
+
+section
+  margin-bottom: $indent--lg * 1.5
+article
+  margin-bottom: $indent--lg
+
+bgPrlx()
 
 .title
   position: fixed
@@ -55,36 +63,83 @@ body
 
 /* Styles for Preview of boilerplate
 =====================================================================*/
-.mainTitle
+$header
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 400px
+  outOf()
+  background-color: $lighterClr
+
+$caption
+  margin-bottom: $indent
+  padding: $indent--sm $indent
   text-align: center
+  color: $lighterClr
+  background-color: $darkerClr
+
+$caption--styled
+  display: block
+  margin: 0 $indent--lg
+  padding: $indent $indent--lg
+  border: 6px solid $lighterClr
+  border-radius: $borderRad
+  background-color: rgba(0, 0, 0, .6)
+  letter-spacing: 8px
+  color: $lightClr
+  text-transform: uppercase
+  fluidTxtInPx(, 2)
+
+.slogan
+  @extend $caption
+  margin-right: -($indent--lg)
+  margin-left: -($indent--lg)
+  padding-top: $indent--lg
+  padding-bottom: $indent--lg
+  border-top-left-radius: $borderRad
+  border-top-right-radius: $borderRad
+  font-size: $fontSize--xl
+  font-weight: bold
 
 
 //! Section TEXT
 .text
-  overflow-x: auto
-  &-p1
+  &-header
+    @extend $header
+    background-image: url('https://monosnap.com/image/Hc3wZ7kqvNHJVBPUoaiY73eFP2LJMw')
+  &-h1
+    @extend $caption--styled
+  &-h2
+    @extend $caption
+  &-truncated
+    truncated()
+  &-size--1
     font-size: $fontSize--xl
-  &-p2
+  &-size--2
     font-size: $fontSize--lg
-  &-p3
+  &-size--3
     font-size: $fontSize--md
-  &-p4
+  &-size--4
     font-size: $fontSize--sm
-  &-p5
+  &-size--5
     font-size: $fontSize--xs
-  &-ellipsis
-    ellipsis()
   &-innerWrap
     row-0()
   &-lists, &-inline
     col(6)
     min-width: 250px
     flex-grow: 1
-  // &-tables
+  &-tables
+    overflow: auto
 
 
 //! Section FORMS
-// .forms
+.forms
+  &-header
+    @extend $header
+    background-image: url('https://monosnap.com/image/7oFsRFwGOLRAWZ26udJQVOA1J7pLW4')
+  &-h1
+    @extend $caption--styled
 .inputs-inputGroup
   @extend $inputGroup--labelHidden
 
@@ -100,8 +155,16 @@ body
 
 //! Section GRID
 .grid
-  overflow-x: auto
-  gridTest()
+  &-innerWrap
+    overflow-x: auto
+    gridTest()
+  &-header
+    @extend $header
+    background-image: url('https://monosnap.com/image/WmqiwrBdYXwkcofOuiPp88gL1a91th')
+  &-h1
+    @extend $caption--styled
+  &-h2
+    @extend $caption
   &-row
     row()
   &-row > *
@@ -126,6 +189,13 @@ body
 
 //! Section EMBEDDED
 .embedded
+  &-header
+    @extend $header
+    background-image: url('https://monosnap.com/image/HrfN4chtfzFNuk9VkmupiXatWIpMTE')
+  &-h1
+    @extend $caption--styled
+  &-h2
+    @extend $caption
   &-figureWrap, &-rest
     row-0()
   &-figureWrap > *

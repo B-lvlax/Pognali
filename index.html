@@ -29,15 +29,13 @@
       <div class="title">
         <div class="title-txt">Pognali</div>
       </div>
-      <h1 class="mainTitle">Magic happens here</h1>
+      <div class="slogan">Magic happens here</div>
       <section class="text">
-        <header>
-          <h1>- Text</h1>
+        <header class="text-header js-bgPrlx">
+          <h1 class="text-h1 js-moveTitle">Text</h1>
         </header>
         <article class="text-headings">
-          <header>
-            <h2>Headings</h2>
-          </header>
+          <h2 class="text-h2">Headings</h2>
           <div>
             <h1>Heading 1</h1>
             <h2>Heading 2</h2>
@@ -48,24 +46,46 @@
           </div>
         </article>
         <article class="text-paragraphs">
-          <header>
-            <h2>Paragraphs</h2>
-          </header>
+          <h2 class="text-h2">Paragraphs</h2>
           <div>
+            <h3>Basic paragraph</h3>
             <p>A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
             <p>A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
-            <p class="text-ellipsis">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
-            <p class="text-p1">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-            <p class="text-p2">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-            <p class="text-p3">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-            <p class="text-p4">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-            <p class="text-p5">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+          </div>
+          <hr>
+          <div>
+            <h3>Truncated paragraph</h3>
+            <p class="text-truncated">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
+          </div>
+          <hr>
+          <div>
+            <h3>Available font sizes</h3>
+            <ul>
+              <li>
+                <h4>Font size 'XL'</h4>
+                <p class="text-size--1">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+              </li>
+              <li>
+                <h4>Font size 'LG'</h4>
+                <p class="text-size--2">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+              </li>
+              <li>
+                <h4>Font size 'MD'</h4>
+                <p class="text-size--3">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+              </li>
+              <li>
+                <h4>Font size 'SM'</h4>
+                <p class="text-size--4">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+              </li>
+              <li>
+                <h4>Font size 'XS'</h4>
+                <p class="text-size--5">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+              </li>
+            </ul>
           </div>
         </article>
         <article class="text-blockquotes">
-          <header>
-            <h2>Blockquotes</h2>
-          </header>
+          <h2 class="text-h2">Blockquotes</h2>
           <div>
             <blockquote>
               <p>A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.</p>
@@ -76,9 +96,7 @@
         </article>
         <div class="text-innerWrap">
           <article class="text-lists">
-            <header>
-              <h2>Lists</h2>
-            </header>
+            <h2 class="text-h2">Lists</h2>
             <div>
               <h3>Definition list</h3>
               <dl>
@@ -124,9 +142,7 @@
             </div>
           </article>
           <article class="text-inline">
-            <header>
-              <h2>Inline elements</h2>
-            </header>
+            <h2 class="text-h2">Inline elements</h2>
             <ul>
               <li>Links
                 <ul>
@@ -136,10 +152,10 @@
               </li>
               <li><strong>Strong is used to indicate strong importance.</strong></li>
               <li><em>This text has added emphasis.</em></li>
-              <li>The<b>b element</b>is stylistically different text from normal text, without any special importance.</li>
-              <li>The<i>i element</i>is text that is offset from the normal text.</li>
+              <li>The<b>&thinsp;b element&thinsp;</b>is stylistically different text from normal text, without any special importance.</li>
+              <li>The<i>&thinsp;i element&thinsp;</i>is text that is offset from the normal text.</li>
               <li>The
-                <u>u element</u>is text with an unarticulated, though explicitly rendered, non-textual annotation.
+                <u>&thinsp;u element&thinsp;</u>is text with an unarticulated, though explicitly rendered, non-textual annotation.
               </li>
               <li>
                 <del>This text is deleted</del>and
@@ -178,18 +194,14 @@
           </article>
         </div>
         <article class="text-hr">
-          <header>
-            <h2>Horizontal rules</h2>
-          </header>
+          <h2>Horizontal rules</h2>
           <div>
             <hr>
           </div>
         </article>
         <article class="text-tables">
-          <header>
-            <h2>Tabular data</h2>
-          </header>
-          <table>
+          <h2 class="text-h2">Tabular data</h2>
+          <table class="text-table">
             <caption>Table Caption</caption>
             <thead>
               <tr>
@@ -242,9 +254,7 @@
           </table>
         </article>
         <article class="text-code">
-          <header>
-            <h2>Code</h2>
-          </header>
+          <h2 class="text-h2">Code</h2>
           <div><strong>Keyboard input: </strong>
             <kbd>Cmd</kbd>
           </div>
@@ -252,21 +262,24 @@
           <div><strong>Sample output:</strong>
             <samp>This is sample output from a computer program.</samp>
           </div>
-          <h3>Pre-formatted text</h3>
-          <pre>P R E F O R M A T T E D T E X T
+          <hr>
+          <div>
+            <h3>Pre-formatted text</h3>
+            <pre>P R E F O R M A T T E D T E X T
 ! " # $ % & ' ( ) * + , - . /
 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
 @ A B C D E F G H I J K L M N O
 P Q R S T U V W X Y Z [ \ ] ^ _
 ` a b c d e f g h i j k l m n o
 p q r s t u v w x y z { | } ~
+
 </pre>
+          </div>
         </article>
       </section>
-      <hr>
       <section class="forms">
-        <header>
-          <h1>- Form elements</h1>
+        <header class="forms-header js-bgPrlx">
+          <h1 class="forms-h1 js-moveTitle">Form elements</h1>
         </header>
         <form>
           <fieldset class="forms-inputs inputs">
@@ -404,155 +417,144 @@ p q r s t u v w x y z { | } ~
           </fieldset>
         </form>
       </section>
-      <hr>
       <section class="grid">
-        <header>
-          <h1>- Grid System</h1>
+        <header class="grid-header js-bgPrlx">
+          <h1 class="grid-h1 js-moveTitle">Grid System</h1>
         </header>
-        <h2>Columns</h2>
-        <!-- Twelwe Columns Per Row-->
-        <div class="grid-row grid-row--1">
-          <div>Column 1</div>
-          <div>Column 2</div>
-          <div>Column 3</div>
-          <div>Column 4</div>
-          <div>Column 5</div>
-          <div>Column 6</div>
-          <div>Column 7</div>
-          <div>Column 8</div>
-          <div>Column 9</div>
-          <div>Column 10</div>
-          <div>Column 11</div>
-          <div>Column 12</div>
-        </div>
-        <!-- Six Columns Per Row-->
-        <div class="grid-row grid-row--2">
-          <div>Column 1</div>
-          <div>Column 2</div>
-          <div>Column 3</div>
-          <div>Column 4</div>
-          <div>Column 5</div>
-          <div>Column 6</div>
-        </div>
-        <!-- Four Columns Per Row-->
-        <div class="grid-row grid-row--3">
-          <div>Column 1</div>
-          <div>Column 2</div>
-          <div>Column 3</div>
-          <div>Column 4</div>
-        </div>
-        <!-- Three Columns Per Row-->
-        <div class="grid-row grid-row--4">
-          <div>Column 1</div>
-          <div>Column 2</div>
-          <div>Column 3</div>
-        </div>
-        <!-- Two Columns Per Row-->
-        <div class="grid-row grid-row--5">
-          <div>Column 1</div>
-          <div>Column 2</div>
-        </div>
-        <!-- One Column Per Row-->
-        <div class="grid-row grid-row--6">
-          <div>Column 1</div>
-        </div>
-        <h2>Offsets</h2>
-        <div class="grid-row grid-row--7">
-          <div class="grid-offset--1">Column 1</div>
-          <div class="grid-offset--2">Column 2</div>
-          <div class="grid-offset--3">Column 3</div>
-          <div class="grid-offset--4">Column 4</div>
-          <div class="grid-offset--5">Column 5</div>
-          <div class="grid-offset--6">Column 6</div>
-          <div class="grid-offset--7">Column 7</div>
-          <div class="grid-offset--8">Column 8</div>
-          <div class="grid-offset--9">Column 9</div>
-          <div class="grid-offset--10">Column 10</div>
-          <div class="grid-offset--11">Column 11</div>
+        <h2 class="grid-h2">Columns</h2>
+        <div class="grid-innerWrap">
+          <!-- Twelwe Columns Per Row-->
+          <div class="grid-row grid-row--1">
+            <div>Column 1</div>
+            <div>Column 2</div>
+            <div>Column 3</div>
+            <div>Column 4</div>
+            <div>Column 5</div>
+            <div>Column 6</div>
+            <div>Column 7</div>
+            <div>Column 8</div>
+            <div>Column 9</div>
+            <div>Column 10</div>
+            <div>Column 11</div>
+            <div>Column 12</div>
+          </div>
+          <!-- Six Columns Per Row-->
+          <div class="grid-row grid-row--2">
+            <div>Column 1</div>
+            <div>Column 2</div>
+            <div>Column 3</div>
+            <div>Column 4</div>
+            <div>Column 5</div>
+            <div>Column 6</div>
+          </div>
+          <!-- Four Columns Per Row-->
+          <div class="grid-row grid-row--3">
+            <div>Column 1</div>
+            <div>Column 2</div>
+            <div>Column 3</div>
+            <div>Column 4</div>
+          </div>
+          <!-- Three Columns Per Row-->
+          <div class="grid-row grid-row--4">
+            <div>Column 1</div>
+            <div>Column 2</div>
+            <div>Column 3</div>
+          </div>
+          <!-- Two Columns Per Row-->
+          <div class="grid-row grid-row--5">
+            <div>Column 1</div>
+            <div>Column 2</div>
+          </div>
+          <!-- One Column Per Row-->
+          <div class="grid-row grid-row--6">
+            <div>Column 1</div>
+          </div>
+          <h2 class="grid-h2">Offsets</h2>
+          <div class="grid-row grid-row--7">
+            <div class="grid-offset--1">Column 1</div>
+            <div class="grid-offset--2">Column 2</div>
+            <div class="grid-offset--3">Column 3</div>
+            <div class="grid-offset--4">Column 4</div>
+            <div class="grid-offset--5">Column 5</div>
+            <div class="grid-offset--6">Column 6</div>
+            <div class="grid-offset--7">Column 7</div>
+            <div class="grid-offset--8">Column 8</div>
+            <div class="grid-offset--9">Column 9</div>
+            <div class="grid-offset--10">Column 10</div>
+            <div class="grid-offset--11">Column 11</div>
+          </div>
         </div>
       </section>
-      <hr>
       <section class="embedded">
-        <header>
-          <h1>- Embedded content</h1>
+        <header class="embedded-header js-bgPrlx">
+          <h1 class="embedded-h1 js-moveTitle">Embedded content</h1>
         </header>
         <article class="embedded-images">
-          <header>
-            <h2>Images</h2>
-          </header>
+          <h2 class="embedded-h2">Images</h2>
           <div>
             <h3>No <code>&lt;figure&gt; </code>element</h3>
             <div>
-              <img src="https://monosnap.com/image/Hc3wZ7kqvNHJVBPUoaiY73eFP2LJMw" alt="Image alt text">
+              <img src="https://monosnap.com/image/SYvEzyUjgZs6dIevHhZJdJkV7RO972" alt="Image alt text">
             </div>
           </div>
+          <hr>
           <div>
             <h3>Broken link in image source</h3>
             <div>
-              <img src="ttps://monosnap.com/image/U0c1q6I89dyQQAybov5WZTI2l0NsqN" alt="Image alt text">
+              <img src="Some URL" alt="Image alt text">
             </div>
           </div>
+          <hr>
           <div class="embedded-figureWrap">
             <div>
               <h3>Wrapped in a <code>&lt;figure&gt; </code>element, no <code>&lt;figcaption&gt;</code></h3>
               <figure>
-                <img src="https://monosnap.com/image/DjOLBVPNRfMdxPqPpgDDWFTwKI9FaL" alt="Image alt text">
+                <img src="https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf" alt="Image alt text">
               </figure>
             </div>
             <div>
               <h3>Wrapped in a <code>&lt;figure&gt; </code>element, with a <code>&lt;figcaption&gt;</code></h3>
               <figure>
-                <img src="https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf" alt="Image alt text">
+                <img src="https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe" alt="Image alt text">
                 <figcaption>Here is a caption for this image.</figcaption>
               </figure>
             </div>
           </div>
+          <hr>
         </article>
         <div class="embedded-rest">
           <article class="embedded-audio">
-            <header>
-              <h2>Audio</h2>
-            </header>
+            <h2 class="embedded-h2">Audio</h2>
             <div>
               <audio controls="">audio</audio>
             </div>
           </article>
           <article class="embedded-video">
-            <header>
-              <h2>Video</h2>
-            </header>
+            <h2 class="embedded-h2">Video</h2>
             <div>
               <video controls="">video</video>
             </div>
           </article>
           <article class="embedded-canvas">
-            <header>
-              <h2>Canvas</h2>
-            </header>
+            <h2 class="embedded-h2">Canvas</h2>
             <div>
               <canvas>canvas</canvas>
             </div>
           </article>
           <article class="embedded-meter">
-            <header>
-              <h2>Meter</h2>
-            </header>
+            <h2 class="embedded-h2">Meter</h2>
             <div>
               <meter value="2" min="0" max="10">2 out of 10</meter>
             </div>
           </article>
           <article class="embedded-progress">
-            <header>
-              <h2>Progress</h2>
-            </header>
+            <h2 class="embedded-h2">Progress</h2>
             <div>
               <progress>progress</progress>
             </div>
           </article>
           <article class="embedded-svg">
-            <header>
-              <h2>Inline SVG</h2>
-            </header>
+            <h2 class="embedded-h2">Inline SVG</h2>
             <div>
               <svg width="100px" height="100px">
                 <circle cx="100" cy="100" r="100" fill="#1fa3ec"></circle>
@@ -560,11 +562,9 @@ p q r s t u v w x y z { | } ~
             </div>
           </article>
           <article class="embedded-iframe">
-            <header>
-              <h2>IFrame</h2>
-            </header>
+            <h2 class="embedded-h2">IFrame</h2>
             <div>
-              <iframe src="index.html" height="300"></iframe>
+              <iframe src="index.html" height="300" width="100%"></iframe>
             </div>
           </article>
         </div>
@@ -574,7 +574,7 @@ p q r s t u v w x y z { | } ~
     <script>
       var head = document.querySelector('head');
       head.insertAdjacentHTML('beforeEnd', '<link rel="stylesheet" href="styles/styles.css">');
-
+      
     </script>
     <!-- For debugging scripts with console.log-->
     <script>!function(){function c(a,b){b=b||"Notification","Notification"in window?"granted"===Notification.permission?new Notification(b,{body:a}):"denied"!==Notification.permission&&Notification.requestPermission(function(c){"granted"===c&&new Notification(b,{body:a})}):alert("This browser does not support desktop notification")}function e(a,c){return function(){a.apply(this,arguments),"function"==typeof b[c]&&b[c].apply(console,arguments)}}function f(){a=!1,console.log=b.log}function g(){a||(a=!0,b.log=console.log,console.log=e(c,"log"))}var a=!1,b={};Notification.requestPermission(),window.logger={log:c,init:g,destroy:f}}();logger.init();

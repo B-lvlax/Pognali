@@ -71,20 +71,19 @@ var isMobile = {
 
 /* EFFECTS
 =====================================================================*/
-function bgPrlx(elems, size, step) {
-  elems = document.querySelectorAll(elems);
+function bgPrlx(elems, sizeX, sizeY, step) {
 
-  if (elems.length === 1) {
-    var body = document.body;
-    body.classList.add('bgPrlx--single');
-  } else {
+  if (elems.length === undefined) addClass(elems, 'js-bgPrlx--single');
+  else {
     if (isMobile.any()) {
       var scrolledY = Math.round(window.pageYOffset);
 
       elems.forEach(function(elem) {
         elem.style.backgroundAttachment = 'scroll';
-        elem.style.backgroundSize = 'center' + size + '%';
-        elem.style.backgroundPosition = 'center ' + ((scrolledY - Math.round(elem.offsetTop)) / step) + 'px';
+        elem.style.backgroundSize = sizeX + ' ' + sizeY;
+        elem.style.backgroundPosition =
+          'center ' +
+          ((scrolledY - Math.round(elem.offsetTop)) / step) + 'px';
       });
     }
   }
@@ -92,11 +91,22 @@ function bgPrlx(elems, size, step) {
 
 function elemPrlx(e) {
   if (!isMobile.any()) {
-    var elem = this.querySelector('.caption');
-    elem.style.transform =
-      'translate3d(' +
-      (e.clientX / 8 - (elem.offsetWidth / 4)) + 'px, ' +
-      (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
+    var
+      elem = this.querySelector('.js-moveTitle'),
+      bodyWidth = document.body.offsetWidth;
+
+    elem.parentElement.style.overflow = 'hidden';
+    if (bodyWidth < 1024) {
+      elem.style.transform =
+        'translate3d(' +
+        (e.clientX / 4 - (elem.offsetWidth / 4)) + 'px, ' +
+        (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
+    } else {
+      elem.style.transform =
+        'translate3d(' +
+        (e.clientX / 4 - (elem.offsetWidth / 2)) + 'px, ' +
+        (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
+    }
   }
 }
 
@@ -107,13 +117,13 @@ function elemPrlx(e) {
 document.addEventListener('DOMContentLoaded', function() {
 
   window.onscroll = function() {
-    bgPrlx('.bgPrlx', 140, 5);
-    // bgPrlx('.bgPrlx--1', 140, 5);
+    bgPrlx('.js-bgPrlx', 'auto', '140%', 5);
+    // bgPrlx('body', 'auto', '140%', 5);
   };
 
   /*===================================================================*/
 
-  var parents = document.querySelectorAll('.bgPrlx');
+  var parents = select('.js-bgPrlx');
   parents.forEach(function(elem) {
     elem.onmousemove = elemPrlx;
   });

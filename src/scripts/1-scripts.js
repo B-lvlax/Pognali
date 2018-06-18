@@ -8,14 +8,6 @@ console.log('Погнали!');
 
 /* DOM
 =====================================================================*/
-// function select(selector, parent) {
-//   parent = parent || document;
-//   return parent.querySelector(selector);
-// }
-// function selectAll(selector, parent) {
-//   parent = parent || document;
-//   return parent.querySelectorAll(selector);
-// }
 function select(selector, parent) {
   parent = parent || document;
   var selected = parent.querySelectorAll(selector);
@@ -24,14 +16,13 @@ function select(selector, parent) {
 }
 
 function addEvent(elems, event, func) {
-  console.log(elems.length);
-  if (elems.length === undefined) elems.addEventListener(event, func);
+  if (elems.length === undefined) return elems.addEventListener(event, func);
   elems.forEach(function(elem) {
     elem.addEventListener(event, func);
   });
 }
 function removeEvent(elems, event, func) {
-  if (elems.length === undefined) elems.removeEventListener(event, func);
+  if (elems.length === undefined) return elems.removeEventListener(event, func);
   elems.forEach(function(elem) {
     elem.removeEventListener(event, func);
   });
@@ -126,20 +117,5 @@ document.addEventListener('DOMContentLoaded', function() {
   parents.forEach(function(elem) {
     elem.onmousemove = elemPrlx;
   });
-
-  /*===================================================================*/
-
-  function test() {
-    var elem = this;
-    elem.style.border = '5px dashed red';
-    removeEvent(elem, 'click', test);
-    console.log(1);
-  }
-
-  var one = document.querySelectorAll('p');
-  var two = document.querySelector('p');
-
-  // addEvent(one, 'click', test);
-  addEvent(two, 'click', test);
 
 });

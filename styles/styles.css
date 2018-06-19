@@ -270,17 +270,19 @@ input[type="reset"]:active,
 input[type="button"]:active,
 button[type="submit"]:active,
 button[type="reset"]:active,
-button[type="button"]:active,
+button[type="button"]:active {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+  outline: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus,
 button[type="submit"]:focus,
 button[type="reset"]:focus,
 button[type="button"]:focus {
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
   outline: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 /* Input fields */
 input[type="text"],
@@ -503,7 +505,8 @@ textarea {
 input[disabled],
 button[disabled],
 input[disabled] + span,
-a.disabled {
+a.disabled,
+a:visited.disabled {
   cursor: default;
   text-decoration: none;
   pointer-events: none;
@@ -515,7 +518,8 @@ a.disabled {
 input[disabled]:hover,
 button[disabled]:hover,
 input[disabled] + span:hover,
-a.disabled:hover {
+a.disabled:hover,
+a:visited.disabled:hover {
   color: #9BABB4;
   background-color: #FFF;
 }
@@ -533,7 +537,7 @@ a.disabled {
   text-decoration: underline;
 }
 a:visited {
-  text-decoration: none;
+  color: #9D7600;
 }
 a:hover {
   color: #007BFF;
@@ -704,11 +708,12 @@ article {
 .forms-h1,
 .grid-h1,
 .embedded-h1 {
-  display: block;
-  margin: 0 32px;
+  margin-right: 16px;
+  margin-left: 16px;
   padding: 16px 32px;
   letter-spacing: 8px;
   text-transform: uppercase;
+  word-break: keep-all;
   color: #FFF;
   border: 6px solid #DDD;
   border-radius: 6px;

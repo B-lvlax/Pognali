@@ -12,4 +12,19 @@ $screen--xl = 1280px
 
 /* Rules
 =====================================================================*/
-// @media screen and (max-width: $screen--md)
+@media screen and (max-width: $screen--md)
+  //! Styles for page 404
+  .error
+    padding-top: 0
+    &-nums
+      flex-direction: column
+      align-items: center;
+    &-num
+      margin-bottom: 0
+      font-size: 200px
+      &:nth-of-type(2)::before,
+      &:nth-of-type(2)::after
+        top: -16px
+        left: -16px
+        width: 240px
+        height: 240px

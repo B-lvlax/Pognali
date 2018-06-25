@@ -59,7 +59,7 @@ p {
   margin-top: 0;
   margin-bottom: 16px;
   color: #000;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-size: calc(1rem + 0.25 * ((100vw - 20rem) / 80));
 }
 address {
@@ -621,6 +621,8 @@ a:active {
             transform: translateX(10px);
   }
 }
+/* Styles for Preview of boilerplate
+=====================================================================*/
 body {
   background-color: #DDD;
 }
@@ -654,30 +656,6 @@ article {
   width: 100%;
   height: 100%;
   background-image: url("https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR");
-}
-.title {
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  -webkit-animation: hideBg 2s 4s linear forwards;
-          animation: hideBg 2s 4s linear forwards;
-  background-color: rgba(0,0,0,0.7);
-}
-.title-txt {
-  -webkit-animation: slide-right 4s 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-          animation: slide-right 4s 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-  text-shadow: 0 -5px 0 #7FDBFF, 0 -10px 0 #39CCCC, 0 -15px 0 #3D9970, 0 -20px 0 #2ECC40, 0 -25px 0 #01FF70, 0 -30px 0 #FFDC00, 0 -35px 0 #FF851B, 0 -40px 0 #FF4136, 0 -45px 0 #F012BE, 0 -50px 0 #B10DC9;
-  font-size: 60px;
-  font-size: calc(60px + 20 * ((100vw - 20rem) / 80));
 }
 .text-header,
 .forms-header,
@@ -918,52 +896,6 @@ article {
   flex-basis: calc(100% / 12 * 4 - 16px);
   -webkit-box-flex: 1;
   flex-grow: 1;
-}
-@-webkit-keyframes slide-right {
-  0% {
-    -webkit-transform: skewX(0deg);
-            transform: skewX(0deg);
-  }
-  10% {
-    -webkit-transform: skewX(20deg) translateX(-50px);
-            transform: skewX(20deg) translateX(-50px);
-  }
-  100% {
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
-  }
-}
-@keyframes slide-right {
-  0% {
-    -webkit-transform: skewX(0deg);
-            transform: skewX(0deg);
-  }
-  10% {
-    -webkit-transform: skewX(20deg) translateX(-50px);
-            transform: skewX(20deg) translateX(-50px);
-  }
-  100% {
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
-  }
-}
-@-webkit-keyframes hideBg {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    top: -2000px;
-    opacity: 0;
-  }
-}
-@keyframes hideBg {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    top: -2000px;
-    opacity: 0;
-  }
 }
 /*===================================================================
   MEDIA QUERRIES

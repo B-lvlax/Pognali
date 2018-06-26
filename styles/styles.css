@@ -137,6 +137,10 @@ img::after {
   content: "";
   padding-right: 32px;
 }
+audio,
+video {
+  width: 100%;
+}
 article,
 aside,
 dialog,

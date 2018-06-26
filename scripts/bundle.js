@@ -72,6 +72,7 @@ var isMobile = {
 /* EFFECTS
 =====================================================================*/
 function bgPrlx(elems, sizeX, sizeY, step) {
+  elems = select(elems);
 
   if (elems.length === undefined) addClass(elems, 'js-bgPrlx--single');
   else {
@@ -90,17 +91,14 @@ function bgPrlx(elems, sizeX, sizeY, step) {
 }
 
 function elemPrlx(e) {
-  if (!isMobile.any()) {
-    var
-      elem = this.querySelector('.js-moveTitle'),
-      bodyWidth = document.body.offsetWidth;
+  var bodyWidth = document.body.offsetWidth;
+  if (!isMobile.any() && bodyWidth >= 768) {
+    var elem = this.querySelector('.js-moveTitle');
 
-    if (bodyWidth >= 768) {
-      elem.style.transform =
-        'translate3d(' +
-        (e.clientX / 4 - (elem.offsetWidth / 3)) + 'px, ' +
-        (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
-    }
+    elem.style.transform =
+      'translate3d(' +
+      (e.clientX / 4 - (elem.offsetWidth / 3)) + 'px, ' +
+      (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
   }
 }
 
@@ -111,8 +109,8 @@ function elemPrlx(e) {
 document.addEventListener('DOMContentLoaded', function() {
 
   window.onscroll = function() {
-    bgPrlx('.js-bgPrlx', 'auto', '140%', 5);
-    // bgPrlx('body', 'auto', '140%', 5);
+    bgPrlx('.js-bgPrlx', '100%', '140%', 5);
+    // bgPrlx('body', '100%', '140%', 5);
   };
 
   /*===================================================================*/

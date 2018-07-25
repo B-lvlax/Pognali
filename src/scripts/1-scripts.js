@@ -41,6 +41,7 @@ function hasClass(elem, className) {
   return elem.classList.contains(className);
 }
 
+
 /* TESTING
 =====================================================================*/
 function isNum(elem) {
@@ -59,7 +60,7 @@ var isMobile = {
     return navigator.userAgent.match(/iPhone|iPad|iPod/i);
   },
   opera: function opera() {
-    return navigator.userAgent.match(/Opera Mini/i);
+    return navigator.userAgent.match(/Opera Mini/i) || navigator.userAgent.match(/opr/i) && typeof window.orientation !== "undefined";
   },
   windows: function windows() {
     return navigator.userAgent.match(/IEMobile/i);
@@ -68,6 +69,7 @@ var isMobile = {
     return isMobile.android() || isMobile.blackberry() || isMobile.ios() || isMobile.opera() || isMobile.windows();
   }
 };
+
 
 /* EFFECTS
 =====================================================================*/
@@ -101,6 +103,7 @@ function elemPrlx(e) {
       (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
   }
 }
+
 
 
 /*===================================================================

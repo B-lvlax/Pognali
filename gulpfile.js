@@ -225,7 +225,7 @@ gulp.task('server', function () {
   bs.init({
     server: { baseDir: 'build/' },
     tunnel: tunnelName,
-    open: true,
+    open: false,
     browser: 'Vivaldi'
   });
 

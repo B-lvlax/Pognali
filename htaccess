@@ -44,9 +44,9 @@
 # https://www.maxcdn.com/one/visual-glossary/keep-alive/
 #​ Allow the same TCP connection for HTTP communication instead of opening a new connection for each new request
 
-<ifModule mod_headers.c>
+<IfModule mod_headers.c>
   Header set Connection keep-alive
-</ifModule>
+</IfModule>
 
 # ----------------------------------------------------------------------
 # | Cross-origin requests                                              |
@@ -71,14 +71,14 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image
 # https://blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
 
-<IfModule mod_setenvif.c>
-  <IfModule mod_headers.c>
-    <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
-      SetEnvIf Origin ":" IS_CORS
-      Header set Access-Control-Allow-Origin "*" env=IS_CORS
-    </FilesMatch>
-  </IfModule>
-</IfModule>
+# <IfModule mod_setenvif.c>
+#   <IfModule mod_headers.c>
+#     <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
+#       SetEnvIf Origin ":" IS_CORS
+#       Header set Access-Control-Allow-Origin "*" env=IS_CORS
+#     </FilesMatch>
+#   </IfModule>
+# </IfModule>
 
 # ----------------------------------------------------------------------
 # | Cross-origin web fonts                                             |
@@ -178,7 +178,7 @@ ErrorDocument 404 /404.html
 #
 # https://httpd.apache.org/docs/current/content-negotiation.html#multiviews
 
-Options -MultiViews
+# Options -MultiViews
 
 
 
@@ -415,7 +415,7 @@ AddDefaultCharset utf-8
   # Options +SymLinksIfOwnerMatch
 
   # (4)
-  # RewriteBase /
+  RewriteBase /
 
   # (5)
   # RewriteOptions <options>
@@ -429,102 +429,62 @@ AddDefaultCharset utf-8
 </IfModule>
 
 # ----------------------------------------------------------------------
-# | Basic redirects                                                    |
-# ----------------------------------------------------------------------
-
-<IfModule mod_rewrite.c>
-
-  RewriteEngine On
-  RewriteRule .* — [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-  # If the requested path and file is not /index.php and the request
-  # has not already been internally rewritten to the index.php script
-  RewriteCond %{REQUEST_URI} !^/index\.php
-
-  # and the request is for something within the component folder,
-  # or for the site root, or for an extensionless URL, or the
-  # requested URL ends with one of the listed extensions
-  RewriteCond %{REQUEST_URI} /component/|(/[^.]*|\.(php|html?|feed|pdf|vcf|raw))$ [NC]
-
-  # and the requested path and file doesn't directly match a physical file
-  RewriteCond %{REQUEST_FILENAME} !-f
-
-  # and the requested path and file doesn't directly match a physical folder
-  RewriteCond %{REQUEST_FILENAME} !-d
-
-  # internally rewrite the request to the index.php script
-  RewriteRule .* index.php [L]
-
-</IfModule>
-
-# ----------------------------------------------------------------------
 # | 301 redirects                                                      |
 # ----------------------------------------------------------------------
 
 # 301 Редирект с одной страницы на другую (или сайт)
 
 # <IfModule mod_rewrite.c>
-#   Options +FollowSymLinks
-#   RewriteEngine On
 #   Redirect 301 /oldpage.html http://yourdomain/newpage.html
 #   # or
 #   RedirectPermanent /oldpage.html http://yourdomain/newpage.html
-# <IfModule>
+# </IfModule>
 
 # Редирект всех посетителей со старого сайта на новый
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   Options +FollowSymLinks
 #   Redirect 301 / http://newsite.com/
-# <IfModule>
+# </IfModule>
 
 # 301 Редирект с одного раздела на другой
 # Перенаправление всех страниц одного раздела site.com/razdel-1/razdel-2/page на на страницы другого раздела site.com/razdel-1/page
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   Options +FollowSymLinks
 #   RewriteRule ^blog/raznoe/(.*)$ http://site.ru/blog/$1 [R=permanent,L]
-# <IfModule>
+# </IfModule>
 
 # 301 Редирект при переезде со старого домена на новый
 # Следующее правило корректно перенаправит посетителей с каждой конкретной страницы старого сайта на такую же страницу на новом сайте. Например со страницы oldsite.com/page на newsite.com/page
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   Options +FollowSymLinks
 #   RewriteCond %{HTTP_HOST} ^www.oldsite.com$ [NC,OR]
 #   RewriteCond %{HTTP_HOST} ^test.oldsite.com$ [NC]
 #   RewriteRule ^(.*)$ http://newsite.com/$1 [R=301,L]
-# <IfModule>
+# </IfModule>
 
 # ----------------------------------------------------------------------
 # | Запретим загружать изображения нашего сайта на сторонних сайтах    |
 # ----------------------------------------------------------------------
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
 #   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?yandex.ru/.*$ [NC]
 #   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?undsoft.com/.*$ [NC]
 #   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?yandex.net/.*$ [NC]
 #   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?feedburner.com/.*$ [NC]
 #   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?mail.ru/.*$ [NC]
 #   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?poisk.ru/.*$ [NC]
-#   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?yourdomain.ru/.*$ [NC]
+#   RewriteCond %{HTTP_REFERER} !^https?://(.+.)?yourdomain.com/.*$ [NC]
 #   RewriteCond %{HTTP_REFERER} !^$ [NC]
 #   RewriteRule .*.(jpe?g|gif|bmp|png|svg)$ - [F]
 # </IfModule>
 
 # or
 
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  Options +FollowSymlinks
-  RewriteCond %{HTTP_REFERER} !^$
-  RewriteCond %{HTTP_REFERER} !^https?://(www.)?yoursite.com/ [nc]
-  RewriteRule .*.(gif|jpe?g|png|svg)$ http://yoursite.com/images/achtung.png[nc]
-<IfModule>
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{HTTP_REFERER} !^$
+#   RewriteCond %{HTTP_REFERER} !^https?://(www.)?yourdomain.com/ [nc]
+#   RewriteRule .*.(jpe?g|gif|bmp|png|svg)$ http://yourdomain.com/images/achtung.png [nc]
+# </IfModule>
 
 # ----------------------------------------------------------------------
 # | Forcing `https://`                                                 |
@@ -534,7 +494,6 @@ AddDefaultCharset utf-8
 # https://wiki.apache.org/httpd/RewriteHTTPToHTTPS
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
 #   RewriteCond %{HTTPS} !=on
 #   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
@@ -561,7 +520,6 @@ AddDefaultCharset utf-8
 #     https://github.com/h5bp/server-configs-apache/issues/52
 
 <IfModule mod_rewrite.c>
-  RewriteEngine On
   # (1)
   # RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
@@ -593,7 +551,6 @@ AddDefaultCharset utf-8
 # subdomains for certain parts of your website.
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
 #   # (1)
 #   # RewriteCond %{HTTPS} !=on
 #   RewriteCond %{HTTP_HOST} !^www\. [NC]
@@ -610,20 +567,17 @@ AddDefaultCharset utf-8
 # Чтобы при вводе site.com/page или site.com/page/ происходило перенаправление на site.com/page.html пишем в .htaccess следующее:
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
 #   RewriteCond %{REQUEST_URI} (.*/[^/.]+)($|\?)
 #   RewriteRule .* %1.html [R=301,L]
 #   RewriteRule ^(.*)/$ /$1.html [R=301,L]
-# <IfModule>
+# </IfModule>
 
 # Как убрать .html в конце URL?
 # Обратный редирект с site.com/page.html на site.com/page
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteBase /
 #   RewriteRule (.*)\.html$ $1 [R=301,L]
-# <IfModule>
+# </IfModule>
 
 # ----------------------------------------------------------------------
 # | Slash in URL                                                       |
@@ -633,10 +587,9 @@ AddDefaultCharset utf-8
 # Например, было site.com/page/, стало site.com/page
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
 #   RewriteCond %{REQUEST_FILENAME} !-d
 #   RewriteRule ^(.+)/$ /$1 [R=301,L]
-# <IfModule>
+# </IfModule>
 
 
 
@@ -778,7 +731,6 @@ AddDefaultCharset utf-8
 # https://tools.ietf.org/html/rfc5785
 
 <IfModule mod_rewrite.c>
-  RewriteEngine On
   RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
   RewriteCond %{SCRIPT_FILENAME} -d [OR]
   RewriteCond %{SCRIPT_FILENAME} -f
@@ -1034,7 +986,7 @@ ServerSignature Off
 # ----------------------------------------------------------------------
 
 <IfModule mod_rewrite.c>
-  RewriteEngine On
+
 #   RewriteCond %{REQUEST_URI} !^/403.php$
 
   RewriteCond %{HTTP_USER_AGENT} .*Slurp.* [OR]
@@ -1120,7 +1072,7 @@ ServerSignature Off
   RewriteCond %{HTTP_USER_AGENT} .*HMView.* [OR]
   RewriteCond %{HTTP_USER_AGENT} .*Image\sStripper.* [OR]
   RewriteCond %{HTTP_USER_AGENT} .*Image\sSucker.* [OR]
-  RewriteCond %{HTTP_USER_AGENT} .*Indy\sLibrary [N.*C,OR]
+  RewriteCond %{HTTP_USER_AGENT} .*Indy\sLibrary [OR]
   RewriteCond %{HTTP_USER_AGENT} .*InterGET.* [OR]
   RewriteCond %{HTTP_USER_AGENT} .*Internet\sNinja.* [OR]
   RewriteCond %{HTTP_USER_AGENT} .*JetCar.* [OR]
@@ -1169,7 +1121,7 @@ ServerSignature Off
   RewriteCond %{HTTP_USER_AGENT} .*Zeus.*
 #   RewriteRule .* /index.php?page=e403 [F]
   RewriteRule ^.* - [F,L]
-<IfModule>
+</IfModule>
 
 # ----------------------------------------------------------------------
 # | Rewrite rules to block out some common exploits                    |
@@ -1179,8 +1131,6 @@ ServerSignature Off
 # This attempts to block the most common type of exploit `attempts`!
 
 <IfModule mod_rewrite.c>
-
-  RewriteEngine On
 
   # Block out any script trying to base64_encode data within the URL.
   RewriteCond %{QUERY_STRING} base64_encode[^(]*\([^)]*\) [OR]
@@ -1204,7 +1154,6 @@ ServerSignature Off
 # ----------------------------------------------------------------------
 
 <IfModule mod_rewrite.c>
-  RewriteEngine On
   RewriteCond %{query_string} concat.*\( [NC,OR]
   RewriteCond %{query_string} union.*select.*\( [NC,OR]
   RewriteCond %{query_string} union.*all.*select [NC]
@@ -1451,6 +1400,54 @@ ServerSignature Off
 FileETag None
 
 # ----------------------------------------------------------------------
+# | Caching                                                            |
+# ----------------------------------------------------------------------
+
+# htaccess time cheatsheet
+#      300   5 MIN
+#      600  10 MIN
+#      900  15 MIN
+#     1800  30 MIN
+#     2700  45 MIN
+
+#     3600   1 HR
+#     7200   2 HR
+#    10800   3 HR
+#    14400   4 HR
+#    18000   5 HR
+#    36000  10 HR
+#    39600  11 HR
+#    43200  12 HR
+#    46800  13 HR
+#    50400  14 HR
+#    54000  15 HR
+
+#    86400   1 DAY
+#   172800   2 DAY
+#   259200   3 DAY
+#   345600   4 DAY
+#   432000   5 DAY
+#   518400   6 DAY
+
+#   604800   1 WEEK
+#  1209600   2 WEEK
+#  1814400   3 WEEK
+#  2419200   4 WEEK
+
+#  2592000   1 MONTH
+#  4838400   2 MONTH
+#  7257600   3 MONTH
+#  9676800   4 MONTH
+# 12096000   5 MONTH
+# 14515200   6 MONTH
+# 16934400   7 MONTH
+# 19353600   8 MONTH
+# 21772800   9 MONTH
+# 24192000  10 MONTH
+# 26611200  11 MONTH
+# 29030400  12 MONTH
+
+# ----------------------------------------------------------------------
 # | Expires headers                                                    |
 # ----------------------------------------------------------------------
 
@@ -1462,109 +1459,150 @@ FileETag None
 #
 # https://httpd.apache.org/docs/current/mod/mod_expires.html
 
+# <IfModule mod_expires.c>
+
+#     ExpiresActive on
+#     ExpiresDefault                                      "access plus 1 month"
+
+#   # CSS
+
+#     ExpiresByType text/css                              "access plus 1 month"
+
+
+#   # Data interchange
+
+#     ExpiresByType application/atom+xml                  "access plus 1 hour"
+#     ExpiresByType application/rdf+xml                   "access plus 1 hour"
+#     ExpiresByType application/rss+xml                   "access plus 1 hour"
+
+#     ExpiresByType application/json                      "access plus 0 seconds"
+#     ExpiresByType application/ld+json                   "access plus 0 seconds"
+#     ExpiresByType application/schema+json               "access plus 0 seconds"
+#     ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
+#     ExpiresByType application/xml                       "access plus 0 seconds"
+#     ExpiresByType text/calendar                         "access plus 0 seconds"
+#     ExpiresByType text/xml                              "access plus 0 seconds"
+
+
+#   # Favicon (cannot be renamed!) and cursor images
+
+#     ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
+#     ExpiresByType image/x-icon                          "access plus 1 week"
+
+#   # HTML
+
+#     ExpiresByType text/html                             "access plus 0 seconds"
+
+
+#   # JavaScript
+
+#     ExpiresByType application/javascript                "access plus 1 month"
+#     ExpiresByType application/x-javascript              "access plus 1 month"
+#     ExpiresByType text/javascript                       "access plus 1 month"
+
+
+#   # Manifest files
+
+#     ExpiresByType application/manifest+json             "access plus 1 week"
+#     ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+#     ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+
+#   # Markdown
+
+#     ExpiresByType text/markdown                         "access plus 0 seconds"
+
+
+#   # Media files
+
+#     ExpiresByType audio/ogg                             "access plus 1 month"
+#     ExpiresByType image/bmp                             "access plus 1 month"
+#     ExpiresByType image/gif                             "access plus 1 month"
+#     ExpiresByType image/jpeg                            "access plus 1 month"
+#     ExpiresByType image/png                             "access plus 1 month"
+#     ExpiresByType image/svg+xml                         "access plus 1 month"
+#     ExpiresByType image/webp                            "access plus 1 month"
+#     ExpiresByType video/mp4                             "access plus 1 month"
+#     ExpiresByType video/ogg                             "access plus 1 month"
+#     ExpiresByType video/webm                            "access plus 1 month"
+
+
+#   # WebAssembly
+
+#     ExpiresByType application/wasm                      "access plus 1 month"
+
+
+#   # Web fonts
+
+#     # Collection
+#     ExpiresByType font/collection                       "access plus 1 month"
+
+#     # Embedded OpenType (EOT)
+#     ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+#     ExpiresByType font/eot                              "access plus 1 month"
+
+#     # OpenType
+#     ExpiresByType font/opentype                         "access plus 1 month"
+#     ExpiresByType font/otf                              "access plus 1 month"
+
+#     # TrueType
+#     ExpiresByType application/x-font-ttf                "access plus 1 month"
+#     ExpiresByType font/ttf                              "access plus 1 month"
+
+#     # Web Open Font Format (WOFF) 1.0
+#     ExpiresByType application/font-woff                 "access plus 1 month"
+#     ExpiresByType application/x-font-woff               "access plus 1 month"
+#     ExpiresByType font/woff                             "access plus 1 month"
+
+#     # Web Open Font Format (WOFF) 2.0
+#     ExpiresByType application/font-woff2                "access plus 1 month"
+#     ExpiresByType font/woff2                            "access plus 1 month"
+
+
+#   # Other
+
+#     ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+
+# </IfModule>
+
+# Caching with both mod_expires + mod_headers
 <IfModule mod_expires.c>
 
-    ExpiresActive on
-    ExpiresDefault                                      "access plus 1 month"
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  # ExpiresDefault A29030400
 
-  # CSS
+  # Set up caching on media files for 1 month
+  <FilesMatch "\.(flv|ico|avi|mov|mp3|mp4|webp|webm|wmv|gif|jpe?g|png|swf|svg|bmp)$">
+    ExpiresDefault A2592000
+    Header append Cache-Control "public"
+  </FilesMatch>
 
-    ExpiresByType text/css                              "access plus 1 month"
+  # Set up caching on text files for 1 week
+  <FilesMatch "\.(xml|pdf|docx?|markdown|md|ppt|rtf|txt)$">
+    ExpiresDefault A29030400
+    Header append Cache-Control "public"
+  </FilesMatch>
 
+  # Set up caching on fonts for 1 week
+  <FilesMatch "\.(woff2?|ttf|ttc|eot|otf)$">
+    ExpiresDefault A29030400
+    Header append Cache-Control "public"
+  </FilesMatch>
 
-  # Data interchange
+  # Set up caching on text files for 1 week
+  <FilesMatch "\.(html|js|css|manifest|map|json)$">
+    ExpiresDefault A29030400
+    Header append Cache-Control "proxy-revalidate"
+    # Header set Cache-Control "max-age=604800, public"
+  </FilesMatch>
 
-    ExpiresByType application/atom+xml                  "access plus 1 hour"
-    ExpiresByType application/rdf+xml                   "access plus 1 hour"
-    ExpiresByType application/rss+xml                   "access plus 1 hour"
-
-    ExpiresByType application/json                      "access plus 0 seconds"
-    ExpiresByType application/ld+json                   "access plus 0 seconds"
-    ExpiresByType application/schema+json               "access plus 0 seconds"
-    ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
-    ExpiresByType application/xml                       "access plus 0 seconds"
-    ExpiresByType text/calendar                         "access plus 0 seconds"
-    ExpiresByType text/xml                              "access plus 0 seconds"
-
-
-  # Favicon (cannot be renamed!) and cursor images
-
-    ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
-    ExpiresByType image/x-icon                          "access plus 1 week"
-
-  # HTML
-
-    ExpiresByType text/html                             "access plus 0 seconds"
-
-
-  # JavaScript
-
-    ExpiresByType application/javascript                "access plus 1 month"
-    ExpiresByType application/x-javascript              "access plus 1 month"
-    ExpiresByType text/javascript                       "access plus 1 month"
-
-
-  # Manifest files
-
-    ExpiresByType application/manifest+json             "access plus 1 week"
-    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
-    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
-
-
-  # Markdown
-
-    ExpiresByType text/markdown                         "access plus 0 seconds"
-
-
-  # Media files
-
-    ExpiresByType audio/ogg                             "access plus 1 month"
-    ExpiresByType image/bmp                             "access plus 1 month"
-    ExpiresByType image/gif                             "access plus 1 month"
-    ExpiresByType image/jpeg                            "access plus 1 month"
-    ExpiresByType image/png                             "access plus 1 month"
-    ExpiresByType image/svg+xml                         "access plus 1 month"
-    ExpiresByType image/webp                            "access plus 1 month"
-    ExpiresByType video/mp4                             "access plus 1 month"
-    ExpiresByType video/ogg                             "access plus 1 month"
-    ExpiresByType video/webm                            "access plus 1 month"
-
-
-  # WebAssembly
-
-    ExpiresByType application/wasm                      "access plus 1 month"
-
-
-  # Web fonts
-
-    # Collection
-    ExpiresByType font/collection                       "access plus 1 month"
-
-    # Embedded OpenType (EOT)
-    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
-    ExpiresByType font/eot                              "access plus 1 month"
-
-    # OpenType
-    ExpiresByType font/opentype                         "access plus 1 month"
-    ExpiresByType font/otf                              "access plus 1 month"
-
-    # TrueType
-    ExpiresByType application/x-font-ttf                "access plus 1 month"
-    ExpiresByType font/ttf                              "access plus 1 month"
-
-    # Web Open Font Format (WOFF) 1.0
-    ExpiresByType application/font-woff                 "access plus 1 month"
-    ExpiresByType application/x-font-woff               "access plus 1 month"
-    ExpiresByType font/woff                             "access plus 1 month"
-
-    # Web Open Font Format (WOFF) 2.0
-    ExpiresByType application/font-woff2                "access plus 1 month"
-    ExpiresByType font/woff2                            "access plus 1 month"
-
-
-  # Other
-
-    ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+  # Force no caching for dynamic files
+  <FilesMatch "\.(php|cgi|pl|html?)$">
+    ExpiresActive Off
+    Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
+    Header set Pragma "no-cache"
+  </FilesMatch>
 
 </IfModule>
 
@@ -1613,7 +1651,6 @@ FileETag None
 # http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
 #   RewriteCond %{REQUEST_FILENAME} !-f
 #   RewriteRule ^(.+)\.(\d+)\.(bmp|css|cur|gif|ico|jpe?g|m?js|png|svgz?|webp|webmanifest)$ $1.$3 [L]
 # </IfModule>
@@ -1684,7 +1721,7 @@ FileETag None
 # # WordPress Section                                                  #
 # ######################################################################
 
-# При работе с WP, возможно, необходимо будет закомментировать подразделы в 'Rewrites': 'Basic redirects' и 'Rewrite engine'.
+# При работе с WP, возможно, необходимо будет закомментировать подразделы в 'Rewrites: Rewrite engine'.
 # Также, если будут использоваться плагины по оптимизации скорости работы - необходимо отключить кеширование и сжатие.
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1693,8 +1730,6 @@ FileETag None
 
 # BEGIN WordPress
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteBase /
 #   RewriteRule ^index\.php$ — [L]
 #   RewriteCond %{REQUEST_FILENAME} !-f
 #   RewriteCond %{REQUEST_FILENAME} !-d
@@ -1710,8 +1745,6 @@ FileETag None
 
 # BEGIN WordPress
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteBase /
 #   RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 #   RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 #   RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
@@ -1729,8 +1762,6 @@ FileETag None
 
 # BEGIN WordPress
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteBase /
 #   RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 #   RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 #   RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
@@ -1772,8 +1803,6 @@ FileETag None
 # http://codex.wordpress.org/Hardening_WordPress
 
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteBase /
 #   RewriteRule ^wp-admin/includes/ - [F,L]
 #   RewriteRule !^wp-includes/ - [S=3]
 #   RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
@@ -1787,7 +1816,6 @@ FileETag None
 
 # BEGIN WordPress
 # <IfModule mod_rewrite.c>
-#   RewriteEngine On
 #   RewriteCond %{REQUEST_METHOD} POST
 #   RewriteCond %{REQUEST_URI} .wp-comments-post.php*
 #   RewriteCond %{HTTP_REFERER} !.*yourdomain.ru.* [OR]

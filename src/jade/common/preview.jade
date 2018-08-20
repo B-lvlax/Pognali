@@ -320,16 +320,20 @@ section.forms
     fieldset.forms-action
       legend Action buttons
       div.forms-actionGroup
-        input(type='submit' value='<input type=submit>')
+        input(type='submit' value='<input type=submit>' onclick='return false;')
         input(type='button' value='<input type=button>')
-        input(type='reset' value='<input type=reset>')
-        input(type='submit' value='<input disabled>' disabled)
+        input(type='reset' value='<input type=reset>' onclick='return false;')
+        input(type='button' value='<input disabled>' disabled)
       hr
       div.forms-actionGroup
-        button(type="submit") &lt;button type=submit&gt;
-        button(type="button") &lt;button type=button&gt;
-        button(type="reset") &lt;button type=reset&gt;
-        button(type="button" disabled) &lt;button disabled&gt;
+        button(type='submit' onclick='return false;') &lt;button type=submit&gt;
+        button(type='button') &lt;button type=button&gt;
+        button(type='reset' onclick='return false;') &lt;button type=reset&gt;
+        button(type='button' disabled) &lt;button disabled&gt;
+
+    div.forms-actionBtns
+      input.forms-btn.forms-btn--reset(type='reset' value='Reset')
+      input.forms-btn.forms-btn--submit(type='submit' value='Submit')
 
 
 section.grid

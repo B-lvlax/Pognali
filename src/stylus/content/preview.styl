@@ -153,6 +153,8 @@ $caption--styled
   &-radioGroup,
   &-html5InputsGroup
     @extend $inputGroup
+  &-action
+    margin-bottom: $indent--lg
   &-groupTitle
     &::before
       content: '*'
@@ -168,11 +170,37 @@ $caption--styled
   &-actionGroup
     row()
     justify-content: space-around
+
   &-inputsGroup input,
   &-html5InputsGroup input
     &:focus ~ .forms-helpTxt
       height: auto
       opacity: 1
+
+  &-actionBtns
+    display: flex
+  &-btn
+    flex-grow: 1
+    margin: 0 $indent--sm $indent
+    padding: $indent--xs $indent--sm
+    cursor: pointer
+    color: $btnClr
+    border: 1px solid $borderClr
+    border-radius: $borderRad
+    background-color: $btnBg
+    &:hover
+      color: $lightClr
+      background-color: $primaryClr
+    &:active
+      outline: none
+      transform: translateY(4px)
+      shadow()
+    &:focus
+      outline: none
+    &--reset[type='reset']
+      background-color: $lighterClr
+      &:hover
+        background-color: lighten(red, 35%)
 
 
 //! Section GRID

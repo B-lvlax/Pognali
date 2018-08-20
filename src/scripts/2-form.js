@@ -2,17 +2,18 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   var
-    form = document.querySelector('.form'),
-    name = form.querySelector('#name'),
-    password = form.querySelector('#password'),
-    url = form.querySelector('#site'),
-    mail = form.querySelector('#mail'),
-    phone = form.querySelector('#phone'),
-    numFild = form.querySelector('#number'),
-    date = form.querySelector('#date'),
+    wrapper = document.querySelector('.forms'),
+    form = wrapper.querySelector('.form'),
+    name = wrapper.querySelector('#name'),
+    password = wrapper.querySelector('#password'),
+    url = wrapper.querySelector('#site'),
+    mail = wrapper.querySelector('#mail'),
+    phone = wrapper.querySelector('#phone'),
+    numFild = wrapper.querySelector('#number'),
+    date = wrapper.querySelector('#date'),
     fields = [name, password, url, mail, phone, numField, date],
-    reset = form.querySelector(''),
-    submit = form.querySelector('');
+    reset = wrapper.querySelector('.forms-btn--reset'),
+    submit = wrapper.querySelector('.forms-btn--submit');
 
   /*===================================================================*/
 

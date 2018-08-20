@@ -87,6 +87,17 @@ hr
   margin-bottom: $indent--lg
 
 
+/*! Animations
+=====================================================================*/
+@keyframes shake
+  0%, 100%
+    transform: translateX(0)
+  10%, 30%, 50%, 70%, 90%
+    transform: translateX(-10px)
+  20%, 40%, 60%, 80%
+    transform: translateX(10px)
+
+
 /*! Forms Elements
 =====================================================================*/
 form
@@ -291,6 +302,13 @@ input[disabled] + span
 label.disabled
   background-color: initial
 
+.formError
+  animation: shake .6s ease
+.fieldValid
+  box-shadow: 0 0 0 2px $validClr
+.fieldError
+  box-shadow: 0 0 0 2px $errorClr
+
 
 /*! Links and Buttons
 =====================================================================*/
@@ -310,17 +328,6 @@ a:hover
 a:active
   transform: translateY(4px)
   text-shadow: 0 6px 6px rgba($darkClr, .23)
-
-
-/*! Animations
-=====================================================================*/
-@keyframes shake
-  0%, 100%
-    transform: translateX(0)
-  10%, 30%, 50%, 70%, 90%
-    transform: translateX(-10px)
-  20%, 40%, 60%, 80%
-    transform: translateX(10px)
 
 
 /*! Other global rules

@@ -141,17 +141,40 @@ $caption--styled
     background-image: url('https://monosnap.com/image/7oFsRFwGOLRAWZ26udJQVOA1J7pLW4')
   &-h1
     @extend $caption--styled
-.inputs-inputGroup
-  @extend $inputGroup--labelHidden
-
-.inputStates-inputGroup
-  @extend $inputGroup--labelVisible
-
-.select-inputGroup,
-.checkboxInputs-inputGroup,
-.radioInputs-inputGroup,
-.html5Inputs-inputGroup
-  @extend $inputGroup
+  &-h2
+    @extend $caption
+  &-requiredTxt
+    margin-bottom: $indent
+    color: $middleClr
+  &-inputsGroup
+    @extend $inputGroup--labelVisible
+  &-selectGroup,
+  &-checkboxGroup,
+  &-radioGroup,
+  &-html5InputsGroup
+    @extend $inputGroup
+  &-groupTitle
+    &::before
+      content: '*'
+      margin-right: $indent--sm
+  &-helpTxt
+    width: 100%
+    height: 0
+    transition: all .6s ease
+    text-align: center
+    opacity: 0
+    color: $middleClr
+    font-size: $fontSize--sm
+  &-actionGroup
+    row()
+    justify-content: space-around
+  &-inputsGroup input,
+  &-inputsGroup textarea,
+  &-html5InputsGroup input,
+  &-html5InputsGroup textarea
+    &:focus ~ .forms-helpTxt
+      height: auto
+      opacity: 1
 
 
 //! Section GRID

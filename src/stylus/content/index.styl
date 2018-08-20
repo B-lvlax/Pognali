@@ -204,37 +204,47 @@ $inputGroup
   input:not([type='datetime-local'])
     flex-grow: 1
     min-width: 220px
-  span
+  label
     order: -1
     min-width: 150px
     margin-right: $indent
+  input, textarea
+    color: $middleClr
   input[type='radio'],
   input[type='checkbox'],
   input[type='color'],
-  select + span
+  select + label
     flex-grow: 0
     min-width: initial
   input[type='radio'],
   input[type='checkbox']
-    & + span
+    & + label
       order: 1
       min-width: initial
   input[type='datetime-local']
     flex-grow: 1
+  input, textarea
+    &:focus
+      color: $textClr
 
 $inputGroup--labelVisible
   position: relative
   row()
   align-items: center
-  margin-bottom: $indent--md
+  margin-bottom: $indent--lg
   input, textarea
-    flex-grow: 1
-    & + span
+    width: 100%
+    & + label
       position: absolute
       top: - 20px
       left: $indent--sm /*! Must be same that padding left on input */
       transition: opacity .3s ease /*! Must be same that transition on input */
+      color: $middleClr
       font-size: $fontSize--sm
+  input, textarea
+    &:focus + label
+      opacity: 1
+      color: $textClr
 
 $inputGroup--labelHidden
   /*! For it's work well input fields must have attribute 'required' */
@@ -243,17 +253,17 @@ $inputGroup--labelHidden
   align-items: center
   margin-bottom: $indent--md
   input, textarea
-    flex-grow: 1
-    & + span
+    width: 100%
+    & + label
       position: absolute
       top: - 20px
       left: $indent--sm /*! Must be same that padding left on input */
       transition: opacity .3s ease /*! Must be same that transition on input */
       opacity: 0
+      color: $middleClr
       font-size: $fontSize--sm
   input, textarea
-    &:focus + span,
-    &:valid + span
+    &:focus + label
       opacity: 1
       color: $textClr
 

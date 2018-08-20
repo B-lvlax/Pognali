@@ -14,46 +14,7 @@
     <link rel="icon" href="images/favicon.png" size="any" type="image/png">
     <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
     <!-- Inlined Critical Styles-->
-    <style>
-      .title {
-        position: fixed;
-        z-index: 5;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        animation: hideBg 2s 4s linear forwards;
-        background-color: rgba(0,0,0, 0.7);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      }
-      .title-txt {
-        font-size: calc(60px + 20 * ((100vw - 20rem) / 80));
-        animation: slide-right 4s 1.5s cubic-bezier(.215, .610, .355, 1.000) forwards;
-        text-shadow:
-          0 -5px 0 #7FDBFF,
-          0 -10px 0 #39CCCC,
-          0 -15px 0 #3D9970,
-          0 -20px 0 #2ECC40,
-          0 -25px 0 #01FF70,
-          0 -30px 0 #FFDC00,
-          0 -35px 0 #FF851B,
-          0 -40px 0 #FF4136,
-          0 -45px 0 #F012BE,
-          0 -50px 0 #B10DC9;
-      }
-      @keyframes slide-right {
-        0% {transform: skewX(0deg);}
-        10% {transform: skewX(20deg) translateX(-50px);}
-        100% {transform: translateX(2000px);}
-      }
-      @keyframes hideBg {
-        0% {opacity: 1;}
-        100% {top: -2000px; opacity: 0;}
-      }
-    </style>
+    <style></style>
     <noscript>
       <link rel="stylesheet" href="styles/styles.css">
     </noscript>
@@ -65,9 +26,6 @@
     </noscript>
     <div class="layoutCenter">
       <!-- This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss -->
-      <div class="title">
-        <div class="title-txt">Pognali</div>
-      </div>
       <div class="slogan">Magic happens here</div>
       <section class="text">
         <header class="text-header js-bgPrlx">
@@ -320,50 +278,57 @@ p q r s t u v w x y z { | } ~
         <header class="forms-header js-bgPrlx">
           <h1 class="forms-h1 js-moveTitle">Form elements</h1>
         </header>
-        <form>
-          <fieldset class="forms-inputs inputs">
-            <legend>Input fields</legend>
-            <label class="inputs-inputGroup">
-              <input type="text" placeholder="Text Input" required class="input"><span>Text input</span>
-            </label>
-            <label class="inputs-inputGroup">
-              <input type="password" placeholder="Type your Password" required><span>Password</span>
-            </label>
-            <label class="inputs-inputGroup">
-              <input type="url" placeholder="http://yoursite.com" required><span>Web Address</span>
-            </label>
-            <label class="inputs-inputGroup">
-              <input type="email" placeholder="name@email.com" required><span>Email Address</span>
-            </label>
-            <label class="inputs-inputGroup">
-              <input type="tel" placeholder="(999) 999-9999" required><span>Phone Number</span>
-            </label>
-            <label class="inputs-inputGroup">
-              <input type="search" placeholder="Enter Search Term" required><span>Search</span>
-            </label>
-            <label class="inputs-inputGroup">
-              <input type="number" placeholder="Enter a Number" required><span>Number Input</span>
-            </label>
-            <label class="inputs-inputGroup">
-              <textarea placeholder="Enter your //-message here" required></textarea><span>Textarea</span>
-            </label>
+        <form method="post" action="https://echo.htmlacademy.ru" enctype="multipart/form-data" class="form">
+          <h2 class="forms-h2">Input fields</h2>
+          <div class="forms-requiredTxt"><b>&#42;</b> Fields marked with an asterisk are required.</div>
+          <fieldset class="forms-inputs">
+            <legend>Basic fields</legend>
+            <div class="forms-inputsGroup">
+              <input id="name" type="text" name="name" placeholder="Enter your name">
+              <label for="name" class="forms-groupTitle">Your name</label>
+              <div class="forms-helpTxt">(1-2 words that contains only letters with length two and greater symbols)</div>
+            </div>
+            <div class="forms-inputsGroup">
+              <input id="password" type="password" name="password" placeholder="Type your Password">
+              <label for="password" class="forms-groupTitle">Password</label>
+              <div class="forms-helpTxt">(Must contain letters and digits with length 6 and above)</div>
+            </div>
+            <div class="forms-inputsGroup">
+              <input id="site" type="url" name="site" placeholder="http://yoursite.com">
+              <label for="site" class="forms-groupTitle">Web Address</label>
+              <div class="forms-helpTxt">(Example: http://yoursite.com)</div>
+            </div>
+            <div class="forms-inputsGroup">
+              <input id="mail" type="email" name="mail" placeholder="name@email.com">
+              <label for="mail" class="forms-groupTitle">Email Address</label>
+              <div class="forms-helpTxt">(Example: name@email.com)</div>
+            </div>
+            <div class="forms-inputsGroup">
+              <input id="phone" type="tel" name="phone" placeholder="(999) 999-99-99">
+              <label for="phone" class="forms-groupTitle">Phone Number</label>
+              <div class="forms-helpTxt">(Only numbers with length from 10 symbols)</div>
+            </div>
+            <div class="forms-inputsGroup">
+              <input id="query" type="search" name="query" placeholder="Enter Search Term">
+              <label for="query">Search</label>
+            </div>
+            <div class="forms-inputsGroup">
+              <textarea id="message" name="message" placeholder="Enter your message here"></textarea>
+              <label for="message">Textarea</label>
+            </div>
+            <div class="forms-inputsGroup disabled">
+              <input id="text" type="text" placeholder="Disabled Text Input" disabled>
+              <label for="text" class="disabled">Disabled</label>
+            </div>
+            <div class="forms-inputsGroup">
+              <input id="file" type="file" name="file" placeholder="Enter Search Term">
+              <label for="file">Upload a file</label>
+            </div>
           </fieldset>
-          <fieldset class="forms-inputStates inputStates">
-            <legend>States for input fields</legend>
-            <label class="inputStates-inputGroup">
-              <input type="text" placeholder="Valid Text Input" class="is-valid"><span class="valid">Valid</span>
-            </label>
-            <label class="inputStates-inputGroup">
-              <input type="text" placeholder="Invalid Text Input"><span class="error">Error</span>
-            </label>
-            <label class="inputStates-inputGroup disabled">
-              <input type="text" placeholder="Disabled Text Input" disabled><span class="disabled">Disabled</span>
-            </label>
-          </fieldset>
-          <fieldset class="forms-select select">
+          <fieldset class="forms-select">
             <legend>Select menus</legend>
-            <label class="select-inputGroup">
-              <select>
+            <div class="forms-selectGroup">
+              <select id="select" name="select">
                 <optgroup label="Group 1">
                   <option>Option 1.1</option>
                   <option>Option 1.2</option>
@@ -379,75 +344,95 @@ p q r s t u v w x y z { | } ~
                   <option>Option 3.2</option>
                   <option>Option 3.3</option>
                 </optgroup>
-              </select><span>Select</span>
-            </label>
+              </select>
+              <label for="select">Select</label>
+            </div>
           </fieldset>
-          <fieldset class="forms-checkboxInputs checkboxInputs">
+          <fieldset class="forms-checkboxInputs">
             <legend>Checkboxes</legend>
-            <label class="checkboxInputs-inputGroup">
-              <input name="checkbox" type="checkbox" checked><span>Choice A</span>
-            </label>
-            <label class="checkboxInputs-inputGroup">
-              <input name="checkbox" type="checkbox"><span>Choice B</span>
-            </label>
-            <label class="checkboxInputs-inputGroup">
-              <input name="checkbox" type="checkbox"><span>Choice C</span>
-            </label>
-            <label class="checkboxInputs-inputGroup disabled">
-              <input name="checkbox" type="checkbox" disabled><span>Disabled</span>
-            </label>
+            <div class="forms-checkboxGroup">
+              <input id="checkboxA" name="checkboxA" type="checkbox" checked>
+              <label for="checkboxA">Choice A</label>
+            </div>
+            <div class="forms-checkboxGroup">
+              <input id="checkboxB" name="checkboxB" type="checkbox">
+              <label for="checkboxB">Choice B</label>
+            </div>
+            <div class="forms-checkboxGroup">
+              <input id="checkboxC" name="checkboxC" type="checkbox">
+              <label for="checkboxC">Choice C</label>
+            </div>
+            <div class="forms-checkboxGroup disabled">
+              <input id="checkboxDis" name="checkboxDis" type="checkbox" disabled>
+              <label for="checkboxDis">Disabled</label>
+            </div>
           </fieldset>
-          <fieldset class="forms-radioInputs radioInputs">
+          <fieldset class="forms-radioInputs">
             <legend>Radio buttons</legend>
-            <label class="radioInputs-inputGroup">
-              <input name="radio" type="radio" checked><span>Option 1</span>
-            </label>
-            <label class="radioInputs-inputGroup">
-              <input name="radio" type="radio"><span>Option 2</span>
-            </label>
-            <label class="radioInputs-inputGroup">
-              <input name="radio" type="radio"><span>Option 3</span>
-            </label>
-            <label class="radioInputs-inputGroup disabled">
-              <input name="radio" type="radio" disabled><span>Disabled</span>
-            </label>
+            <div class="forms-radioGroup">
+              <input id="radio1" name="radio" type="radio" value="radio1" checked>
+              <label for="radio1">Option 1</label>
+            </div>
+            <div class="forms-radioGroup">
+              <input id="radio2" name="radio" type="radio" value="radio2">
+              <label for="radio2">Option 2</label>
+            </div>
+            <div class="forms-radioGroup">
+              <input id="radio3" name="radio" type="radio" value="radio3">
+              <label for="radio3">Option 3</label>
+            </div>
+            <div class="forms-radioGroup disabled">
+              <input id="radioDis" name="radio" type="radio" value="radioDis" disabled>
+              <label for="radioDis">Disabled</label>
+            </div>
           </fieldset>
-          <fieldset class="forms-html5Inputs html5Inputs">
+          <fieldset class="forms-html5Inputs">
             <legend>HTML5 inputs</legend>
-            <label class="html5Inputs-inputGroup">
-              <input type="color" value="#000000"><span>Color input</span>
-            </label>
-            <label class="html5Inputs-inputGroup">
-              <input type="number" min="0" max="10" value="5"><span>Number input</span>
-            </label>
-            <label class="html5Inputs-inputGroup">
-              <input type="text" value="5" inputmode="numeric" pattern="[0-9]*" name="someNumbers"><span>??? Number input for mobile devices ???</span>
-            </label>
-            <label class="html5Inputs-inputGroup">
-              <input type="range" value="10"><span>Range input</span>
-            </label>
-            <label class="html5Inputs-inputGroup">
-              <input type="date" value="1970-01-01"><span>Date input</span>
-            </label>
-            <label class="html5Inputs-inputGroup">
-              <input type="month" value="1970-01"><span>Month input</span>
-            </label>
-            <label class="html5Inputs-inputGroup">
-              <input type="week" value="1970-W01"><span>Week input</span>
-            </label>
-            <label class="html5Inputs-inputGroup">
-              <input type="datetime-local" value="1970-01-01T00:00"><span>Datetime-local input</span>
-            </label>
+            <div class="forms-html5InputsGroup">
+              <input id="color" type="color" name="color" value="#0000ff">
+              <label for="color">Color input</label>
+            </div>
+            <div class="forms-html5InputsGroup">
+              <input id="number" type="number" name="number" min="0" max="100" value="5" placeholder="Enter a Number">
+              <label for="number" class="forms-groupTitle">Number input</label>
+              <div class="forms-helpTxt">(Must contain only numbers)</div>
+            </div>
+            <div class="forms-html5InputsGroup">
+              <input id="mobNumber" type="text" value="5" inputmode="numeric" pattern="[0-9]*" name="someNumbers">
+              <label for="mobNumber">??? Number input for mobile devices ???</label>
+            </div>
+            <div class="forms-html5InputsGroup">
+              <input id="range" type="range" name="range" value="10">
+              <label for="range">Range input</label>
+            </div>
+            <div class="forms-html5InputsGroup">
+              <input id="date" type="date" name="date">
+              <label for="date" class="forms-groupTitle">Date input</label>
+              <div class="forms-helpTxt">(Only digits in sequence dd/mm/yyyy)</div>
+            </div>
+            <div class="forms-html5InputsGroup">
+              <input id="month" type="month" value="1970-01">
+              <label for="month">Month input</label>
+            </div>
+            <div class="forms-html5InputsGroup">
+              <input id="week" type="week" value="1970-W01">
+              <label for="week">Week input</label>
+            </div>
+            <div class="forms-html5InputsGroup">
+              <input id="datetime" type="datetime-local" value="1970-01-01T00:00">
+              <label for="datetime">Datetime-local input</label>
+            </div>
           </fieldset>
           <fieldset class="forms-action">
             <legend>Action buttons</legend>
-            <div>
+            <div class="forms-actionGroup">
               <input type="submit" value="&lt;input type=submit&gt;">
               <input type="button" value="&lt;input type=button&gt;">
               <input type="reset" value="&lt;input type=reset&gt;">
               <input type="submit" value="&lt;input disabled&gt;" disabled>
             </div>
-            <div>
+            <hr>
+            <div class="forms-actionGroup">
               <button type="submit">&lt;button type=submit&gt;</button>
               <button type="button">&lt;button type=button&gt;</button>
               <button type="reset">&lt;button type=reset&gt;</button>

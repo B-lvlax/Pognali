@@ -7,6 +7,22 @@
 — Для отделения модификатора используется два дефиса (--).
 — Значение модификатора отделяется от его имени с помощью двух дефисов (--).
 ===================================================================*/
+@-webkit-keyframes radialPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 30px rgba(0,0,0,0);
+  }
+}
+@keyframes radialPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 30px rgba(0,0,0,0);
+  }
+}
 /*===================================================================
   TYPOGRAPHY
 =====================================================================*/
@@ -191,6 +207,8 @@ figcaption {
 hr {
   margin-bottom: 32px;
 }
+/* Animations
+=====================================================================*/
 /* Forms Elements
 =====================================================================*/
 form {
@@ -227,6 +245,10 @@ input[type="color"] {
 input[type="range"] {
   margin: 0;
   cursor: pointer;
+}
+input[type="file"] {
+  cursor: pointer;
+  line-height: 1;
 }
 input,
 button,
@@ -377,10 +399,10 @@ textarea {
   resize: vertical;
 }
 /* Styles for wrapped in label input fields */
-.select-inputGroup,
-.checkboxInputs-inputGroup,
-.radioInputs-inputGroup,
-.html5Inputs-inputGroup {
+.forms-selectGroup,
+.forms-checkboxGroup,
+.forms-radioGroup,
+.forms-html5InputsGroup {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -388,120 +410,113 @@ textarea {
   flex-wrap: wrap;
   margin-bottom: 8px;
 }
-.select-inputGroup input:not([type="datetime-local"]),
-.checkboxInputs-inputGroup input:not([type="datetime-local"]),
-.radioInputs-inputGroup input:not([type="datetime-local"]),
-.html5Inputs-inputGroup input:not([type="datetime-local"]) {
+.forms-selectGroup input:not([type="datetime-local"]),
+.forms-checkboxGroup input:not([type="datetime-local"]),
+.forms-radioGroup input:not([type="datetime-local"]),
+.forms-html5InputsGroup input:not([type="datetime-local"]) {
   min-width: 220px;
 
   -webkit-box-flex: 1;
   flex-grow: 1;
 }
-.select-inputGroup span,
-.checkboxInputs-inputGroup span,
-.radioInputs-inputGroup span,
-.html5Inputs-inputGroup span {
+.forms-selectGroup label,
+.forms-checkboxGroup label,
+.forms-radioGroup label,
+.forms-html5InputsGroup label {
   -webkit-box-ordinal-group: 0;
   order: -1;
   min-width: 150px;
   margin-right: 16px;
 }
-.select-inputGroup input[type="radio"],
-.checkboxInputs-inputGroup input[type="radio"],
-.radioInputs-inputGroup input[type="radio"],
-.html5Inputs-inputGroup input[type="radio"],
-.select-inputGroup input[type="checkbox"],
-.checkboxInputs-inputGroup input[type="checkbox"],
-.radioInputs-inputGroup input[type="checkbox"],
-.html5Inputs-inputGroup input[type="checkbox"],
-.select-inputGroup input[type="color"],
-.checkboxInputs-inputGroup input[type="color"],
-.radioInputs-inputGroup input[type="color"],
-.html5Inputs-inputGroup input[type="color"],
-.select-inputGroup select + span,
-.checkboxInputs-inputGroup select + span,
-.radioInputs-inputGroup select + span,
-.html5Inputs-inputGroup select + span {
+.forms-selectGroup input,
+.forms-checkboxGroup input,
+.forms-radioGroup input,
+.forms-html5InputsGroup input,
+.forms-selectGroup textarea,
+.forms-checkboxGroup textarea,
+.forms-radioGroup textarea,
+.forms-html5InputsGroup textarea {
+  color: #9BABB4;
+}
+.forms-selectGroup input[type="radio"],
+.forms-checkboxGroup input[type="radio"],
+.forms-radioGroup input[type="radio"],
+.forms-html5InputsGroup input[type="radio"],
+.forms-selectGroup input[type="checkbox"],
+.forms-checkboxGroup input[type="checkbox"],
+.forms-radioGroup input[type="checkbox"],
+.forms-html5InputsGroup input[type="checkbox"],
+.forms-selectGroup input[type="color"],
+.forms-checkboxGroup input[type="color"],
+.forms-radioGroup input[type="color"],
+.forms-html5InputsGroup input[type="color"],
+.forms-selectGroup select + label,
+.forms-checkboxGroup select + label,
+.forms-radioGroup select + label,
+.forms-html5InputsGroup select + label {
   min-width: initial;
 
   -webkit-box-flex: 0;
   flex-grow: 0;
 }
-.select-inputGroup input[type="radio"] + span,
-.checkboxInputs-inputGroup input[type="radio"] + span,
-.radioInputs-inputGroup input[type="radio"] + span,
-.html5Inputs-inputGroup input[type="radio"] + span,
-.select-inputGroup input[type="checkbox"] + span,
-.checkboxInputs-inputGroup input[type="checkbox"] + span,
-.radioInputs-inputGroup input[type="checkbox"] + span,
-.html5Inputs-inputGroup input[type="checkbox"] + span {
+.forms-selectGroup input[type="radio"] + label,
+.forms-checkboxGroup input[type="radio"] + label,
+.forms-radioGroup input[type="radio"] + label,
+.forms-html5InputsGroup input[type="radio"] + label,
+.forms-selectGroup input[type="checkbox"] + label,
+.forms-checkboxGroup input[type="checkbox"] + label,
+.forms-radioGroup input[type="checkbox"] + label,
+.forms-html5InputsGroup input[type="checkbox"] + label {
   -webkit-box-ordinal-group: 2;
   order: 1;
   min-width: initial;
 }
-.select-inputGroup input[type="datetime-local"],
-.checkboxInputs-inputGroup input[type="datetime-local"],
-.radioInputs-inputGroup input[type="datetime-local"],
-.html5Inputs-inputGroup input[type="datetime-local"] {
+.forms-selectGroup input[type="datetime-local"],
+.forms-checkboxGroup input[type="datetime-local"],
+.forms-radioGroup input[type="datetime-local"],
+.forms-html5InputsGroup input[type="datetime-local"] {
   -webkit-box-flex: 1;
   flex-grow: 1;
 }
-.inputStates-inputGroup {
+.forms-selectGroup input:focus,
+.forms-checkboxGroup input:focus,
+.forms-radioGroup input:focus,
+.forms-html5InputsGroup input:focus,
+.forms-selectGroup textarea:focus,
+.forms-checkboxGroup textarea:focus,
+.forms-radioGroup textarea:focus,
+.forms-html5InputsGroup textarea:focus {
+  color: #000;
+}
+.forms-inputsGroup {
   position: relative;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
-.inputStates-inputGroup input,
-.inputStates-inputGroup textarea {
-  -webkit-box-flex: 1;
-  flex-grow: 1;
+.forms-inputsGroup input,
+.forms-inputsGroup textarea {
+  width: 100%;
 }
-.inputStates-inputGroup input + span,
-.inputStates-inputGroup textarea + span {
+.forms-inputsGroup input + label,
+.forms-inputsGroup textarea + label {
   position: absolute;
   top: -20px;
   left: 8px /* Must be same that padding left on input */;
   -webkit-transition: opacity 0.3s ease /* Must be same that transition on input */;
           transition: opacity 0.3s ease /* Must be same that transition on input */;
+  color: #9BABB4;
   font-size: 14px;
 }
-.inputs-inputGroup {
-  /* For it's work well input fields must have attribute 'required' */
-  position: relative;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-/* For it's work well input fields must have attribute 'required' */
-.inputs-inputGroup input,
-.inputs-inputGroup textarea {
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-}
-.inputs-inputGroup input + span,
-.inputs-inputGroup textarea + span {
-  position: absolute;
-  top: -20px;
-  left: 8px /* Must be same that padding left on input */;
-  -webkit-transition: opacity 0.3s ease /* Must be same that transition on input */;
-          transition: opacity 0.3s ease /* Must be same that transition on input */;
-  opacity: 0;
-  font-size: 14px;
-}
-.inputs-inputGroup input:focus + span,
-.inputs-inputGroup textarea:focus + span,
-.inputs-inputGroup input:valid + span,
-.inputs-inputGroup textarea:valid + span {
+.forms-inputsGroup input:focus + label,
+.forms-inputsGroup textarea:focus + label {
   opacity: 1;
   color: #000;
 }
+/* For it's work well input fields must have attribute 'required' */
 /* Styles for iteraction with inputs and links.
  * Must be placed below rules for inputs and on top of links.
  */
@@ -530,6 +545,16 @@ a:visited.disabled:hover {
 label.disabled {
   background-color: initial;
 }
+.formError {
+  -webkit-animation: shake 0.6s ease;
+          animation: shake 0.6s ease;
+}
+.fieldValid {
+  box-shadow: 0 0 0 2px #28A745;
+}
+.fieldError {
+  box-shadow: 0 0 0 2px #DC3545;
+}
 /* Links and Buttons
 =====================================================================*/
 a {
@@ -551,8 +576,6 @@ a:active {
           transform: translateY(4px);
   text-shadow: 0 6px 6px rgba(0,0,0,0.23);
 }
-/* Animations
-=====================================================================*/
 /* Other global rules
 =====================================================================*/
 .noscript {
@@ -661,6 +684,30 @@ article {
   height: 100%;
   background-image: url("https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR");
 }
+.title {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: hideBg 2s 4s linear forwards;
+          animation: hideBg 2s 4s linear forwards;
+  background-color: rgba(0,0,0,0.7);
+}
+.title-txt {
+  -webkit-animation: slide-right 4s 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+          animation: slide-right 4s 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  text-shadow: 0 -5px 0 #7FDBFF, 0 -10px 0 #39CCCC, 0 -15px 0 #3D9970, 0 -20px 0 #2ECC40, 0 -25px 0 #01FF70, 0 -30px 0 #FFDC00, 0 -35px 0 #FF851B, 0 -40px 0 #FF4136, 0 -45px 0 #F012BE, 0 -50px 0 #B10DC9;
+  font-size: 60px;
+  font-size: calc(60px + 20 * ((100vw - 20rem) / 80));
+}
 .text-header,
 .forms-header,
 .grid-header,
@@ -678,6 +725,7 @@ article {
 }
 .slogan,
 .text-h2,
+.forms-h2,
 .grid-h2,
 .embedded-h2 {
   margin-bottom: 16px;
@@ -758,6 +806,35 @@ article {
 }
 .forms-header {
   background-image: url("https://monosnap.com/image/7oFsRFwGOLRAWZ26udJQVOA1J7pLW4");
+}
+.forms-requiredTxt {
+  margin-bottom: 16px;
+  color: #9BABB4;
+}
+.forms-groupTitle::before {
+  content: "*";
+  margin-right: 8px;
+}
+.forms-helpTxt {
+  width: 100%;
+  height: 0;
+  -webkit-transition: all 0.6s ease;
+          transition: all 0.6s ease;
+  text-align: center;
+  opacity: 0;
+  color: #9BABB4;
+  font-size: 14px;
+}
+.forms-actionGroup {
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.forms-inputsGroup input:focus ~ .forms-helpTxt,
+.forms-html5InputsGroup input:focus ~ .forms-helpTxt {
+  height: auto;
+  opacity: 1;
 }
 .grid-innerWrap {
   overflow-x: auto;
@@ -900,6 +977,52 @@ article {
   flex-basis: calc(100% / 12 * 4 - 16px);
   -webkit-box-flex: 1;
   flex-grow: 1;
+}
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: skewX(0deg);
+            transform: skewX(0deg);
+  }
+  10% {
+    -webkit-transform: skewX(20deg) translateX(-50px);
+            transform: skewX(20deg) translateX(-50px);
+  }
+  100% {
+    -webkit-transform: translateX(2000px);
+            transform: translateX(2000px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: skewX(0deg);
+            transform: skewX(0deg);
+  }
+  10% {
+    -webkit-transform: skewX(20deg) translateX(-50px);
+            transform: skewX(20deg) translateX(-50px);
+  }
+  100% {
+    -webkit-transform: translateX(2000px);
+            transform: translateX(2000px);
+  }
+}
+@-webkit-keyframes hideBg {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    top: -2000px;
+    opacity: 0;
+  }
+}
+@keyframes hideBg {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    top: -2000px;
+    opacity: 0;
+  }
 }
 /*===================================================================
   MEDIA QUERRIES

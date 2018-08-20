@@ -426,19 +426,23 @@ p q r s t u v w x y z { | } ~
           <fieldset class="forms-action">
             <legend>Action buttons</legend>
             <div class="forms-actionGroup">
-              <input type="submit" value="&lt;input type=submit&gt;">
+              <input type="submit" value="&lt;input type=submit&gt;" onclick="return false;">
               <input type="button" value="&lt;input type=button&gt;">
-              <input type="reset" value="&lt;input type=reset&gt;">
-              <input type="submit" value="&lt;input disabled&gt;" disabled>
+              <input type="reset" value="&lt;input type=reset&gt;" onclick="return false;">
+              <input type="button" value="&lt;input disabled&gt;" disabled>
             </div>
             <hr>
             <div class="forms-actionGroup">
-              <button type="submit">&lt;button type=submit&gt;</button>
+              <button type="submit" onclick="return false;">&lt;button type=submit&gt;</button>
               <button type="button">&lt;button type=button&gt;</button>
-              <button type="reset">&lt;button type=reset&gt;</button>
+              <button type="reset" onclick="return false;">&lt;button type=reset&gt;</button>
               <button type="button" disabled>&lt;button disabled&gt;</button>
             </div>
           </fieldset>
+          <div class="forms-actionBtns">
+            <input type="reset" value="Reset" class="forms-btn forms-btn--reset">
+            <input type="submit" value="Submit" class="forms-btn forms-btn--submit">
+          </div>
         </form>
       </section>
       <section class="grid">

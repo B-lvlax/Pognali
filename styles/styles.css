@@ -811,6 +811,9 @@ article {
   margin-bottom: 16px;
   color: #9BABB4;
 }
+.forms-action {
+  margin-bottom: 32px;
+}
 .forms-groupTitle::before {
   content: "*";
   margin-right: 8px;
@@ -835,6 +838,41 @@ article {
 .forms-html5InputsGroup input:focus ~ .forms-helpTxt {
   height: auto;
   opacity: 1;
+}
+.forms-actionBtns {
+  display: -webkit-box;
+  display: flex;
+}
+.forms-btn {
+  margin: 0 8px 16px;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #000;
+  border: 1px solid #9BABB4;
+  border-radius: 6px;
+  background-color: #FFF;
+
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+.forms-btn:hover {
+  color: #FFF;
+  background-color: #007BFF;
+}
+.forms-btn:active {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+  outline: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.forms-btn:focus {
+  outline: none;
+}
+.forms-btn--reset[type="reset"] {
+  background-color: #DDD;
+}
+.forms-btn--reset[type="reset"]:hover {
+  background-color: #FF5959;
 }
 .grid-innerWrap {
   overflow-x: auto;

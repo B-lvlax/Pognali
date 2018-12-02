@@ -86,6 +86,17 @@ figcaption
 hr
   margin-bottom: $indent--lg
 
+$disabled
+  cursor: default
+  text-decoration: none
+  pointer-events: none
+  opacity: .7
+  color: $disabledClr
+  border-color: $disabledClr
+  &:hover
+    color: $disabledClr
+    background-color: $lightClr
+
 
 /*! Animations
 =====================================================================*/
@@ -282,17 +293,6 @@ $inputGroup--labelHidden
  * Must be placed below rules for inputs and on top of links.
  */
 
-$disabled
-  cursor: default
-  text-decoration: none
-  pointer-events: none
-  opacity: .7
-  color: $disabledClr
-  border-color: $disabledClr
-  &:hover
-    color: $disabledClr
-    background-color: $lightClr
-
 .disabled,
 input[disabled],
 button[disabled],
@@ -314,6 +314,7 @@ label.disabled
 =====================================================================*/
 a
   display: inline-block
+  vertical-align: middle
   cursor: pointer
   color: $linkClr
   &.disabled

@@ -35,7 +35,8 @@ videoFluid()
   width: 100%
   height: 0
   margin-bottom: $indent
-  padding-bottom: 56.25% // Preserve aspect ratio from source 16/9 => 9/16=0.5625 or '100 / (w / h)'
+  // Preserve aspect ratio from source 16/9 => 9/16=0.5625 or '100 / (w / h)'
+  padding-bottom: 56.25%
   background-color: $primaryClr
 
   iframe, object, embed
@@ -128,3 +129,40 @@ shadow()
     0 6px 6px rgba($darkClr, .23)
 
 /*===================================================================*/
+
+// To use it add class .link
+underline()
+  position: relative
+  transition: all .6s
+  text-decoration: none
+  &:before
+    content: ''
+    position: absolute
+    bottom: 0
+    width: 0
+    height: 2px
+    transition: all .3s
+    background: $linkClr
+  &:hover:before
+    width: 100%
+    background: $primaryClr
+  &--toRight
+    &:before
+      left: 0
+    &:hover:before
+      left: 0
+  &--center
+    &:before
+      left: 50%
+    &:hover:before
+      left: 0
+  &--toLeft
+    &:before
+      right: 0
+    &:hover:before
+      right: 0
+  &--through
+    &:before
+      right: 0
+    &:hover:before
+      left: 0

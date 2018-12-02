@@ -4,14 +4,14 @@ outOf()
 
 /*===================================================================*/
 
-bgPrlx()
-  .js-bgPrlx, .js-bgPrlx--single::before
+bgPrlx($url)
+  .bgPrlx, .bgPrlx--single::before
     background-repeat: no-repeat
     background-attachment: fixed
     background-position: center
     background-size: cover
 
-  .js-bgPrlx--single::before
+  .bgPrlx--single::before
     content: ''
     position: fixed
     z-index: -1
@@ -19,7 +19,7 @@ bgPrlx()
     left: 0
     width: 100%
     height: 100%
-    background-image: url('https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR')
+    background-image: url($url)
 
 /*===================================================================*/
 

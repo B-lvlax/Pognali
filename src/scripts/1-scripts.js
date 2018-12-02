@@ -76,7 +76,7 @@ var isMobile = {
 function bgPrlx(elems, sizeX, sizeY, step) {
   elems = select(elems);
 
-  if (elems.length === undefined) addClass(elems, 'js-bgPrlx--single');
+  if (elems.length === undefined) addClass(elems, 'bgPrlx--single');
   else {
     if (isMobile.any()) {
       var scrolledY = Math.round(window.pageYOffset);

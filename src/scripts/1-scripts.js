@@ -28,19 +28,6 @@ function removeEvent(elems, event, func) {
   });
 }
 
-function addClass(elem, className) {
-  elem.classList.add(className);
-}
-function removeClass(elem, className) {
-  elem.classList.remove(className);
-}
-function toggleClass(elem, className) {
-  elem.classList.toggle(className);
-}
-function hasClass(elem, className) {
-  return elem.classList.contains(className);
-}
-
 
 /* TESTING
 =====================================================================*/
@@ -95,7 +82,7 @@ function bgPrlx(elems, sizeX, sizeY, step) {
 function elemPrlx(e) {
   var bodyWidth = document.body.offsetWidth;
   if (!isMobile.any() && bodyWidth >= 768) {
-    var elem = this.querySelector('.js-moveTitle');
+    var elem = this.querySelector('#moveTitle');
 
     elem.style.transform =
       'translate3d(' +
@@ -112,13 +99,13 @@ function elemPrlx(e) {
 document.addEventListener('DOMContentLoaded', function() {
 
   window.onscroll = function() {
-    bgPrlx('.js-bgPrlx', '100%', '140%', 5);
+    bgPrlx('#bgPrlx', '100%', '140%', 5);
     // bgPrlx('body', '100%', '140%', 5);
   };
 
   /*===================================================================*/
 
-  var parents = select('.js-bgPrlx');
+  var parents = select('#bgPrlx');
   parents.forEach(function(elem) {
     elem.onmousemove = elemPrlx;
   });

@@ -6,8 +6,8 @@
 .slogan Magic happens here
 
 section.text
-  header.text-header.bgPrlx.js-bgPrlx
-    h1.text-h1.js-moveTitle Text
+  header#bgPrlx.text-header.bgPrlx
+    h1#moveTitle.text-h1 Text
   article.text-headings
     h2.text-h2 Headings
     div
@@ -203,10 +203,10 @@ section.text
           p q r s t u v w x y z { | } ~
 
 
-section.forms
-  header.forms-header.bgPrlx.js-bgPrlx
-    h1.forms-h1.js-moveTitle Form elements
-  form.form(method='post' action='https://echo.htmlacademy.ru' enctype='multipart/form-data')
+section#forms.forms
+  header#bgPrlx.forms-header.bgPrlx
+    h1#moveTitle.forms-h1 Form elements
+  form#form(method='post' action='https://echo.htmlacademy.ru' enctype='multipart/form-data')
     h2.forms-h2 Input fields
     .forms-requiredTxt <b>&#42;</b> Fields marked with an asterisk are required.
     fieldset.forms-inputs
@@ -324,10 +324,10 @@ section.forms
     fieldset.forms-action
       legend Action buttons
       div.forms-actionGroup
-        input(type='submit' value='<input type=submit>' onclick='return false;')
+        input(type='submit' value='<input =submit>' onclick='return false;')
         input(type='button' value='<input type=button>')
         input(type='reset' value='<input type=reset>' onclick='return false;')
-        input(type='button' value='<input disabled>' disabled)
+        input(type='button' value='type<input disabled>' disabled)
       hr
       div.forms-actionGroup
         button(type='submit' onclick='return false;') &lt;button type=submit&gt;
@@ -336,13 +336,13 @@ section.forms
         button(type='button' disabled) &lt;button disabled&gt;
 
     div.forms-actionBtns
-      input.forms-btn.forms-btn--reset(type='reset' value='Reset')
-      input.forms-btn.forms-btn--submit(type='submit' value='Submit')
+      input#btn-reset.forms-btn.forms-btn--reset(type='reset' value='Reset')
+      input#btn-submit.forms-btn.forms-btn--submit(type='submit' value='Submit')
 
 
 section.grid
-  header.grid-header.bgPrlx.js-bgPrlx
-    h1.grid-h1.js-moveTitle Grid System
+  header#bgPrlx.grid-header.bgPrlx
+    h1#moveTitle.grid-h1 Grid System
   h2.grid-h2 Columns
   .grid-innerWrap
     // Twelwe Columns Per Row
@@ -378,8 +378,8 @@ section.grid
 
 
 section.embedded
-  header.embedded-header.bgPrlx.js-bgPrlx
-    h1.embedded-h1.js-moveTitle Embedded content
+  header#bgPrlx.embedded-header.bgPrlx
+    h1#moveTitle.embedded-h1 Embedded content
   article.embedded-images
     h2.embedded-h2 Images
     div

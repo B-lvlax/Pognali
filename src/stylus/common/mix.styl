@@ -71,35 +71,31 @@ clearfix()
   EFFECTS
 =====================================================================*/
 phWithOpacity()
-  &::-webkit-input-placeholder,
-  &:-ms-input-placeholder
+  &::-webkit-input-placeholder
     transition: opacity .3s ease
     opacity: 1
 
-  &:focus::-webkit-input-placeholder,
-  &:-ms-input-placeholder
+  &:focus::-webkit-input-placeholder
     transition: opacity .3s ease
     opacity: 0
 
 phMoveRight()
-  &::-webkit-input-placeholder,
-  &:-ms-input-placeholder
-    transition: text-indent .3s ease
+  &::-webkit-input-placeholder
+    transition: all .3s ease
     text-indent: 0
+    opacity: 1
 
-  &:focus::-webkit-input-placeholder,
-  &:-ms-input-placeholder
-    transition: text-indent .5s ease
-    text-indent: 500px
+  &:focus::-webkit-input-placeholder
+    transition: all .5s ease
+    text-indent: 200%
+    opacity: 0
 
 phMoveDown()
-  &::-webkit-input-placeholder,
-  &:-ms-input-placeholder
+  &::-webkit-input-placeholder
     transition: line-height .5s ease
     line-height: 20px
 
-  &:focus::-webkit-input-placeholder,
-  &:-ms-input-placeholder
+  &:focus::-webkit-input-placeholder
     transition: line-height .5s ease
     line-height: 100px
 

@@ -135,13 +135,13 @@ label
   -webkit-appearance: none
 
 select,
-input[type='radio'],
-input[type='checkbox'],
-input[type='color']
+[type='radio'],
+[type='checkbox'],
+[type='color']
   margin-right: $indent--sm
   cursor: pointer
 
-input[type='range']
+[type='range']
   margin: 0
   cursor: pointer
 
@@ -162,12 +162,9 @@ button, html
   [type='submit']
     -webkit-appearance: button
 
-input[type='submit'],
-input[type='reset'],
-input[type='button'],
-button[type='submit'],
-button[type='reset'],
-button[type='button']
+[type='submit'],
+[type='reset'],
+[type='button']
   margin-bottom: $indent
   padding: $indent--xs $indent--sm
   cursor: pointer
@@ -200,15 +197,13 @@ input[type='time'],
 input[type='datetime-local'],
 input[type='month'],
 input[type='week']
-  // flex-grow: 1
-  // min-width: 220px
   padding: $indent--xs $indent--sm
   cursor: text
   color: $inputClr
   border: 1px solid $borderClr
   border-radius: $borderRad
   background-color: $inputBg
-  phWithOpacity()
+  phMoveRight()
 
 textarea
   overflow: auto
@@ -223,9 +218,13 @@ $inputGroup
   row()
   align-items: center
   margin-bottom: $indent--sm
-  input:not([type='datetime-local'])
-    flex-grow: 1
-    min-width: 220px
+  button, input
+    &:not([type='button']),
+    &:not([type='submit']),
+    &:not([type='reset']),
+    &:not([type='file'])
+      flex-grow: 1
+      min-width: 220px
   label
     order: -1
     min-width: 150px
@@ -238,13 +237,11 @@ $inputGroup
   select + label
     flex-grow: 0
     min-width: initial
-  input[type='radio'],
-  input[type='checkbox']
+  [type='radio'],
+  [type='checkbox']
     & + label
       order: 1
       min-width: initial
-  input[type='datetime-local']
-    flex-grow: 1
   input, textarea
     &:focus
       color: $textClr
@@ -294,11 +291,9 @@ $inputGroup--labelHidden
  */
 
 .disabled,
-input[disabled],
-button[disabled],
-input[disabled] + span
+[disabled],
+[disabled] + span
   @extend $disabled
-
 label.disabled
   background-color: initial
 
@@ -314,8 +309,8 @@ label.disabled
 =====================================================================*/
 a
   display: inline-block
-  vertical-align: middle
   cursor: pointer
+  vertical-align: middle
   color: $linkClr
   &.disabled
     @extend $disabled
@@ -352,8 +347,8 @@ a:active
       text-decoration: none
 
 ::selection
-  background-color: $primaryClr
   color: #000
+  background-color: $primaryClr
   text-shadow: none
 
 

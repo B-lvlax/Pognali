@@ -1,4 +1,5 @@
 # File extensions
+#=====================================================================
 *.bak
 *.diff
 *.err
@@ -13,7 +14,9 @@
 **/*.gitkeep
 *~
 
+
 # OS or Editor folders
+#=====================================================================
 *.sublime-grunt.cache
 *.sublime-project
 *.sublime-workspace
@@ -23,20 +26,16 @@
 .project
 .settings
 .tmproj
-Thumbs.db
-
-# Folders
 .CVS
 .git
 .hg
 .idea
 .svn
-bower_components
-dist
-dest
-build
+Thumbs.db
 
 
 # Node.JS
+#=====================================================================
 node_modules
 npm-debug.log
+bower_components

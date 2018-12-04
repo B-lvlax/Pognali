@@ -9,7 +9,7 @@ $monospace = 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Cour
 $serif = Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif
 
 
-$fontFamily = $sansSerif
+$defaultFont = $sansSerif
 $fontSize = 16px
 $lineHeight = 1.5
 
@@ -51,16 +51,15 @@ truncated($width = 50%)
   text-overflow: ellipsis
 
 
-/*! Fonts
+/*Fonts
 =====================================================================*/
 
 
-/*! Rules for text elements
+/* Rules for text elements
 =====================================================================*/
 h1, h2, h3, h4, h5, h6
   margin-top: 0
   margin-bottom: $indent--sm
-  color: $textClr
   line-height: 1.25
 
 h1
@@ -85,7 +84,6 @@ h6
 p
   margin-top: 0
   margin-bottom: $indent
-  color: $textClr
   font-size: 1.25rem
   font-size: calc(1rem + .25 * ((100vw - 20rem) / 80))
 

@@ -85,9 +85,9 @@ $caption--styled
   border: 6px solid $lighterClr
   border-radius: $borderRad
   background-color: rgba(0, 0, 0, .6)
-  word-break: keep-all
   letter-spacing: 8px
   color: $lightClr
+  word-break: keep-all
   text-transform: uppercase
   fluidTxtInPx(, 2)
 
@@ -131,7 +131,7 @@ $caption--styled
     min-width: 250px
     flex-grow: 1
   &-link
-    underline()
+    underline($accentClr, $primaryClr)
   &-tables
     overflow: auto
 
@@ -186,10 +186,10 @@ $caption--styled
     margin: 0 $indent--sm $indent
     padding: $indent--xs $indent--sm
     cursor: pointer
-    color: $btnClr
+    color: $darkClr
     border: 1px solid $borderClr
     border-radius: $borderRad
-    background-color: $btnBg
+    background-color: $lightClr
     &:hover
       color: $lightClr
       background-color: $primaryClr

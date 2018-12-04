@@ -101,9 +101,8 @@ phMoveDown()
 
 /*===================================================================*/
 
+// animation: radialPulse 1s infinite
 pulse()
-    animation: radialPulse 1s infinite
-
   @keyframes radialPulse
     0%
       box-shadow: 0 0 0 0px rgba(0, 0, 0, .5)
@@ -127,7 +126,7 @@ shadow()
 /*===================================================================*/
 
 // To use it add class .link
-underline()
+underline($clr, $hoverClr)
   position: relative
   transition: all .6s
   text-decoration: none
@@ -138,10 +137,10 @@ underline()
     width: 0
     height: 2px
     transition: all .3s
-    background: $linkClr
+    background: $clr
   &:hover:before
     width: 100%
-    background: $primaryClr
+    background: $hoverClr
   &--toRight
     &:before
       left: 0

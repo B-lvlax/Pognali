@@ -16,10 +16,9 @@ html, body
 body
   overflow-x: hidden /*! To hide horizontal scroll from extra margin in row */
   margin: 0
-  color: $textClr
-  background-color: $bodyBg
-  font-display: optional
-  font-family: $fontFamily
+  color: $darkClr
+  background-color: $lightClr
+  font-family: $defaultFont
   font-size: $fontSize
   font-weight: normal
   line-height: $lineHeight
@@ -85,6 +84,7 @@ figcaption
 
 hr
   margin-bottom: $indent--lg
+
 
 $disabled
   cursor: default
@@ -156,22 +156,16 @@ input, button, select, optgroup, textarea
 
 /*! Buttons */
 
-button, html
-  [type='button'],
-  [type='reset'],
-  [type='submit']
-    -webkit-appearance: button
-
 [type='submit'],
 [type='reset'],
 [type='button']
   margin-bottom: $indent
   padding: $indent--xs $indent--sm
   cursor: pointer
-  color: $btnClr
+  color: $darkClr
   border: 1px solid $borderClr
   border-radius: $borderRad
-  background-color: $btnBg
+  background-color: $lightClr
   &:hover
     color: $lightClr
     background-color: $primaryClr
@@ -184,25 +178,25 @@ button, html
 
 /*! Input fields */
 
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='search'],
-input[type='number'],
-input[type='tel'],
-input[type='url'],
+[type='text'],
+[type='email'],
+[type='password'],
+[type='search'],
+[type='number'],
+[type='tel'],
+[type='url'],
 textarea,
-input[type='date'],
-input[type='time'],
-input[type='datetime-local'],
-input[type='month'],
-input[type='week']
+[type='date'],
+[type='time'],
+[type='datetime-local'],
+[type='month'],
+[type='week']
   padding: $indent--xs $indent--sm
   cursor: text
-  color: $inputClr
+  color: $darkClr
   border: 1px solid $borderClr
   border-radius: $borderRad
-  background-color: $inputBg
+  background-color: $lightClr
   phMoveRight()
 
 textarea
@@ -244,7 +238,7 @@ $inputGroup
       min-width: initial
   input, textarea
     &:focus
-      color: $textClr
+      color: $darkClr
 
 $inputGroup--labelVisible
   position: relative
@@ -263,7 +257,7 @@ $inputGroup--labelVisible
   input, textarea
     &:focus + label
       opacity: 1
-      color: $textClr
+      color: $darkClr
 
 $inputGroup--labelHidden
   /*! For it's work well input fields must have attribute 'required' */
@@ -284,7 +278,7 @@ $inputGroup--labelHidden
   input, textarea
     &:focus + label
       opacity: 1
-      color: $textClr
+      color: $darkClr
 
 /*! Styles for iteraction with inputs and links.
  * Must be placed below rules for inputs and on top of links.
@@ -311,12 +305,12 @@ a
   display: inline-block
   cursor: pointer
   vertical-align: middle
-  color: $linkClr
+  color: $accentClr
   &.disabled
     @extend $disabled
     text-decoration: underline
 a:visited
-  color: darken($linkClr, 40%)
+  color: darken($accentClr, 40%)
   &.disabled
     @extend $disabled
 a:hover

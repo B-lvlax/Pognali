@@ -28,19 +28,6 @@ function removeEvent(elems, event, func) {
   });
 }
 
-function addClass(elem, className) {
-  elem.classList.add(className);
-}
-function removeClass(elem, className) {
-  elem.classList.remove(className);
-}
-function toggleClass(elem, className) {
-  elem.classList.toggle(className);
-}
-function hasClass(elem, className) {
-  return elem.classList.contains(className);
-}
-
 
 /* TESTING
 =====================================================================*/
@@ -76,7 +63,7 @@ var isMobile = {
 function bgPrlx(elems, sizeX, sizeY, step) {
   elems = select(elems);
 
-  if (elems.length === undefined) addClass(elems, 'js-bgPrlx--single');
+  if (elems.length === undefined) addClass(elems, 'bgPrlx--single');
   else {
     if (isMobile.any()) {
       var scrolledY = Math.round(window.pageYOffset);
@@ -95,7 +82,7 @@ function bgPrlx(elems, sizeX, sizeY, step) {
 function elemPrlx(e) {
   var bodyWidth = document.body.offsetWidth;
   if (!isMobile.any() && bodyWidth >= 768) {
-    var elem = this.querySelector('.js-moveTitle');
+    var elem = this.querySelector('#moveTitle');
 
     elem.style.transform =
       'translate3d(' +
@@ -112,13 +99,13 @@ function elemPrlx(e) {
 document.addEventListener('DOMContentLoaded', function() {
 
   window.onscroll = function() {
-    bgPrlx('.js-bgPrlx', '100%', '140%', 5);
+    bgPrlx('#bgPrlx', '100%', '140%', 5);
     // bgPrlx('body', '100%', '140%', 5);
   };
 
   /*===================================================================*/
 
-  var parents = select('.js-bgPrlx');
+  var parents = select('#bgPrlx');
   parents.forEach(function(elem) {
     elem.onmousemove = elemPrlx;
   });
@@ -129,18 +116,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   var
-    wrapper = document.querySelector('.forms'),
-    form = wrapper.querySelector('.form'),
-    name = wrapper.querySelector('#name'),
-    password = wrapper.querySelector('#password'),
-    url = wrapper.querySelector('#site'),
-    mail = wrapper.querySelector('#mail'),
-    phone = wrapper.querySelector('#phone'),
-    numFild = wrapper.querySelector('#number'),
-    date = wrapper.querySelector('#date'),
+    wrapper = select('#forms'),
+    form = select('#form', wrapper),
+    name = select('#name', wrapper),
+    password = select('#password', wrapper),
+    url = select('#site', wrapper),
+    mail = select('#mail', wrapper),
+    phone = select('#phone', wrapper),
+    numFild = select('#number', wrapper),
+    date = select('#date', wrapper),
     fields = [name, password, url, mail, phone, numField, date],
-    reset = wrapper.querySelector('.forms-btn--reset'),
-    submit = wrapper.querySelector('.forms-btn--submit');
+    reset = select('#btn-reset', wrapper),
+    submit = select('#btn-submit', wrapper);
 
   /*===================================================================*/
 

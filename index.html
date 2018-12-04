@@ -2,8 +2,8 @@
 <html lang="ru">
 
   <head>
-    <title>Pognali</title>
     <meta charset="utf-8">
+    <title>Pognali</title>
     <meta name="description" content="A description of the page 150 chars">
     <meta name="keywords" content="your,keywords,here,comma,separated,no,spaces">
     <meta name="theme-color" content="#000">
@@ -26,10 +26,13 @@
     </noscript>
     <div class="layoutCenter">
       <!-- This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss -->
+      <div class="title">
+        <div class="title-txt">Pognali</div>
+      </div>
       <div class="slogan">Magic happens here</div>
       <section class="text">
-        <header class="text-header js-bgPrlx">
-          <h1 class="text-h1 js-moveTitle">Text</h1>
+        <header id="bgPrlx" class="text-header bgPrlx">
+          <h1 id="moveTitle" class="text-h1">Text</h1>
         </header>
         <article class="text-headings">
           <h2 class="text-h2">Headings</h2>
@@ -143,11 +146,14 @@
             <ul>
               <li>Links
                 <ul>
-                  <li><a href="#!">This is a text link</a>.</li>
-                  <li><a href="#!" class="disabled">This is a disabled text link</a>.</li>
-                </ul>
+                  <li><a href="#!">This is a Default text link</a></li>
+                  <li><a href="#!" class="disabled">This is a Disabled text link</a></li>
+                  <li><a href="#!" class="text-link text-link--toRight">This is a Animated Text Underline to Right</a></li>
+                  <li><a href="#!" class="text-link text-link--center">This is a Animated Text Underline from Center</a></li>
+                  <li><a href="#!" class="text-link text-link--toLeft">This is a Animated Text Underline to Left</a></li>
+                  <li><a href="#!" class="text-link text-link--through">This is a Animated Text Underline Through</a></li>
+                </ul><strong>Strong is used to indicate strong importance.</strong>
               </li>
-              <li><strong>Strong is used to indicate strong importance.</strong></li>
               <li><em>This text has added emphasis.</em></li>
               <li>The<b>&thinsp;b element&thinsp;</b>is stylistically different text from normal text, without any special importance.</li>
               <li>The<i>&thinsp;i element&thinsp;</i>is text that is offset from the normal text.</li>
@@ -274,11 +280,11 @@ p q r s t u v w x y z { | } ~
           </div>
         </article>
       </section>
-      <section class="forms">
-        <header class="forms-header js-bgPrlx">
-          <h1 class="forms-h1 js-moveTitle">Form elements</h1>
+      <section id="forms" class="forms">
+        <header id="bgPrlx" class="forms-header bgPrlx">
+          <h1 id="moveTitle" class="forms-h1">Form elements</h1>
         </header>
-        <form method="post" action="https://echo.htmlacademy.ru" enctype="multipart/form-data" class="form">
+        <form id="form" method="post" action="https://echo.htmlacademy.ru" enctype="multipart/form-data">
           <h2 class="forms-h2">Input fields</h2>
           <div class="forms-requiredTxt"><b>&#42;</b> Fields marked with an asterisk are required.</div>
           <fieldset class="forms-inputs">
@@ -426,7 +432,7 @@ p q r s t u v w x y z { | } ~
           <fieldset class="forms-action">
             <legend>Action buttons</legend>
             <div class="forms-actionGroup">
-              <input type="submit" value="&lt;input type=submit&gt;" onclick="return false;">
+              <input type="submit" value="&lt;input =submit&gt;" onclick="return false;">
               <input type="button" value="&lt;input type=button&gt;">
               <input type="reset" value="&lt;input type=reset&gt;" onclick="return false;">
               <input type="button" value="&lt;input disabled&gt;" disabled>
@@ -440,14 +446,14 @@ p q r s t u v w x y z { | } ~
             </div>
           </fieldset>
           <div class="forms-actionBtns">
-            <input type="reset" value="Reset" class="forms-btn forms-btn--reset">
-            <input type="submit" value="Submit" class="forms-btn forms-btn--submit">
+            <input id="btn-reset" type="reset" value="Reset" class="forms-btn forms-btn--reset">
+            <input id="btn-submit" type="submit" value="Submit" class="forms-btn forms-btn--submit">
           </div>
         </form>
       </section>
       <section class="grid">
-        <header class="grid-header js-bgPrlx">
-          <h1 class="grid-h1 js-moveTitle">Grid System</h1>
+        <header id="bgPrlx" class="grid-header bgPrlx">
+          <h1 id="moveTitle" class="grid-h1">Grid System</h1>
         </header>
         <h2 class="grid-h2">Columns</h2>
         <div class="grid-innerWrap">
@@ -514,8 +520,8 @@ p q r s t u v w x y z { | } ~
         </div>
       </section>
       <section class="embedded">
-        <header class="embedded-header js-bgPrlx">
-          <h1 class="embedded-h1 js-moveTitle">Embedded content</h1>
+        <header id="bgPrlx" class="embedded-header bgPrlx">
+          <h1 id="moveTitle" class="embedded-h1">Embedded content</h1>
         </header>
         <article class="embedded-images">
           <h2 class="embedded-h2">Images</h2>

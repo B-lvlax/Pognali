@@ -63,9 +63,6 @@ ol li,
 ul li
   margin-bottom: $indent--sm
 
-table
-  border-collapse: collapse
-
 abbr[title]
   cursor: help
   text-decoration: underline
@@ -85,6 +82,31 @@ figcaption
 hr
   margin-bottom: $indent--lg
 
+
+/*! Other global rules
+=====================================================================*/
+.noscript
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  min-height: 50px
+  color: $lighterClr
+  background-color: rgba($darkerClr, .9)
+  shadow()
+  &-wrap
+    layoutCenter()
+    padding: $indent--sm
+    text-align: center
+  &-link
+    color: #007bff
+    &:hover
+      text-decoration: none
+
+::selection
+  color: #000
+  background-color: $primaryClr
+  text-shadow: none
 
 $disabled
   cursor: default
@@ -320,30 +342,20 @@ a:active
   text-shadow: 0 6px 6px rgba($darkClr, .23)
 
 
-/*! Other global rules
+/* Tables
 =====================================================================*/
-.noscript
-  position: fixed
-  top: 0
-  left: 0
+table
   width: 100%
-  min-height: 50px
-  color: $lighterClr
-  background-color: rgba($darkerClr, .9)
-  shadow()
-  &-wrap
-    layoutCenter()
-    padding: $indent--sm
-    text-align: center
-  &-link
-    color: #007bff
-    &:hover
-      text-decoration: none
-
-::selection
-  color: #000
+  border-collapse: collapse
+tr
+  &:nth-child(odd)
+    background-color: lighten($lighterClr, 50%)
+th, td
+  padding: $indent--sm $indent
+  border: 1px solid $lighterClr
+th
   background-color: $primaryClr
-  text-shadow: none
+  color: $lightClr
 
 
 

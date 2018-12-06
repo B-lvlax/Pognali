@@ -163,16 +163,12 @@ section.text
 
   article.text-tables
     h2.text-h2 Tabular data
-    table.text-table
+    table#table.text-table
       caption Table Caption
       thead
         tr
           -for(var i=1; i<=5; i++)
             th= 'Table Heading ' + i
-      tfoot
-        tr
-          -for(var i=1; i<=5; i++)
-            th= 'Table Footer ' + i
       tbody
         -for(var i=0; i<4; i++)
           tr

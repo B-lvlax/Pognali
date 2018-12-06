@@ -1,3 +1,42 @@
+fluidTable()
+  //! Responsive tables
+  table
+    thead, tbody, tfoot, tr, th, td, caption
+      display: block
+    tr
+      margin-bottom: $indent
+      &:nth-child(odd)
+        background-color: unset
+    th
+      display: none
+    td
+      position: relative
+      margin-top: -1px
+      padding-left: 37%
+      fluidTxtInPx(12px, .5)
+
+      &:nth-child(odd)
+        background-color: lighten($lighterClr, 50%)
+
+      &::before
+        content: attr(data-label)
+        position: absolute
+        top: 0
+        left: 0
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 35%
+        height: 100%
+        padding: 0 $indent--xs
+        background-color: $primaryClr
+        text-align: center
+        color: $lightClr
+        font-weight: bold
+        line-height: 1
+
+/*===================================================================*/
+
 outOf()
   margin-right: calc(-50vw + 50%)
   margin-left: calc(-50vw + 50%)

@@ -161,8 +161,7 @@
                 <u>&thinsp;u element&thinsp;</u>is text with an unarticulated, though explicitly rendered, non-textual annotation.
               </li>
               <li>
-                <del>This text is deleted</del>and
-                <ins>This text is inserted</ins>.
+                <del>This text is deleted</del>and<ins>This text is inserted</ins>.
               </li>
               <li>
                 <s>This text has a strikethrough</s>.
@@ -170,9 +169,7 @@
               <li>Superscript<sup>®</sup>.</li>
               <li>Subscript for things like H<sub>2</sub>O.</li>
               <li><small>This small text is small for for fine print, etc.</small></li>
-              <li>Abbreviation:
-                <abbr title="HyperText Markup Language">HTML</abbr>
-              </li>
+              <li>Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr></li>
               <li>
                 <q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q">This text is a short inline quotation.</q>
               </li>
@@ -204,7 +201,7 @@
         </article>
         <article class="text-tables">
           <h2 class="text-h2">Tabular data</h2>
-          <table class="text-table">
+          <table id="table" class="text-table">
             <caption>Table Caption</caption>
             <thead>
               <tr>
@@ -215,15 +212,6 @@
                 <th>Table Heading 5</th>
               </tr>
             </thead>
-            <tfoot>
-              <tr>
-                <th>Table Footer 1</th>
-                <th>Table Footer 2</th>
-                <th>Table Footer 3</th>
-                <th>Table Footer 4</th>
-                <th>Table Footer 5</th>
-              </tr>
-            </tfoot>
             <tbody>
               <tr>
                 <td>Table Cell 1</td>
@@ -258,13 +246,9 @@
         </article>
         <article class="text-code">
           <h2 class="text-h2">Code</h2>
-          <div><strong>Keyboard input: </strong>
-            <kbd>Cmd</kbd>
-          </div>
+          <div><strong>Keyboard input: </strong><kbd>Cmd</kbd></div>
           <div><strong>Inline code: </strong><code>&lt;div&gt;code&lt;/div&gt;</code></div>
-          <div><strong>Sample output:</strong>
-            <samp>This is sample output from a computer program.</samp>
-          </div>
+          <div><strong>Sample output:</strong><samp>This is sample output from a computer program.</samp></div>
           <hr>
           <div>
             <h3>Pre-formatted text</h3>
@@ -527,29 +511,22 @@ p q r s t u v w x y z { | } ~
           <h2 class="embedded-h2">Images</h2>
           <div>
             <h3>No <code>&lt;figure&gt; </code>element</h3>
-            <div>
-              <img src="https://monosnap.com/image/SYvEzyUjgZs6dIevHhZJdJkV7RO972" alt="Image alt text">
-            </div>
+            <div><img src="https://monosnap.com/image/SYvEzyUjgZs6dIevHhZJdJkV7RO972" alt="Image alt text"></div>
           </div>
           <hr>
           <div>
             <h3>Broken link in image source</h3>
-            <div>
-              <img src="Some URL" alt="Image alt text">
-            </div>
+            <div><img src="Some URL" alt="Image alt text"></div>
           </div>
           <hr>
           <div class="embedded-figureWrap">
             <div>
               <h3>Wrapped in a <code>&lt;figure&gt; </code>element, no <code>&lt;figcaption&gt;</code></h3>
-              <figure>
-                <img src="https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf" alt="Image alt text">
-              </figure>
+              <figure><img src="https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf" alt="Image alt text"></figure>
             </div>
             <div>
               <h3>Wrapped in a <code>&lt;figure&gt; </code>element, with a <code>&lt;figcaption&gt;</code></h3>
-              <figure>
-                <img src="https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe" alt="Image alt text">
+              <figure><img src="https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe" alt="Image alt text">
                 <figcaption>Here is a caption for this image.</figcaption>
               </figure>
             </div>

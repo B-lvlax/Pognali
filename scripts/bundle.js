@@ -15,6 +15,8 @@ function select(selector, parent) {
   return selected;
 }
 
+/*===================================================================*/
+
 function addEvent(elems, event, func) {
   if (elems.length === undefined) return elems.addEventListener(event, func);
   elems.forEach(function(elem) {
@@ -35,6 +37,8 @@ function isNum(elem) {
   var val = elem.innerHTML || elem.value;
   return !isNaN(parseInt(val)) && val !== '' && val !== ' ';
 }
+
+/*===================================================================*/
 
 var isMobile = {
   android: function android() {
@@ -79,6 +83,8 @@ function bgPrlx(elems, sizeX, sizeY, step) {
   }
 }
 
+/*===================================================================*/
+
 function elemPrlx(e) {
   var bodyWidth = document.body.offsetWidth;
   if (!isMobile.any() && bodyWidth >= 768) {
@@ -100,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.onscroll = function() {
     bgPrlx('#bgPrlx', '100%', '140%', 5);
-    // bgPrlx('body', '100%', '140%', 5);
   };
 
   /*===================================================================*/
@@ -109,6 +114,21 @@ document.addEventListener('DOMContentLoaded', function() {
   parents.forEach(function(elem) {
     elem.onmousemove = elemPrlx;
   });
+
+  /*===================================================================*/
+
+  var
+    allTr = select('#table tr'),
+    labels = [];
+
+    allTr.forEach(function(tr) {
+      var childs = tr.children;
+
+      for(var i = 0; i < childs.length; i++) {
+        if (childs[i].tagName === 'TH') labels.push(childs[i].innerHTML);
+        else childs[i].dataset.label = labels[i];
+      };
+    });
 
 });
 

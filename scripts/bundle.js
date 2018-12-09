@@ -145,7 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
     phone = select('#phone', wrapper),
     numFild = select('#number', wrapper),
     date = select('#date', wrapper),
-    fields = [name, password, url, mail, phone, numField, date],
+    // fields = [name, password, url, mail, phone, numField, date],
+    fields = [name, password, url, mail, phone, date],
     reset = select('#btn-reset', wrapper),
     submit = select('#btn-submit', wrapper);
 
@@ -182,17 +183,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /*===================================================================*/
 
-  function checkBirth() {
-    var test = /^\d{4}(\-\d{2}){2}$/.test(birth.value);
+  function checkDate() {
+    var test = /^\d{4}(\-\d{2}){2}$/.test(date.value);
 
-    if (birth.value === '') {
-      birth.classList.remove('fieldValid');
-      birth.classList.remove('fieldError');
-      birth.value = '';
+    if (date.value === '') {
+      date.classList.remove('fieldValid');
+      date.classList.remove('fieldError');
+      date.value = '';
       return true;
     }
     else {
-      if (addStyles(birth, test)) return true;
+      if (addStyles(date, test)) return true;
       else return false;
     }
   }
@@ -257,8 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fields.forEach(function(el) {
       if (el === name && !checkTxtField(el, 3)) hasError.push(el);
-      if (el === surname && !checkTxtField(el, 5)) hasError.push(el);
-      if (el === birth && !checkBirth()) hasError.push(el);
+      if (el === date && !checkDate()) hasError.push(el);
       if (el === phone && !checkPhone()) hasError.push(el);
       if (el === mail && !checkMail()) hasError.push(el);
     });
@@ -270,6 +270,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
       removeStyles();
     }, 10000);
+
+    if (hasError) {
+      e.preventDefault();
+      form.classList.add('formError');
+    }
   }
 
   reset.onclick = removeStyles;

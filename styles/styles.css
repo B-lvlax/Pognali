@@ -27,33 +27,33 @@ h6 {
   line-height: 1.25;
 }
 h1 {
-  font-size: 36px;
+  font-size: 2.25rem;
   font-size: calc(2.25rem + 0.5 * ((100vw - 20rem) / 80));
 }
 h2 {
-  font-size: 30px;
+  font-size: 1.875rem;
   font-size: calc(1.875rem + 0.5 * ((100vw - 20rem) / 80));
 }
 h3 {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-size: calc(1.5rem + 0.5 * ((100vw - 20rem) / 80));
 }
 h4 {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-size: calc(1.375rem + 0.5 * ((100vw - 20rem) / 80));
 }
 h5 {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-size: calc(1.25rem + 0.5 * ((100vw - 20rem) / 80));
 }
 h6 {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-size: calc(1.125rem + 0.5 * ((100vw - 20rem) / 80));
 }
 p {
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-size: calc(1rem + 0.25 * ((100vw - 20rem) / 80));
 }
 address {
@@ -118,9 +118,8 @@ img {
   word-break: break-all;
   color: #FFF;
   background-color: #007BFF;
-  font-size: 20px;
+  font-size: 0.875rem;
   font-style: italic;
-  line-height: 2.2;
 }
 img::before {
   content: "Картинка (" attr(src) ") не загрузилась: ";
@@ -531,7 +530,7 @@ textarea {
   -webkit-transition: opacity 0.3s ease /* Must be same that transition on input */;
           transition: opacity 0.3s ease /* Must be same that transition on input */;
   color: #9BABB4;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .forms-inputsGroup input:focus + label,
 .forms-inputsGroup textarea:focus + label {
@@ -749,8 +748,8 @@ article {
   border: 6px solid #DDD;
   border-radius: 6px;
   background-color: rgba(0,0,0,0.6);
-  font-size: 16px;
-  font-size: calc(16px + 2 * ((100vw - 20rem) / 80));
+  font-size: 1rem;
+  font-size: calc(1rem + 2 * ((100vw - 20rem) / 80));
 }
 .slogan {
   margin-right: -32px;
@@ -759,7 +758,7 @@ article {
   padding-bottom: 32px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 .text-header {
@@ -772,19 +771,19 @@ article {
   text-overflow: ellipsis;
 }
 .text-size--1 {
-  font-size: 40px;
+  font-size: 2.5rem;
 }
 .text-size--2 {
-  font-size: 32px;
+  font-size: 2rem;
 }
 .text-size--3 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .text-size--4 {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .text-size--5 {
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 .text-innerWrap {
   display: -webkit-box;
@@ -872,7 +871,7 @@ article {
   text-align: center;
   opacity: 0;
   color: #9BABB4;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .forms-actionGroup {
   display: -webkit-box;
@@ -1103,8 +1102,8 @@ article {
             transform: skewX(20deg) translateX(-50px);
   }
   100% {
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
+    -webkit-transform: translateX(200%);
+            transform: translateX(200%);
   }
 }
 @keyframes slide-right {
@@ -1117,8 +1116,8 @@ article {
             transform: skewX(20deg) translateX(-50px);
   }
   100% {
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
+    -webkit-transform: translateX(200%);
+            transform: translateX(200%);
   }
 }
 @-webkit-keyframes hideBg {
@@ -1144,8 +1143,8 @@ article {
 =====================================================================*/
 @media screen and (max-width: 768px) {
   body {
-    font-size: 14px;
-    font-size: calc(14px + 0.375 * ((100vw - 20rem) / 80));
+    font-size: 0.875rem;
+    font-size: calc(0.875rem + 0.375 * ((100vw - 20rem) / 80));
     line-height: 1.25;
   }
   table thead,
@@ -1170,8 +1169,8 @@ article {
     position: relative;
     margin-top: -1px;
     padding-left: 37%;
-    font-size: 12px;
-    font-size: calc(12px + 0.5 * ((100vw - 20rem) / 80));
+    font-size: 0.75rem;
+    font-size: calc(0.75rem + 0.5 * ((100vw - 20rem) / 80));
   }
   table td:nth-child(odd) {
     background-color: #EEE;

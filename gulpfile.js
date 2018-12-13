@@ -4,20 +4,18 @@
 
 /* PACKAGES
 =====================================================================*/
-var
+const
   project = 'Pognali',
   tunnelName = project.toLowerCase(),
   // connect = require('gulp-connect-php'),
   bs = require('browser-sync').create();
 
-var
-  gulp = require('gulp'),
-  gulpSync = require('gulp-sync')(gulp),
+const
+  { src, dest, watch, series, parallel } = require('gulp'),
   notify = require('gulp-notify'),
   del = require('del'),
   jade = require('gulp-jade'),
   stylus = require('gulp-stylus'),
-  sourcemaps = require('gulp-sourcemaps'),
   prefixes = require('gulp-autoprefixer'),
   csscomb = require('gulp-csscomb'),
   minifier = require('gulp-minifier'),
@@ -31,23 +29,15 @@ var
 
 /* CLEANING FILES
 =====================================================================*/
-gulp.task('clearAll', function () {
+function clearAll() {
   return del(['build/', 'public/']);
-});
-
-gulp.task('clearImg', function () {
-  return del('build/img/*.*');
-});
-
-gulp.task('clearSvg', function () {
-  return del('build/img/svg/*.svg');
-});
+}
 
 
 /* MARKUP
 =====================================================================*/
-gulp.task('markup', function () {
-  return gulp.src('src/jade/*.jade')
+function markup() {
+  return src('src/jade/*.jade')
     .pipe(jade({
       pretty: true
     }).on('error', notify.onError(function (error) {
@@ -61,12 +51,12 @@ gulp.task('markup', function () {
     //   extname: '.php'
     // }))
     .pipe(beautifier())
-    .pipe(gulp.dest('build/'))
+    .pipe(dest('build/'))
     .on('end', bs.reload);
-});
+}
 
-gulp.task('minifyMarkup', function () {
-  return gulp.src('build/*.html')
+function minifyMarkup() {
+  return src('build/*.html')
     // When working with PHP comment minifying
     // .pipe(minifier({
       // minify: true,
@@ -76,15 +66,14 @@ gulp.task('minifyMarkup', function () {
       // }
     // }))
     .pipe(htmlmin())
-    .pipe(gulp.dest('public/'));
-});
+    .pipe(dest('public/'));
+}
 
 
 /* STYLES
 =====================================================================*/
-gulp.task('styles', function () {
-  return gulp.src('src/stylus/styles.styl')
-    .pipe(sourcemaps.init())
+function styles() {
+  return src('src/stylus/styles.styl', { sourcemaps: true })
     .pipe(stylus({
       'include css': true
     }).on('error', notify.onError(function (error) {
@@ -99,128 +88,130 @@ gulp.task('styles', function () {
       grid: true
     }))
     .pipe(csscomb())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('build/styles/'))
-    .pipe(bs.reload({
-      stream: true
-    }));
-});
+    .pipe(dest('build/styles/', { sourcemaps: '.' }))
+    .pipe(bs.reload({ stream: true }));
+}
 
-gulp.task('minifyStyles', function () {
-  return gulp.src('build/styles/styles.css')
+function minifyStyles() {
+  return src('build/styles/styles.css')
     .pipe(minifier({
       minify: true,
       minifyCSS: true
     }))
-    .pipe(rename('styles.min.css'))
-    .pipe(gulp.dest('public/styles/'));
-});
+    .pipe(rename({ extname: '.min.css'}))
+    .pipe(dest('public/styles/'));
+}
 
 
 /* SCRIPTS
 =====================================================================*/
-gulp.task('scripts', function () {
-  return gulp.src('src/scripts/**/*.js')
-    .pipe(sourcemaps.init())
+function scripts() {
+  return src('src/scripts/**/*.js', { sourcemaps: true })
     .pipe(concat('bundle.js'))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('build/scripts/'))
+    .pipe(dest('build/scripts/', { sourcemaps: '.' }))
     .on('end', bs.reload);
-});
+}
 
-gulp.task('minifyScripts', function () {
-  return gulp.src('build/scripts/bundle.js')
+function minifyScripts() {
+  return src('build/scripts/bundle.js')
     .pipe(minifier({
       minify: true,
       minifyJS: true
     }))
     .pipe(rename('bundle.min.js'))
-    .pipe(gulp.dest('public/scripts/'));
-});
+    .pipe(dest('public/scripts/'));
+}
 
 
 /* PHP
 =====================================================================*/
-gulp.task('php', function () {
-  return gulp.src('src/php/**/*.php')
-    .pipe(gulp.dest('build/'))
+function php() {
+  return src('src/php/**/*.php')
+    .pipe(dest('build/'))
     .on('end', bs.reload);
-});
+}
 
 
 /* IMAGES
 =====================================================================*/
-gulp.task('images', ['clearImg'], function () {
-  return gulp.src('src/images/*.*')
-    .pipe(gulp.dest('build/images/'));
-});
+function images() {
+  const clearImg = del('build/images/*.*');
 
-gulp.task('svg', ['clearSvg'], function () {
-  return gulp.src('src/images/svg/*.svg')
-    .pipe(gulp.dest('build/images/svg/'))
+  return src('src/images/*.*', clearImg)
+    .pipe(dest('build/images/'));
+}
+
+function svg() {
+  const clearSvg = del('build/images/svg/*.svg');
+
+  return src('src/images/svg/*.svg')
+    .pipe(dest('build/images/svg/'))
     .pipe(svgSprite({
       mode: "symbols",
       selector: "icon-%f",
       preview: false
     }))
     .pipe(rename('sprite-symbols.svg'))
-    .pipe(gulp.dest('build/images/'));
-});
+    .pipe(dest('build/images/'));
+}
 
-gulp.task('optImg', function () {
-  return gulp.src('build/images/**/*.{png,gif,jpg,jpeg}')
-    .pipe(imgOptim.optimize({
-      batchSize: 75
-    }))
-    .pipe(gulp.dest('public/images/'));
-});
+function optImg() {
+  return src('build/images/**/*.{png,gif,jpg,jpeg}')
+    .pipe(imgOptim.optimize({ batchSize: 75 }))
+    .pipe(dest('public/images/'));
+}
 
 
 /* MOVING FILES
 =====================================================================*/
-gulp.task('toSrc', function () {
-  // var moveBootstrap =  gulp.src('node_modules/bootstrap/dist/**/*.*')
-  //   .pipe(gulp.dest('src/libs/bootstrap'));
+function toSrc(cb) {
+  // const moveBootstrap = src('node_modules/bootstrap/dist/**/*.*')
+  //   .pipe(dest('src/libs/bootstrap'));
 
-  // var movejQuery =  gulp.src('node_modules/jquery/dist/jquery.min.js')
-  //   .pipe(gulp.dest('src/libs/'));
-});
+  // const movejQuery = src('node_modules/jquery/dist/jquery.min.js')
+  //   .pipe(dest('src/libs/'));
+  cb();
+}
 
-gulp.task('toBuild', function () {
-  var moveLibs = gulp.src('src/libs/**/*.*')
-    .pipe(gulp.dest('build/libs/'));
+function toBuild(cb) {
+  const moveLibs = src('src/libs/**/*.*')
+    .pipe(dest('build/libs/'));
 
-  var moveFonts = gulp.src('src/fonts/**/*.*')
-    .pipe(gulp.dest('build/fonts/'));
+  const moveFonts = src('src/fonts/**/*.*')
+    .pipe(dest('build/fonts/'));
 
-  var moveMedia = gulp.src('src/media/**/*.*')
-    .pipe(gulp.dest('build/media/'));
-});
+  const moveMedia = src('src/media/**/*.*')
+    .pipe(dest('build/media/'));
 
-gulp.task('toPublic', function () {
-  var moveRootFiles = gulp.src(['.htaccess', '.gitignore', 'robots.txt'])
-  .pipe(gulp.dest('public/'));
+  cb();
+}
 
-  var movePhp = gulp.src('build/*.php')
-    .pipe(gulp.dest('public/'));
+function toPublic(cb) {
+  const moveRootFiles = src(['.htaccess', '.gitignore', 'robots.txt'])
+  .pipe(dest('public/'));
 
-  var moveLibs = gulp.src('build/libs/**/*.*')
-    .pipe(gulp.dest('public/libs/'));
+  const movePhp = src('build/*.php')
+    .pipe(dest('public/'));
 
-  var moveFonts = gulp.src('build/fonts/**/*.*')
-    .pipe(gulp.dest('public/fonts/'));
+  const moveLibs = src('build/libs/**/*.*')
+    .pipe(dest('public/libs/'));
 
-  var moveMedia = gulp.src('build/media/**/*.*')
-    .pipe(gulp.dest('public/media/'));
+  const moveFonts = src('build/fonts/**/*.*')
+    .pipe(dest('public/fonts/'));
 
-  var moveImg = gulp.src('build/images/*.{ico,svg}')
-    .pipe(gulp.dest('public/images/'));
-});
+  const moveMedia = src('build/media/**/*.*')
+    .pipe(dest('public/media/'));
+
+  const moveImg = src('build/images/*.{ico,svg}')
+    .pipe(dest('public/images/'));
+
+  cb();
+}
 
 
 /* STATIC SERVER & WATCHER
 =====================================================================*/
-gulp.task('server', function () {
+function server() {
   // To work with PHP comment this
   bs.init({
     server: { baseDir: 'build/' },
@@ -241,27 +232,27 @@ gulp.task('server', function () {
   //   });
   // });
 
-  gulp.watch('src/jade/**/*.jade', ['markup']);
-  gulp.watch('src/stylus/**/*.styl', ['styles']);
-  gulp.watch('src/scripts/**/*.js', ['scripts']);
-  gulp.watch('src/php/**/*.php', ['php']);
-  gulp.watch('src/images/*.*', ['images']);
-  gulp.watch('src/images/svg/*.svg', ['svg']);
-});
+  watch('src/jade/**/*.jade', markup);
+  watch('src/stylus/**/*.styl', styles);
+  watch('src/scripts/**/*.js', scripts);
+  watch('src/php/**/*.php', php);
+  watch('src/images/*.*', images);
+  watch('src/images/svg/*.svg', svg);
+}
 
 
 /* TASKS
 =====================================================================*/
-gulp.task('default', gulpSync.sync([
-  'clearAll',
-  ['toSrc', 'toBuild', 'images'],
-  ['svg', 'markup', 'styles', 'scripts', 'php'],
-  'server'
-]));
+exports.default = series(
+  clearAll,
+  parallel(toSrc, toBuild, images),
+  parallel(svg, markup, styles, scripts, php),
+  server
+);
 
-gulp.task('public', gulpSync.sync([
-  'clearAll',
-  ['toSrc', 'toBuild', 'images', 'svg', 'markup', 'styles', 'scripts'],
-  ['toPublic', 'minifyMarkup', 'minifyStyles', 'minifyScripts'],
-  'optImg'
-]));
+exports.public = series(
+  clearAll,
+  parallel(toSrc, toBuild, images, svg, markup, styles, scripts),
+  parallel(toPublic, minifyMarkup, minifyStyles, minifyScripts),
+  optImg
+);

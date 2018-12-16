@@ -104,19 +104,22 @@ function elemPrlx(e) {
 =====================================================================*/
 document.addEventListener('DOMContentLoaded', function() {
 
+  /* Parallax effect
+  =====================================================================*/
   window.onscroll = function() {
     bgPrlx('#bgPrlx', '100%', '140%', 5);
   };
 
-  /*===================================================================*/
-
+  /* Fixed background image effect
+  =====================================================================*/
   var parents = select('#bgPrlx');
   parents.forEach(function(elem) {
     elem.onmousemove = elemPrlx;
   });
 
-  /*===================================================================*/
 
+  /* Responsive tables
+  =====================================================================*/
   var
     allTr = select('#table tr'),
     labels = [];
@@ -129,5 +132,37 @@ document.addEventListener('DOMContentLoaded', function() {
       else childs[i].dataset.label = labels[i];
     };
   });
+
+
+  /* Lazy loading
+  =====================================================================*/
+  var
+    lazyloadImages = document.querySelectorAll(".lazy"),
+    lazyloadThrottleTimeout;
+
+  function lazyload () {
+    if(lazyloadThrottleTimeout) clearTimeout(lazyloadThrottleTimeout);
+
+    lazyloadThrottleTimeout = setTimeout(function() {
+      var scrollTop = window.pageYOffset;
+
+      lazyloadImages.forEach(function(img) {
+        if(img.offsetTop < (window.innerHeight + scrollTop)) {
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+        }
+      });
+
+      if(lazyloadImages.length === 0) {
+        document.removeEventListener("scroll", lazyload);
+        window.removeEventListener("resize", lazyload);
+        window.removeEventListener("orientationChange", lazyload);
+      }
+    }, 20);
+  }
+
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
 
 });

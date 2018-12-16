@@ -21,10 +21,15 @@ html(lang='ru')
 
   body
     noscript.noscript
-      div.noscript-wrap Для полной функциональности этого сайта необходимо включить JavaScript. Вот <a class="noscript-link" href="https://www.enable-javascript.com/ru/" target="_blank"> инструкции, как включить JavaScript в вашем браузере</a>.
+      .noscript-wrap Для полной функциональности этого сайта необходимо включить JavaScript. Вот <a class="noscript-link" href="https://www.enable-javascript.com/ru/" target="_blank"> инструкции, как включить JavaScript в вашем браузере</a>.
 
 
     block content
+
+
+    a.toTop(href='#top' title='Go Up')
+      svg(width='37' height='21')
+        use(xlink:href='images/sprite-symbols.svg#icon-chevron-sm')
 
 
     // Adds styles later for non render blocking

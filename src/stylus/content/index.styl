@@ -129,6 +129,13 @@ $disabled
   20%, 40%, 60%, 80%
     transform: translateX(10px)
 
+// animation: 1.5s ease-in-out infinite swing
+@keyframes swing
+  0%, 100%
+    transform: translateY(19px)
+  50%
+    transform: translateY(4px)
+
 
 /*! Forms Elements
 =====================================================================*/
@@ -338,6 +345,23 @@ a:hover
 a:active
   transform: translateY(4px)
   text-shadow: 0 6px 6px rgba($darkClr, .23)
+
+//! Anchor to the begin of page
+.toTop
+  position: fixed
+  bottom: 5%
+  left: 50%
+  transform: translateX(-50%)
+  width: 37px
+  height: 21px
+  animation: 1.5s ease-in-out infinite swing
+  border-radius: 50%
+  &:hover svg
+    fill: $darkerClr
+  &:active
+    transform: translateX(-50%)
+  svg
+    fill: $middleClr
 
 
 /* Tables

@@ -104,6 +104,17 @@ $caption--styled
   font-weight: bold
 
 
+//! Section INTRO
+.intro
+  &-h2
+    @extend $caption
+  &-contents
+    row()
+  &-items
+    min-width: 160px
+    margin-right: $indent
+
+
 //! Section TEXT
 .text
   &-header
@@ -131,6 +142,8 @@ $caption--styled
     col(6)
     min-width: 250px
     flex-grow: 1
+  &-links a
+    vertical-align: middle;
   &-link
     underline($accentClr, $primaryClr)
 
@@ -257,3 +270,14 @@ $caption--styled
     col(4)
     min-width: 250px
     flex-grow: 1
+
+
+//! Section Other
+.other
+  &-header
+    @extend $header
+    background-image: url('https://monosnap.com/image/SYvEzyUjgZs6dIevHhZJdJkV7RO972')
+  &-h1
+    @extend $caption--styled
+  &-h2
+    @extend $caption

@@ -1,11 +1,56 @@
 // This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss 
 
-.title 
-  .title-txt Pognali
+//- .title 
+//-   .title-txt Pognali
 
 .slogan Magic happens here
 
-section.text
+section.intro
+  h2 Table of contents
+  ol.intro-contents
+    li.intro-items
+      a(href='#text') Text
+      ul
+        li Headings
+        li Paragraphs
+        li Font sizes
+        li Blockquotes
+        li Lists
+        li Inline elements
+        li Horizontal rules
+        li Tabular data
+        li Code
+    li.intro-items
+      a(href='#forms') Form elements
+      ul
+        li Basic fields
+        li Select
+        li Checkboxes
+        li Radio inputs
+        li HTML5 inputs
+        li Action buttons
+    li.intro-items
+      a(href='#grid') Grid system
+      ul
+        li Colums
+        li Offsets
+    li.intro-items
+      a(href='#embedded') Embedded content
+      ul
+        li Images
+        li Audio
+        li Video
+        li Canvas
+        li Meter
+        li Progress
+        li Inline SVG
+        li Iframe
+    li.intro-items
+      a(href='#other') Other
+      ul
+        li Lazy loading
+
+section#text.text
   header#bgPrlx.text-header.bgPrlx
     h1#moveTitle.text-h1 Text
   article.text-headings
@@ -25,24 +70,24 @@ section.text
       h3 Truncated paragraph
       p.text-truncated A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.
     hr
-    div
-      h3 Available font sizes
-      ul
-        li
-          h4 Font size 'XL'
-          p.text-size--1 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
-        li
-          h4 Font size 'LG'
-          p.text-size--2 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
-        li
-          h4 Font size 'MD'
-          p.text-size--3 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
-        li
-          h4 Font size 'SM'
-          p.text-size--4 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
-        li
-          h4 Font size 'XS'
-          p.text-size--5 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+  article.text-fontSizes
+    h2.text-h2 Font sizes
+    ul
+      li
+        h4 Font size 'XL'
+        p.text-size--1 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      li
+        h4 Font size 'LG'
+        p.text-size--2 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      li
+        h4 Font size 'MD'
+        p.text-size--3 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      li
+        h4 Font size 'SM'
+        p.text-size--4 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
+      li
+        h4 Font size 'XS'
+        p.text-size--5 A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.
 
   article.text-blockquotes
     h2.text-h2 Blockquotes
@@ -82,7 +127,7 @@ section.text
     article.text-inline
       h2.text-h2 Inline elements
       ul
-        li Links
+        li.text-links Links
           ul
             li
               a(href='#!') This is a Default text link
@@ -336,7 +381,7 @@ section#forms.forms
       input#btn-submit.forms-btn.forms-btn--submit(type='submit' value='Submit')
 
 
-section.grid
+section#grid.grid
   header#bgPrlx.grid-header.bgPrlx
     h1#moveTitle.grid-h1 Grid System
   h2.grid-h2 Columns
@@ -373,7 +418,7 @@ section.grid
         div(class='grid-offset--#{i}')= 'Column ' + i
 
 
-section.embedded
+section#embedded.embedded
   header#bgPrlx.embedded-header.bgPrlx
     h1#moveTitle.embedded-h1 Embedded content
   article.embedded-images
@@ -447,3 +492,10 @@ section.embedded
       h2.embedded-h2 IFrame
       div
         iframe(src='index.html' height='300' width='100%')
+
+
+section#other.other
+  header#bgPrlx.other-header.bgPrlx
+    h1#moveTitle.other-h1 Other content
+  article.other-stuff
+    h2.other-h2 Some other stuff

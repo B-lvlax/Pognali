@@ -121,13 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
     allTr = select('#table tr'),
     labels = [];
 
-    allTr.forEach(function(tr) {
-      var childs = tr.children;
+  allTr.forEach(function(tr) {
+    var childs = tr.children;
 
-      for(var i = 0; i < childs.length; i++) {
-        if (childs[i].tagName === 'TH') labels.push(childs[i].innerHTML);
-        else childs[i].dataset.label = labels[i];
-      };
-    });
+    for(var i = 0; i < childs.length; i++) {
+      if (childs[i].tagName === 'TH') labels.push(childs[i].innerHTML);
+      else childs[i].dataset.label = labels[i];
+    };
+  });
 
 });

@@ -576,6 +576,30 @@ a:active {
           transform: translateY(4px);
   text-shadow: 0 6px 6px rgba(0,0,0,0.23);
 }
+.toTop {
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  width: 37px;
+  height: 21px;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: 1.5s ease-in-out infinite swing;
+          animation: 1.5s ease-in-out infinite swing;
+  border-radius: 50%;
+}
+.toTop:hover svg {
+  fill: #282E34;
+}
+.toTop:active {
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.toTop svg {
+  fill: #9BABB4;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -636,6 +660,26 @@ th {
   20%, 40%, 60%, 80% {
     -webkit-transform: translateX(10px);
             transform: translateX(10px);
+  }
+}
+@-webkit-keyframes swing {
+  0%, 100% {
+    -webkit-transform: translateY(19px);
+            transform: translateY(19px);
+  }
+  50% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+}
+@keyframes swing {
+  0%, 100% {
+    -webkit-transform: translateY(19px);
+            transform: translateY(19px);
+  }
+  50% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
   }
 }
 /*===================================================================
@@ -1111,6 +1155,9 @@ article {
 }
 .other-header {
   background-image: url("https://monosnap.com/image/SYvEzyUjgZs6dIevHhZJdJkV7RO972");
+}
+.other-lazy img {
+  margin-bottom: 16px;
 }
 @-webkit-keyframes slide-right {
   0% {

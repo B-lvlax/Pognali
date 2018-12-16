@@ -24,8 +24,11 @@
     <noscript class="noscript">
       <div class="noscript-wrap">Для полной функциональности этого сайта необходимо включить JavaScript. Вот <a class="noscript-link" href="https://www.enable-javascript.com/ru/" target="_blank"> инструкции, как включить JavaScript в вашем браузере</a>.</div>
     </noscript>
-    <div class="layoutCenter">
+    <div id="top" class="layoutCenter">
       <!-- This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss -->
+      <div class="title">
+        <div class="title-txt">Pognali</div>
+      </div>
       <div class="slogan">Magic happens here</div>
       <section class="intro">
         <h2>Table of contents</h2>
@@ -629,14 +632,17 @@ p q r s t u v w x y z { | } ~
         </div>
       </section>
       <section id="other" class="other">
-        <header id="bgPrlx" class="other-header bgPrlx">
+        <header id="bgPrlx" class="bgPrlx other-header">
           <h1 id="moveTitle" class="other-h1">Other content</h1>
         </header>
-        <article class="other-stuff">
-          <h2 class="other-h2">Some other stuff</h2>
+        <article class="other-lazy">
+          <h2 class="other-h2">Lazy loading</h2><img data-src="https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf" alt="Photo of racing 1" class="lazy"><img data-src="https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe" alt="Photo of racing 2" class="lazy"><img data-src="https://monosnap.com/image/DjOLBVPNRfMdxPqPpgDDWFTwKI9FaL" alt="Photo of racing 3" class="lazy"><img data-src="https://monosnap.com/image/fhMQ6dSKosb8lwefaNqY0sc8532ygo" alt="Photo of racing 4" class="lazy"><img data-src="https://monosnap.com/image/f7fX6h9onp3HS9e198wN5R2jKMdioh" alt="Photo of racing 5" class="lazy"><img data-src="https://monosnap.com/image/sP4nuMirlPdCUWJELKCYz20fEqj00f" alt="Photo of racing 6" class="lazy"><img data-src="https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR" alt="Photo of racing 7" class="lazy">
         </article>
       </section>
-    </div>
+    </div><a href="#top" title="Go Up" class="toTop">
+      <svg width="37" height="21">
+        <use xlink:href="images/sprite-symbols.svg#icon-chevron-sm"></use>
+      </svg></a>
     <!-- Adds styles later for non render blocking-->
     <script>
       var head = document.querySelector('head');

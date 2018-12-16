@@ -559,7 +559,6 @@ label.disabled {
 a {
   display: inline-block;
   cursor: pointer;
-  vertical-align: middle;
   color: #FFC107;
 }
 a.disabled {
@@ -707,7 +706,8 @@ article {
 .text-header,
 .forms-header,
 .grid-header,
-.embedded-header {
+.embedded-header,
+.other-header {
   display: -webkit-box;
   display: -webkit-flex;
   display:         flex;
@@ -724,10 +724,12 @@ article {
   -webkit-align-items: center;
 }
 .slogan,
+.intro-h2,
 .text-h2,
 .forms-h2,
 .grid-h2,
-.embedded-h2 {
+.embedded-h2,
+.other-h2 {
   margin-bottom: 16px;
   padding: 8px 16px;
   text-align: center;
@@ -737,7 +739,8 @@ article {
 .text-h1,
 .forms-h1,
 .grid-h1,
-.embedded-h1 {
+.embedded-h1,
+.other-h1 {
   margin-right: 16px;
   margin-left: 16px;
   padding: 16px 32px;
@@ -760,6 +763,17 @@ article {
   border-top-right-radius: 6px;
   font-size: 2.5rem;
   font-weight: bold;
+}
+.intro-contents {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.intro-items {
+  min-width: 160px;
+  margin-right: 16px;
 }
 .text-header {
   background-image: url("https://monosnap.com/image/Hc3wZ7kqvNHJVBPUoaiY73eFP2LJMw");
@@ -804,6 +818,9 @@ article {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
           flex-grow: 1;
+}
+.text-links a {
+  vertical-align: middle;
 }
 .text-link {
   position: relative;
@@ -1092,6 +1109,9 @@ article {
   -webkit-flex-grow: 1;
           flex-grow: 1;
 }
+.other-header {
+  background-image: url("https://monosnap.com/image/SYvEzyUjgZs6dIevHhZJdJkV7RO972");
+}
 @-webkit-keyframes slide-right {
   0% {
     -webkit-transform: skewX(0deg);
@@ -1200,5 +1220,4 @@ article {
     -webkit-align-items: center;
   }
 }
-
 /*# sourceMappingURL=styles.css.map */

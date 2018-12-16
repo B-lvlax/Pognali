@@ -26,11 +26,59 @@
     </noscript>
     <div class="layoutCenter">
       <!-- This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss -->
-      <div class="title">
-        <div class="title-txt">Pognali</div>
-      </div>
       <div class="slogan">Magic happens here</div>
-      <section class="text">
+      <section class="intro">
+        <h2>Table of contents</h2>
+        <ol class="intro-contents">
+          <li class="intro-items"><a href="#text">Text</a>
+            <ul>
+              <li>Headings</li>
+              <li>Paragraphs</li>
+              <li>Font sizes</li>
+              <li>Blockquotes</li>
+              <li>Lists</li>
+              <li>Inline elements</li>
+              <li>Horizontal rules</li>
+              <li>Tabular data</li>
+              <li>Code</li>
+            </ul>
+          </li>
+          <li class="intro-items"><a href="#forms">Form elements</a>
+            <ul>
+              <li>Basic fields</li>
+              <li>Select</li>
+              <li>Checkboxes</li>
+              <li>Radio inputs</li>
+              <li>HTML5 inputs</li>
+              <li>Action buttons</li>
+            </ul>
+          </li>
+          <li class="intro-items"><a href="#grid">Grid system</a>
+            <ul>
+              <li>Colums</li>
+              <li>Offsets</li>
+            </ul>
+          </li>
+          <li class="intro-items"><a href="#embedded">Embedded content</a>
+            <ul>
+              <li>Images</li>
+              <li>Audio</li>
+              <li>Video</li>
+              <li>Canvas</li>
+              <li>Meter</li>
+              <li>Progress</li>
+              <li>Inline SVG</li>
+              <li>Iframe</li>
+            </ul>
+          </li>
+          <li class="intro-items"><a href="#other">Other</a>
+            <ul>
+              <li>Lazy loading</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+      <section id="text" class="text">
         <header id="bgPrlx" class="text-header bgPrlx">
           <h1 id="moveTitle" class="text-h1">Text</h1>
         </header>
@@ -58,31 +106,31 @@
             <p class="text-truncated">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
           </div>
           <hr>
-          <div>
-            <h3>Available font sizes</h3>
-            <ul>
-              <li>
-                <h4>Font size 'XL'</h4>
-                <p class="text-size--1">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-              </li>
-              <li>
-                <h4>Font size 'LG'</h4>
-                <p class="text-size--2">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-              </li>
-              <li>
-                <h4>Font size 'MD'</h4>
-                <p class="text-size--3">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-              </li>
-              <li>
-                <h4>Font size 'SM'</h4>
-                <p class="text-size--4">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-              </li>
-              <li>
-                <h4>Font size 'XS'</h4>
-                <p class="text-size--5">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
-              </li>
-            </ul>
-          </div>
+        </article>
+        <article class="text-fontSizes">
+          <h2 class="text-h2">Font sizes</h2>
+          <ul>
+            <li>
+              <h4>Font size 'XL'</h4>
+              <p class="text-size--1">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+            </li>
+            <li>
+              <h4>Font size 'LG'</h4>
+              <p class="text-size--2">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+            </li>
+            <li>
+              <h4>Font size 'MD'</h4>
+              <p class="text-size--3">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+            </li>
+            <li>
+              <h4>Font size 'SM'</h4>
+              <p class="text-size--4">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+            </li>
+            <li>
+              <h4>Font size 'XS'</h4>
+              <p class="text-size--5">A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea.</p>
+            </li>
+          </ul>
         </article>
         <article class="text-blockquotes">
           <h2 class="text-h2">Blockquotes</h2>
@@ -144,7 +192,7 @@
           <article class="text-inline">
             <h2 class="text-h2">Inline elements</h2>
             <ul>
-              <li>Links
+              <li class="text-links">Links
                 <ul>
                   <li><a href="#!">This is a Default text link</a></li>
                   <li><a href="#!" class="disabled">This is a Disabled text link</a></li>
@@ -435,7 +483,7 @@ p q r s t u v w x y z { | } ~
           </div>
         </form>
       </section>
-      <section class="grid">
+      <section id="grid" class="grid">
         <header id="bgPrlx" class="grid-header bgPrlx">
           <h1 id="moveTitle" class="grid-h1">Grid System</h1>
         </header>
@@ -503,7 +551,7 @@ p q r s t u v w x y z { | } ~
           </div>
         </div>
       </section>
-      <section class="embedded">
+      <section id="embedded" class="embedded">
         <header id="bgPrlx" class="embedded-header bgPrlx">
           <h1 id="moveTitle" class="embedded-h1">Embedded content</h1>
         </header>
@@ -579,6 +627,14 @@ p q r s t u v w x y z { | } ~
             </div>
           </article>
         </div>
+      </section>
+      <section id="other" class="other">
+        <header id="bgPrlx" class="other-header bgPrlx">
+          <h1 id="moveTitle" class="other-h1">Other content</h1>
+        </header>
+        <article class="other-stuff">
+          <h2 class="other-h2">Some other stuff</h2>
+        </article>
       </section>
     </div>
     <!-- Adds styles later for non render blocking-->

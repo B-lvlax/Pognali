@@ -2,7 +2,7 @@
 
 ---
 
-По этой [ссылке](https://b-lvlax.github.io/Pognali/) можно просмотреть реализацию базовых компонентов.
+[Здесь](https://b-lvlax.github.io/Pognali/) можно просмотреть реализацию базовых компонентов.
 
 ## Список инструментов, которые используются при сборке Gulp'ом:
 __NPM-модули, устанавливаемые глобально:__
@@ -25,7 +25,6 @@ __NPM-модули, устанавливаемые локально__
 - [gulp-html-minify](https://github.com/whxaxes/gulp-html-minify)
 - [gulp-notify](https://github.com/mikaelbr/gulp-notify)
 - [gulp-rename](https://github.com/hparra/gulp-rename)
-- [gulp-sourcemaps](https://github.com/gulp-sourcemaps/gulp-sourcemaps)
 - [gulp-stylus](https://github.com/stevelacy/gulp-stylus)
 - [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
 - [gulp-sync](https://github.com/kaminaly/gulp-sync)

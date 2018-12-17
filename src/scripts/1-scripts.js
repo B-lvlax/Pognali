@@ -165,4 +165,19 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener("resize", lazyload);
   window.addEventListener("orientationChange", lazyload);
 
+
+  /* Smooth scrolling
+  =====================================================================*/
+  var anchors = document.querySelectorAll('a[href^="#"]');
+
+  anchors.forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
+
 });

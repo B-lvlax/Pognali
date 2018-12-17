@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     phone = select('#phone', wrapper),
     numFild = select('#number', wrapper),
     date = select('#date', wrapper),
-    // fields = [name, password, url, mail, phone, numField, date],
     fields = [name, password, url, mail, phone, date],
     reset = select('#btn-reset', wrapper),
     submit = select('#btn-submit', wrapper);

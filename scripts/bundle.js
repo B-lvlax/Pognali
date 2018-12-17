@@ -165,6 +165,21 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener("resize", lazyload);
   window.addEventListener("orientationChange", lazyload);
 
+
+  /* Smooth scrolling
+  =====================================================================*/
+  var anchors = document.querySelectorAll('a[href^="#"]');
+
+  anchors.forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
+
 });
 
 'use strict';
@@ -180,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
     phone = select('#phone', wrapper),
     numFild = select('#number', wrapper),
     date = select('#date', wrapper),
-    // fields = [name, password, url, mail, phone, numField, date],
     fields = [name, password, url, mail, phone, date],
     reset = select('#btn-reset', wrapper),
     submit = select('#btn-submit', wrapper);

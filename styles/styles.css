@@ -578,28 +578,21 @@ a:active {
           transform: translateY(4px);
   text-shadow: 0 6px 6px rgba(0,0,0,0.23);
 }
-.toTop {
+.scrollBtn {
   position: fixed;
   bottom: 5%;
-  left: 50%;
-  width: 37px;
-  height: 21px;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
+  left: 46%;
+  width: 64px;
+  height: 32px;
   -webkit-animation: 1.5s ease-in-out infinite swing;
           animation: 1.5s ease-in-out infinite swing;
+  text-align: center;
   border-radius: 50%;
 }
-.toTop:hover svg {
+.scrollBtn:hover svg {
   fill: #282E34;
 }
-.toTop:active {
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-.toTop svg {
+.scrollBtn svg {
   fill: #9BABB4;
 }
 table {

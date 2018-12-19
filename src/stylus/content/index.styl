@@ -348,19 +348,17 @@ a:active
   text-shadow: 0 6px 6px rgba($darkClr, .23)
 
 //! Anchor to the begin of page
-.toTop
+.scrollBtn
   position: fixed
   bottom: 5%
-  left: 50%
-  transform: translateX(-50%)
-  width: 37px
-  height: 21px
+  left: 46%
+  width: 64px
+  height: 32px
   animation: 1.5s ease-in-out infinite swing
+  text-align: center
   border-radius: 50%
   &:hover svg
     fill: $darkerClr
-  &:active
-    transform: translateX(-50%)
   svg
     fill: $middleClr
 
@@ -377,8 +375,8 @@ th, td
   padding: $indent--sm $indent
   border: 1px solid $lighterClr
 th
-  background-color: $primaryClr
   color: $lightClr
+  background-color: $primaryClr
 
 
 

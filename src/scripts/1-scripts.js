@@ -19,15 +19,15 @@ function select(selector, parent) {
 
 function addEvent(elems, event, func) {
   if (elems.length === undefined) return elems.addEventListener(event, func);
-  elems.forEach(function(elem) {
-    elem.addEventListener(event, func);
-  });
+  for (var i = 0; i < elems.length; i++) {
+    elems[i].addEventListener(event, func);
+  }
 }
 function removeEvent(elems, event, func) {
   if (elems.length === undefined) return elems.removeEventListener(event, func);
-  elems.forEach(function(elem) {
-    elem.removeEventListener(event, func);
-  });
+  for (var i = 0; i < elems.length; i++) {
+    elems[i].remoEventListener(event, func);
+  }
 }
 
 
@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     bgPrlx('#bgPrlx', '100%', '140%', 5);
   };
 
+
   /* Fixed background image effect
   =====================================================================*/
   var parents = select('#bgPrlx');
@@ -136,48 +137,91 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* Lazy loading
   =====================================================================*/
-  var
-    lazyloadImages = document.querySelectorAll(".lazy"),
-    lazyloadThrottleTimeout;
+  (function() {
 
-  function lazyload () {
-    if(lazyloadThrottleTimeout) clearTimeout(lazyloadThrottleTimeout);
+    var
+      lazyloadImages = select('.lazy'),
+      lazyloadThrottleTimeout;
 
-    lazyloadThrottleTimeout = setTimeout(function() {
-      var scrollTop = window.pageYOffset;
+    function lazyload() {
+      if (lazyloadThrottleTimeout) clearTimeout(lazyloadThrottleTimeout);
 
-      lazyloadImages.forEach(function(img) {
-        if(img.offsetTop < (window.innerHeight + scrollTop)) {
-          img.src = img.dataset.src;
-          img.classList.remove('lazy');
+      lazyloadThrottleTimeout = setTimeout(function() {
+        lazyloadImages.forEach(function(img) {
+          if (img.offsetTop < (window.innerHeight + window.pageYOffset)) {
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+          }
+        });
+
+        if (lazyloadImages.length === 0) {
+          removeEvent(document, 'scroll', lazyload);
+          removeEvent(window, 'resize', lazyload);
+          removeEvent(window, 'orientationChange', lazyload);
         }
-      });
+      }, 20);
+    }
 
-      if(lazyloadImages.length === 0) {
-        document.removeEventListener("scroll", lazyload);
-        window.removeEventListener("resize", lazyload);
-        window.removeEventListener("orientationChange", lazyload);
-      }
-    }, 20);
-  }
+    addEvent(document, 'scroll', lazyload);
+    addEvent(window, 'resize', lazyload);
+    addEvent(window, 'orientationChange', lazyload);
 
-  document.addEventListener("scroll", lazyload);
-  window.addEventListener("resize", lazyload);
-  window.addEventListener("orientationChange", lazyload);
+  })();
 
 
   /* Smooth scrolling
   =====================================================================*/
-  var anchors = document.querySelectorAll('a[href^="#"]');
+  var anchors = select('a[href~="#"]');
 
-  anchors.forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
+  for (var i = 0; i < anchors.length; i++) {
+    addEvent(anchors[i], 'click', function(e) {
       e.preventDefault();
       document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+          behavior: 'smooth',
+          block: 'start'
+        });
     });
-  });
+  }
+
+
+  /* Button to scroll Up or Down
+  =====================================================================*/
+  (function() {
+
+    var
+      btn = select('#scrollBtn'),
+      icon = select('svg', btn),
+      flag;
+
+    icon.style.transform = 'rotate(180deg)';
+
+
+    function setScroll() {
+      if (scrollThrottleTimeout) clearTimeout(scrollThrottleTimeout);
+
+      var scrollThrottleTimeout = setTimeout(function() {
+        if (window.pageYOffset <= document.body.scrollHeight / 2) {
+          icon.style.transform = 'rotate(180deg)';
+          flag = true;
+        } else {
+          icon.style.transform = 'rotate(0deg)';
+          flag = false;
+        }
+      }, 20);
+    }
+
+    addEvent(document, 'scroll', setScroll);
+
+
+    function moveTo(e) {
+      e.preventDefault();
+      if (flag) window.scrollBy(0, window.innerHeight);
+      else window.scrollTo(0, 0);
+    }
+
+    addEvent(btn, 'click', moveTo);
+
+  })();
+
 
 });

@@ -63,29 +63,22 @@ h1, h2, h3, h4, h5, h6
   line-height: 1.25
 
 h1
-  font-size: 2.25rem // 36
-  font-size: calc(2.25rem + .5 * ((100vw - 20rem) / 80))
+  fluidTxtInRem(2.25rem, .5) // 36
 h2
-  font-size: 1.875rem // 30
-  font-size: calc(1.875rem + .5 * ((100vw - 20rem) / 80))
+  fluidTxtInRem(1.875rem, .5) // 30
 h3
-  font-size: 1.5rem // 24
-  font-size: calc(1.5rem + .5 * ((100vw - 20rem) / 80))
+  fluidTxtInRem(1.5rem, .5) // 24
 h4
-  font-size: 1.375rem // 22
-  font-size: calc(1.375rem + .5 * ((100vw - 20rem) / 80))
+  fluidTxtInRem(1.375rem, .5) // 22
 h5
-  font-size: 1.25rem // 20
-  font-size: calc(1.25rem + .5 * ((100vw - 20rem) / 80))
+  fluidTxtInRem(1.25rem, .5) // 20
 h6
-  font-size: 1.125rem // 18
-  font-size: calc(1.125rem + .5 * ((100vw - 20rem) / 80))
+  fluidTxtInRem(1.125rem, .5) // 18
 
 p
   margin-top: 0
   margin-bottom: $indent
-  font-size: 1.125rem
-  font-size: calc(1rem + .25 * ((100vw - 20rem) / 80))
+  fluidTxtInRem(1rem, .125) // 18
 
 address
   margin-bottom: $indent

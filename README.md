@@ -27,7 +27,6 @@ __NPM-модули, устанавливаемые локально__
 - [gulp-rename](https://github.com/hparra/gulp-rename)
 - [gulp-stylus](https://github.com/stevelacy/gulp-stylus)
 - [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
-- [gulp-sync](https://github.com/kaminaly/gulp-sync)
 - [notification-logger](https://github.com/hkirat/notification-logger/)
 
 ---

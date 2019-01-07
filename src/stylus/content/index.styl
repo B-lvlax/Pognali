@@ -195,15 +195,13 @@ input, button, select, optgroup, textarea
   border: 1px solid $borderClr
   border-radius: $borderRad
   background-color: $lightClr
-  &:hover
+  &:hover, &:focus
     color: $lightClr
     background-color: $primaryClr
   &:active
     outline: none
     transform: translateY(4px)
     shadow()
-  &:focus
-    outline: none
 
 /*! Input fields */
 
@@ -334,18 +332,19 @@ a
   display: inline-block
   cursor: pointer
   color: $accentClr
+  &:visited
+    color: darken($accentClr, 40%)
+    &.disabled
+      @extend $disabled
+  &:hover
+    color: $primaryClr
+  &:active
+    outline: none
+    transform: translateY(4px)
+    text-shadow: 0 6px 6px rgba($darkClr, .23)
   &.disabled
     @extend $disabled
     text-decoration: underline
-a:visited
-  color: darken($accentClr, 40%)
-  &.disabled
-    @extend $disabled
-a:hover
-  color: $primaryClr
-a:active
-  transform: translateY(4px)
-  text-shadow: 0 6px 6px rgba($darkClr, .23)
 
 //! Anchor to the begin of page
 .scrollBtn

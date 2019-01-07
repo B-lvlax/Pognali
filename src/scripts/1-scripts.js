@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
   (function() {
 
     var
-      lazyloadImages = select('.lazy'),
+      lazyloadImages = select('.js-lazy'),
       lazyloadThrottleTimeout;
 
     function lazyload() {
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lazyloadImages.forEach(function(img) {
           if (img.offsetTop < (window.innerHeight + window.pageYOffset)) {
             img.src = img.dataset.src;
-            img.classList.remove('lazy');
+            img.classList.remove('js-lazy');
           }
         });
 
@@ -195,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     icon.style.transform = 'rotate(180deg)';
 
-
     function setScroll() {
       if (scrollThrottleTimeout) clearTimeout(scrollThrottleTimeout);
 
@@ -212,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     addEvent(document, 'scroll', setScroll);
 
-
     function moveTo(e) {
       e.preventDefault();
       if (flag) window.scrollBy(0, window.innerHeight);
@@ -222,6 +220,5 @@ document.addEventListener('DOMContentLoaded', function() {
     addEvent(btn, 'click', moveTo);
 
   })();
-
 
 });

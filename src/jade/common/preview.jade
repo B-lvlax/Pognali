@@ -247,31 +247,31 @@ section#text.text
 section#forms.forms
   header#bgPrlx.forms-header.bgPrlx
     h1#moveTitle.forms-h1 Form elements
-  form#form(method='post' action='https://echo.htmlacademy.ru' enctype='multipart/form-data')
+  form#form.js-validate(method='post' action='send.php' enctype='multipart/form-data')
     h2.forms-h2 Input fields
     .forms-requiredTxt <b>&#42;</b> Fields marked with an asterisk are required.
     fieldset.forms-inputs
       legend Basic fields
       .forms-inputsGroup
-        input#name(type='text' name='name' placeholder='Enter your name')
+        input#name(type='text' name='name' placeholder='Enter your name' required)
         label.forms-groupTitle(for='name') Your name
         .forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
       .forms-inputsGroup
-        input#password(type='password' name='password' placeholder='Type your Password')
+        input#password(type='password' name='password' placeholder='Type your Password' required)
         label.forms-groupTitle(for='password') Password
-        .forms-helpTxt (Must contain letters and digits with length 6 and above)
+        .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
       .forms-inputsGroup
-        input#site(type='url' name='site' placeholder='http://yoursite.com')
-        label.forms-groupTitle(for='site') Web Address
-        .forms-helpTxt (Example: http://yoursite.com)
+        input#url(type='url' name='url' placeholder='http://yoursite.com' required)
+        label.forms-groupTitle(for='url') Web Address
+        .forms-helpTxt (Example: http://yoursite.com or yoursite.com)
       .forms-inputsGroup
-        input#mail(type='email' name='mail' placeholder='name@email.com')
+        input#mail(type='email' name='mail' placeholder='name@email.com' required)
         label.forms-groupTitle(for='mail') Email Address
         .forms-helpTxt (Example: name@email.com)
       .forms-inputsGroup
-        input#phone(type='tel' name='phone' placeholder='(999) 999-99-99')
+        input#phone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' required)
         label.forms-groupTitle(for='phone') Phone Number
-        .forms-helpTxt (Only numbers with length from 10 symbols)
+        .forms-helpTxt (Only numbers - length for 10 symbols)
       .forms-inputsGroup
         input#query(type='search' name='query' placeholder='Enter Search Term')
         label(for='query') Search
@@ -306,13 +306,13 @@ section#forms.forms
     fieldset.forms-checkboxInputs
       legend Checkboxes
       .forms-checkboxGroup
-        input#checkboxA(name='checkboxA' type='checkbox' checked)
+        input#checkboxA(name='checkboxA' type='checkbox' value='A' checked)
         label(for='checkboxA') Choice A
       .forms-checkboxGroup
-        input#checkboxB(name='checkboxB' type='checkbox')
+        input#checkboxB(name='checkboxB' type='checkbox' value='B')
         label(for='checkboxB') Choice B
       .forms-checkboxGroup
-        input#checkboxC(name='checkboxC' type='checkbox')
+        input#checkboxC(name='checkboxC' type='checkbox' value='C')
         label(for='checkboxC') Choice C
       .forms-checkboxGroup.disabled
         input#checkboxDis(name='checkboxDis' type='checkbox' disabled)
@@ -339,7 +339,7 @@ section#forms.forms
         input#color(type='color' name='color' value='#0000ff')
         label(for='color') Color input
       .forms-html5InputsGroup
-        input#number(type='number' name='number' min='0' max='100' value='5' placeholder='Enter a Number')
+        input#number(type='number' name='number' min='0' max='100' value='5' step='any' placeholder='Enter a Number' required)
         label.forms-groupTitle(for='number') Number input
         .forms-helpTxt (Must contain only numbers)
       .forms-html5InputsGroup
@@ -349,7 +349,7 @@ section#forms.forms
         input#range(type='range' name='range' value='10')
         label(for='range') Range input
       .forms-html5InputsGroup
-        input#date(type='date' name='date')
+        input#date(type='date' name='date' required)
         label.forms-groupTitle(for='date') Date input
         .forms-helpTxt (Only digits in sequence dd/mm/yyyy)
       .forms-html5InputsGroup
@@ -377,8 +377,24 @@ section#forms.forms
         button(type='button' disabled) &lt;button disabled&gt;
 
     div.forms-actionBtns
-      input#btn-reset.forms-btn.forms-btn--reset(type='reset' value='Reset')
-      input#btn-submit.forms-btn.forms-btn--submit(type='submit' value='Submit')
+      input#btnReset.forms-btn.forms-btn--reset(type='reset' value='Reset')
+      input.forms-btn.forms-btn--submit(type='submit' value='Submit')
+        
+  form#form-1.js-validate(method='post' action='send.php')
+    fieldset.forms-inputs
+      legend Test for validation on second form
+      .forms-inputsGroup
+        input#name-1(type='text' name='name' placeholder='Enter your name' required)
+        label.forms-groupTitle(for='name-1') Your name
+        .forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
+      .forms-inputsGroup
+        input#password-1(type='password' name='password-1' placeholder='Type your Password' required)
+        label.forms-groupTitle(for='password-1') Password
+        .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
+      
+    div.forms-actionBtns
+      input#btnReset-1.forms-btn.forms-btn--reset(type='reset' value='Reset')
+      input.forms-btn.forms-btn--submit(type='submit' value='Submit')
 
 
 section#grid.grid
@@ -491,7 +507,7 @@ section#embedded.embedded
     article.embedded-iframe
       h2.embedded-h2 IFrame
       div
-        iframe(src='index.html' height='300' width='100%')
+        iframe(src='index.html' height='300' width='100%' tabindex='-1')
 
 
 section#other.other
@@ -499,10 +515,10 @@ section#other.other
     h1#moveTitle.other-h1 Other content
   article.other-lazy
     h2.other-h2 Lazy loading
-    img.lazy(data-src='https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf' alt='Photo of racing 1')
-    img.lazy(data-src='https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe' alt='Photo of racing 2')
-    img.lazy(data-src='https://monosnap.com/image/DjOLBVPNRfMdxPqPpgDDWFTwKI9FaL' alt='Photo of racing 3')
-    img.lazy(data-src='https://monosnap.com/image/fhMQ6dSKosb8lwefaNqY0sc8532ygo' alt='Photo of racing 4')
-    img.lazy(data-src='https://monosnap.com/image/f7fX6h9onp3HS9e198wN5R2jKMdioh' alt='Photo of racing 5')
-    img.lazy(data-src='https://monosnap.com/image/sP4nuMirlPdCUWJELKCYz20fEqj00f' alt='Photo of racing 6')
-    img.lazy(data-src='https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR' alt='Photo of racing 7')
+    img.js-lazy(data-src='https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf' alt='Photo of racing 1')
+    img.js-lazy(data-src='https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe' alt='Photo of racing 2')
+    img.js-lazy(data-src='https://monosnap.com/image/DjOLBVPNRfMdxPqPpgDDWFTwKI9FaL' alt='Photo of racing 3')
+    img.js-lazy(data-src='https://monosnap.com/image/fhMQ6dSKosb8lwefaNqY0sc8532ygo' alt='Photo of racing 4')
+    img.js-lazy(data-src='https://monosnap.com/image/f7fX6h9onp3HS9e198wN5R2jKMdioh' alt='Photo of racing 5')
+    img.js-lazy(data-src='https://monosnap.com/image/sP4nuMirlPdCUWJELKCYz20fEqj00f' alt='Photo of racing 6')
+    img.js-lazy(data-src='https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR' alt='Photo of racing 7')

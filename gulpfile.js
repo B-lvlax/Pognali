@@ -1,4 +1,4 @@
-/* jshint node: true */ // For jsHint
+/* jshint node: true */
 
 'use strict';
 
@@ -7,7 +7,7 @@
 const
   project = 'Pognali',
   tunnelName = project.toLowerCase(),
-  // connect = require('gulp-connect-php'),
+  connect = require('gulp-connect-php'),
   bs = require('browser-sync').create();
 
 const
@@ -40,7 +40,7 @@ function markup() {
   return src('src/jade/*.jade')
     .pipe(jade({
       pretty: true
-    }).on('error', notify.onError(function (error) {
+    }).on('error', notify.onError(function(error) {
       return {
         title: 'JADE',
         message: error.message
@@ -57,14 +57,6 @@ function markup() {
 
 function minifyMarkup() {
   return src('build/*.html')
-    // When working with PHP comment minifying
-    // .pipe(minifier({
-      // minify: true,
-      // minifyHTML: {
-      //   collapseWhitespace: true,
-      //   conservativeCollapse: true
-      // }
-    // }))
     .pipe(htmlmin())
     .pipe(dest('public/'));
 }
@@ -76,7 +68,7 @@ function styles() {
   return src('src/stylus/styles.styl', { sourcemaps: true })
     .pipe(stylus({
       'include css': true
-    }).on('error', notify.onError(function (error) {
+    }).on('error', notify.onError(function(error) {
       return {
         title: 'STYLUS',
         message: error.message
@@ -156,6 +148,7 @@ function svg() {
 }
 
 function optImg() {
+  // Another plugin for all types https://www.npmjs.com/package/gulp-imagemin
   return src('build/images/**/*.{png,gif,jpg,jpeg}')
     .pipe(imgOptim.optimize({ batchSize: 75 }))
     .pipe(dest('public/images/'));
@@ -213,24 +206,24 @@ function toPublic(cb) {
 =====================================================================*/
 function server() {
   // To work with PHP comment this
-  bs.init({
-    server: { baseDir: 'build/' },
-    tunnel: tunnelName,
-    open: false,
-    browser: 'Vivaldi'
-  });
+  // bs.init({
+  //   server: { baseDir: 'build' },
+  //   open: false,
+  //   browser: 'Vivaldi'
+  //   tunnel: tunnelName,
+  //   scrollThrottle: 100
+  // });
 
   // To work with PHP uncomment this
-  // connect.server({base: 'build/'}, function (){
-  //   bs.init({
-  //     proxy: '127.0.0.1:8000',
-  //     open: true,
-  //     browser: 'Opera',
-  //     tunnel: true,
-  //     tunnel: tunnelName,
-  //     baseDir: 'build/'
-  //   });
-  // });
+  connect.server({ base: 'build' }, function() {
+    bs.init({
+      proxy: '127.0.0.1:8000',
+      open: false,
+      browser: 'Vivaldi',
+      tunnel: tunnelName,
+      scrollThrottle: 100
+    });
+  });
 
   watch('src/jade/**/*.jade', markup);
   watch('src/stylus/**/*.styl', styles);

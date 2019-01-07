@@ -53,8 +53,8 @@ h6 {
 p {
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 1.125rem;
-  font-size: calc(1rem + 0.25 * ((100vw - 20rem) / 80));
+  font-size: 1rem;
+  font-size: calc(1rem + 0.125 * ((100vw - 20rem) / 80));
 }
 address {
   margin-bottom: 16px;
@@ -221,8 +221,8 @@ hr {
 .disabled,
 [disabled],
 [disabled] + span,
-a.disabled,
-a:visited.disabled {
+a:visited.disabled,
+a.disabled {
   cursor: default;
   text-decoration: none;
   pointer-events: none;
@@ -233,8 +233,8 @@ a:visited.disabled {
 .disabled:hover,
 [disabled]:hover,
 [disabled] + span:hover,
-a.disabled:hover,
-a:visited.disabled:hover {
+a:visited.disabled:hover,
+a.disabled:hover {
   color: #9BABB4;
   background-color: #FFF;
 }
@@ -304,7 +304,10 @@ textarea {
 }
 [type="submit"]:hover,
 [type="reset"]:hover,
-[type="button"]:hover {
+[type="button"]:hover,
+[type="submit"]:focus,
+[type="reset"]:focus,
+[type="button"]:focus {
   color: #FFF;
   background-color: #007BFF;
 }
@@ -316,11 +319,6 @@ textarea {
           transform: translateY(4px);
   outline: none;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-[type="submit"]:focus,
-[type="reset"]:focus,
-[type="button"]:focus {
-  outline: none;
 }
 /* Input fields */
 [type="text"],
@@ -563,9 +561,6 @@ a {
   cursor: pointer;
   color: #FFC107;
 }
-a.disabled {
-  text-decoration: underline;
-}
 a:visited {
   color: #9D7600;
 }
@@ -576,7 +571,11 @@ a:active {
   -webkit-transform: translateY(4px);
       -ms-transform: translateY(4px);
           transform: translateY(4px);
+  outline: none;
   text-shadow: 0 6px 6px rgba(0,0,0,0.23);
+}
+a.disabled {
+  text-decoration: underline;
 }
 .scrollBtn {
   position: fixed;
@@ -713,34 +712,6 @@ article {
   width: 100%;
   height: 100%;
   background-image: url("https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR");
-}
-.title {
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display:         flex;
-  -webkit-justify-content: center;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
-  width: 100%;
-  height: 100%;
-  -webkit-animation: hideBg 2s 4s linear forwards;
-          animation: hideBg 2s 4s linear forwards;
-  background-color: rgba(0,0,0,0.7);
-
-  -webkit-align-items: center;
-}
-.title-txt {
-  -webkit-animation: slide-right 4s 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-          animation: slide-right 4s 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-  text-shadow: 0 -5px 0 #7FDBFF, 0 -10px 0 #39CCCC, 0 -15px 0 #3D9970, 0 -20px 0 #2ECC40, 0 -25px 0 #01FF70, 0 -30px 0 #FFDC00, 0 -35px 0 #FF851B, 0 -40px 0 #FF4136, 0 -45px 0 #F012BE, 0 -50px 0 #B10DC9;
-  font-size: 60px;
-  font-size: calc(60px + 20 * ((100vw - 20rem) / 80));
 }
 .text-header,
 .forms-header,
@@ -969,16 +940,13 @@ article {
   -webkit-transform: translateY(4px);
       -ms-transform: translateY(4px);
           transform: translateY(4px);
-  outline: none;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-.forms-btn:focus {
-  outline: none;
 }
 .forms-btn--reset {
   background-color: #DDD;
 }
-.forms-btn--reset:hover {
+.forms-btn--reset:hover,
+.forms-btn--reset:focus {
   background-color: #FF5959;
 }
 .grid-innerWrap {
@@ -1153,52 +1121,6 @@ article {
 }
 .other-lazy img {
   margin-bottom: 16px;
-}
-@-webkit-keyframes slide-right {
-  0% {
-    -webkit-transform: skewX(0deg);
-            transform: skewX(0deg);
-  }
-  10% {
-    -webkit-transform: skewX(20deg) translateX(-50px);
-            transform: skewX(20deg) translateX(-50px);
-  }
-  100% {
-    -webkit-transform: translateX(200%);
-            transform: translateX(200%);
-  }
-}
-@keyframes slide-right {
-  0% {
-    -webkit-transform: skewX(0deg);
-            transform: skewX(0deg);
-  }
-  10% {
-    -webkit-transform: skewX(20deg) translateX(-50px);
-            transform: skewX(20deg) translateX(-50px);
-  }
-  100% {
-    -webkit-transform: translateX(200%);
-            transform: translateX(200%);
-  }
-}
-@-webkit-keyframes hideBg {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    top: -2000px;
-    opacity: 0;
-  }
-}
-@keyframes hideBg {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    top: -2000px;
-    opacity: 0;
-  }
 }
 /*===================================================================
   MEDIA QUERRIES

@@ -14,7 +14,46 @@
     <link rel="icon" href="images/favicon.png" size="any" type="image/png">
     <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
     <!-- Inlined Critical Styles-->
-    <style></style>
+    <style>
+      .title {
+        position: fixed;
+        z-index: 5;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        animation: hideBg 2s 4s linear forwards;
+        background-color: rgba(0,0,0, .7);
+      }
+      .title-txt {
+        animation: slide-right 4s 1.5s cubic-bezier(.215, .610, .355, 1.000) forwards;
+        text-shadow:
+          0 -5px 0 #7FDBFF,
+          0 -10px 0 #39CCCC,
+          0 -15px 0 #3D9970,
+          0 -20px 0 #2ECC40,
+          0 -25px 0 #01FF70,
+          0 -30px 0 #FFDC00,
+          0 -35px 0 #FF851B,
+          0 -40px 0 #FF4136,
+          0 -45px 0 #F012BE,
+          0 -50px 0 #B10DC9;
+        font-size: 6rem;
+        font-size: calc(6rem + 6 * ((100vw - 20rem) / 80));
+      }
+      @keyframes slide-right {
+        0% {transform: skewX(0deg); }
+        10% { transform: skewX(20deg) translateX(-50px); }
+        100% { transform: translateX(200%); }
+      }
+      @keyframes hideBg {
+        0% { opacity: 1; }
+        100% { top: -2000px; opacity: 0; }
+      }
+    </style>
     <noscript>
       <link rel="stylesheet" href="styles/styles.css">
     </noscript>
@@ -319,35 +358,35 @@ p q r s t u v w x y z { | } ~
         <header id="bgPrlx" class="forms-header bgPrlx">
           <h1 id="moveTitle" class="forms-h1">Form elements</h1>
         </header>
-        <form id="form" method="post" action="https://echo.htmlacademy.ru" enctype="multipart/form-data">
+        <form id="form" method="post" action="send.php" enctype="multipart/form-data" class="js-validate">
           <h2 class="forms-h2">Input fields</h2>
           <div class="forms-requiredTxt"><b>&#42;</b> Fields marked with an asterisk are required.</div>
           <fieldset class="forms-inputs">
             <legend>Basic fields</legend>
             <div class="forms-inputsGroup">
-              <input id="name" type="text" name="name" placeholder="Enter your name">
+              <input id="name" type="text" name="name" placeholder="Enter your name" required>
               <label for="name" class="forms-groupTitle">Your name</label>
               <div class="forms-helpTxt">(1-2 words that contains only letters with length two and greater symbols)</div>
             </div>
             <div class="forms-inputsGroup">
-              <input id="password" type="password" name="password" placeholder="Type your Password">
+              <input id="password" type="password" name="password" placeholder="Type your Password" required>
               <label for="password" class="forms-groupTitle">Password</label>
-              <div class="forms-helpTxt">(Must contain letters and digits with length 6 and above)</div>
+              <div class="forms-helpTxt">(Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)</div>
             </div>
             <div class="forms-inputsGroup">
-              <input id="site" type="url" name="site" placeholder="http://yoursite.com">
-              <label for="site" class="forms-groupTitle">Web Address</label>
-              <div class="forms-helpTxt">(Example: http://yoursite.com)</div>
+              <input id="url" type="url" name="url" placeholder="http://yoursite.com" required>
+              <label for="url" class="forms-groupTitle">Web Address</label>
+              <div class="forms-helpTxt">(Example: http://yoursite.com or yoursite.com)</div>
             </div>
             <div class="forms-inputsGroup">
-              <input id="mail" type="email" name="mail" placeholder="name@email.com">
+              <input id="mail" type="email" name="mail" placeholder="name@email.com" required>
               <label for="mail" class="forms-groupTitle">Email Address</label>
               <div class="forms-helpTxt">(Example: name@email.com)</div>
             </div>
             <div class="forms-inputsGroup">
-              <input id="phone" type="tel" name="phone" placeholder="(999) 999-99-99">
+              <input id="phone" type="tel" name="phone" placeholder="(XXX) XXX-XX-XX" required>
               <label for="phone" class="forms-groupTitle">Phone Number</label>
-              <div class="forms-helpTxt">(Only numbers with length from 10 symbols)</div>
+              <div class="forms-helpTxt">(Only numbers - length for 10 symbols)</div>
             </div>
             <div class="forms-inputsGroup">
               <input id="query" type="search" name="query" placeholder="Enter Search Term">
@@ -392,15 +431,15 @@ p q r s t u v w x y z { | } ~
           <fieldset class="forms-checkboxInputs">
             <legend>Checkboxes</legend>
             <div class="forms-checkboxGroup">
-              <input id="checkboxA" name="checkboxA" type="checkbox" checked>
+              <input id="checkboxA" name="checkboxA" type="checkbox" value="A" checked>
               <label for="checkboxA">Choice A</label>
             </div>
             <div class="forms-checkboxGroup">
-              <input id="checkboxB" name="checkboxB" type="checkbox">
+              <input id="checkboxB" name="checkboxB" type="checkbox" value="B">
               <label for="checkboxB">Choice B</label>
             </div>
             <div class="forms-checkboxGroup">
-              <input id="checkboxC" name="checkboxC" type="checkbox">
+              <input id="checkboxC" name="checkboxC" type="checkbox" value="C">
               <label for="checkboxC">Choice C</label>
             </div>
             <div class="forms-checkboxGroup disabled">
@@ -434,7 +473,7 @@ p q r s t u v w x y z { | } ~
               <label for="color">Color input</label>
             </div>
             <div class="forms-html5InputsGroup">
-              <input id="number" type="number" name="number" min="0" max="100" value="5" placeholder="Enter a Number">
+              <input id="number" type="number" name="number" min="0" max="100" value="5" step="any" placeholder="Enter a Number" required>
               <label for="number" class="forms-groupTitle">Number input</label>
               <div class="forms-helpTxt">(Must contain only numbers)</div>
             </div>
@@ -447,7 +486,7 @@ p q r s t u v w x y z { | } ~
               <label for="range">Range input</label>
             </div>
             <div class="forms-html5InputsGroup">
-              <input id="date" type="date" name="date">
+              <input id="date" type="date" name="date" required>
               <label for="date" class="forms-groupTitle">Date input</label>
               <div class="forms-helpTxt">(Only digits in sequence dd/mm/yyyy)</div>
             </div>
@@ -481,8 +520,27 @@ p q r s t u v w x y z { | } ~
             </div>
           </fieldset>
           <div class="forms-actionBtns">
-            <input id="btn-reset" type="reset" value="Reset" class="forms-btn forms-btn--reset">
-            <input id="btn-submit" type="submit" value="Submit" class="forms-btn forms-btn--submit">
+            <input id="btnReset" type="reset" value="Reset" class="forms-btn forms-btn--reset">
+            <input type="submit" value="Submit" class="forms-btn forms-btn--submit">
+          </div>
+        </form>
+        <form id="form-1" method="post" action="send.php" class="js-validate">
+          <fieldset class="forms-inputs">
+            <legend>Test for validation on second form</legend>
+            <div class="forms-inputsGroup">
+              <input id="name-1" type="text" name="name" placeholder="Enter your name" required>
+              <label for="name-1" class="forms-groupTitle">Your name</label>
+              <div class="forms-helpTxt">(1-2 words that contains only letters with length two and greater symbols)</div>
+            </div>
+            <div class="forms-inputsGroup">
+              <input id="password-1" type="password" name="password-1" placeholder="Type your Password" required>
+              <label for="password-1" class="forms-groupTitle">Password</label>
+              <div class="forms-helpTxt">(Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)</div>
+            </div>
+          </fieldset>
+          <div class="forms-actionBtns">
+            <input id="btnReset-1" type="reset" value="Reset" class="forms-btn forms-btn--reset">
+            <input type="submit" value="Submit" class="forms-btn forms-btn--submit">
           </div>
         </form>
       </section>
@@ -626,7 +684,7 @@ p q r s t u v w x y z { | } ~
           <article class="embedded-iframe">
             <h2 class="embedded-h2">IFrame</h2>
             <div>
-              <iframe src="index.html" height="300" width="100%"></iframe>
+              <iframe src="index.html" height="300" width="100%" tabindex="-1"></iframe>
             </div>
           </article>
         </div>
@@ -636,10 +694,10 @@ p q r s t u v w x y z { | } ~
           <h1 id="moveTitle" class="other-h1">Other content</h1>
         </header>
         <article class="other-lazy">
-          <h2 class="other-h2">Lazy loading</h2><img data-src="https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf" alt="Photo of racing 1" class="lazy"><img data-src="https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe" alt="Photo of racing 2" class="lazy"><img data-src="https://monosnap.com/image/DjOLBVPNRfMdxPqPpgDDWFTwKI9FaL" alt="Photo of racing 3" class="lazy"><img data-src="https://monosnap.com/image/fhMQ6dSKosb8lwefaNqY0sc8532ygo" alt="Photo of racing 4" class="lazy"><img data-src="https://monosnap.com/image/f7fX6h9onp3HS9e198wN5R2jKMdioh" alt="Photo of racing 5" class="lazy"><img data-src="https://monosnap.com/image/sP4nuMirlPdCUWJELKCYz20fEqj00f" alt="Photo of racing 6" class="lazy"><img data-src="https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR" alt="Photo of racing 7" class="lazy">
+          <h2 class="other-h2">Lazy loading</h2><img data-src="https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf" alt="Photo of racing 1" class="js-lazy"><img data-src="https://monosnap.com/image/bTUIzJ3B3FamafGtSCd2kwkmw3oYwe" alt="Photo of racing 2" class="js-lazy"><img data-src="https://monosnap.com/image/DjOLBVPNRfMdxPqPpgDDWFTwKI9FaL" alt="Photo of racing 3" class="js-lazy"><img data-src="https://monosnap.com/image/fhMQ6dSKosb8lwefaNqY0sc8532ygo" alt="Photo of racing 4" class="js-lazy"><img data-src="https://monosnap.com/image/f7fX6h9onp3HS9e198wN5R2jKMdioh" alt="Photo of racing 5" class="js-lazy"><img data-src="https://monosnap.com/image/sP4nuMirlPdCUWJELKCYz20fEqj00f" alt="Photo of racing 6" class="js-lazy"><img data-src="https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR" alt="Photo of racing 7" class="js-lazy">
         </article>
       </section>
-    </div><a id="scrollBtn" href="#top" title="Move Up or Down" class="scrollBtn">
+    </div><a id="scrollBtn" href="#top" title="Move Up or Down" tabindex="0" class="scrollBtn">
       <svg width="37" height="21">
         <use xlink:href="images/sprite-symbols.svg#icon-chevron-sm"></use>
       </svg></a>

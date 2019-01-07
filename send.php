@@ -1,5 +1,4 @@
 <?php
-
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $host = 'http://' . $_SERVER['HTTP_HOST'];
     $recepient = 'your mail';
@@ -8,7 +7,6 @@
     $subject = "New request from the site $siteName";
     $headers = 'Content-type: text/html; charset=utf-8' . '\r\n';
     $headers .= 'From: ' . $sender . '\r\n';
-
 
     $row = true;
     foreach ($_POST as $key => $value) {
@@ -34,7 +32,6 @@
           </table>
         </body>
       </html>";
-
 
     if (isset($_FILES) && $_FILES['file']['error'] == 0) {
       $destiation_dir = dirname(__FILE__) . '/files/' . $_FILES['file']['name'];

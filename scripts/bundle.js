@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
   (function() {
 
     var
-      lazyloadImages = select('.lazy'),
+      lazyloadImages = select('.js-lazy'),
       lazyloadThrottleTimeout;
 
     function lazyload() {
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lazyloadImages.forEach(function(img) {
           if (img.offsetTop < (window.innerHeight + window.pageYOffset)) {
             img.src = img.dataset.src;
-            img.classList.remove('lazy');
+            img.classList.remove('js-lazy');
           }
         });
 
@@ -195,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     icon.style.transform = 'rotate(180deg)';
 
-
     function setScroll() {
       if (scrollThrottleTimeout) clearTimeout(scrollThrottleTimeout);
 
@@ -212,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     addEvent(document, 'scroll', setScroll);
 
-
     function moveTo(e) {
       e.preventDefault();
       if (flag) window.scrollBy(0, window.innerHeight);
@@ -223,32 +221,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
   })();
 
-
 });
 
+/*===================================================================
+  Forms
+=====================================================================*/
 'use strict';
 
 (function() {
+
   document.addEventListener('DOMContentLoaded', function() {
     var
-      wrapper = select('#forms'),
-      form = select('#form', wrapper),
-      name = select('#name', wrapper),
-      password = select('#password', wrapper),
-      url = select('#site', wrapper),
-      mail = select('#mail', wrapper),
-      phone = select('#phone', wrapper),
-      numFild = select('#number', wrapper),
-      date = select('#date', wrapper),
-      fields = [name, password, url, mail, phone, date],
-      reset = select('#btn-reset', wrapper),
-      submit = select('#btn-submit', wrapper);
+      form = select('#form'),
+      form1 = select('#form-1'),
+      forms = document.querySelectorAll('.js-validate'),
+      inputPhones = select('input[type="tel"]'),
+      reset = select('#btnReset'),
+      reset1 = select('#btnReset-1');
 
     /*===================================================================*/
 
-    function removeStyles() {
+    function removeStyles(form) {
       form.classList.remove('formError');
-      fields.forEach(function(el) {
+      form.querySelectorAll('input').forEach(function(el) {
         el.classList.remove('fieldError');
         el.classList.remove('fieldValid');
       });
@@ -266,112 +261,69 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    /*===================================================================*/
-
-    function checkTxtField(field, length) {
-      var test = /^([a-zа-яё]+)$/i.test(field.value) && field.value.length >= length;
-
-      if (addStyles(field, test)) return true;
-      else return false;
-    }
-
-    /*===================================================================*/
-
-    function checkDate() {
-      var test = /^\d{4}(\-\d{2}){2}$/.test(date.value);
-
-      if (date.value === '') {
-        date.classList.remove('fieldValid');
-        date.classList.remove('fieldError');
-        date.value = '';
-        return true;
+    addEvent(inputPhones, 'blur', function() {
+      if (this.value.length === 10) {
+        var x = this.value.replace(/\D/g, '').match(/(\d{3})(\d{3})(\d{2})(\d{2})/);
+        this.value = '(' + x[1] + ') ' + x[2] + '-' + x[3] + '-' + x[4];
       }
-      else {
-        if (addStyles(date, test)) return true;
-        else return false;
-      }
-    }
+    });
 
     /*===================================================================*/
 
-    function checkPhone() {
-      var test = /^\(\d{3}\)\s\d{3}(\-\d{2}){2}$/.test(phone.value);
+    forms.forEach(function(el) {
+      el.setAttribute('novalidate', true);
+    });
 
-      if (addStyles(phone, test)) return true;
-      else return false;
-    }
-
-    function setCursorPosition(pos, elem) {
-      elem.focus();
-      if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
-      else if (elem.createTextRange) {
-        var range = elem.createTextRange();
-        range.collapse(true);
-        range.moveEnd('character', pos);
-        range.moveStart('character', pos);
-        range.select();
-      }
-    }
-
-    function mask(e) {
+    function checkForm(form, e) {
       var
-        matrix = this.defaultValue,
-        i = 0,
-        def = matrix.replace(/\D/g, ''),
-        val = this.value.replace(/\D/g, '');
+        name = select('input[name="name"]', form),
+        pass = select('input[type="password"]', form),
+        url = select('input[type="url"]', form),
+        mail = select('input[type="email"]', form),
+        phone = select('input[type="tel"]', form),
+        num = select('input[type="number"]', form),
+        date = select('input[type="date"]', form),
+        fields = [name, pass, url, mail, phone, num, date],
+        hasError = [];
 
-      def.length >= val.length && (val = def);
-
-      matrix = matrix.replace(/[X\d]/g, function(a) {
-        return val.charAt(i++) || 'X';
-      });
-
-      this.value = matrix;
-      i = matrix.lastIndexOf(val.substr(-1));
-      i < matrix.length && matrix != this.defaultValue ? i++ : i = matrix.indexOf('X');
-      setCursorPosition(i, this);
-    }
-
-    phone.addEventListener('input', mask, false);
-
-    /*===================================================================*/
-
-    function checkMail() {
-      var test = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value);
-
-      if (addStyles(mail, test)) return true;
-      else return false;
-    }
-
-    /*===================================================================*/
-
-
-    form.onsubmit = function(e) {
-      submit.setAttribute('formvalidate', false);
-      var hasError = [];
+      var
+        checkTxtField = /^([a-zа-яё]+)$/i.test(name.value) && name.value.length >= 3,
+        checkPass = /^(?=(?:.*?\d){1})(?=(?:.*?[A-Z]))(?=(?:.*?[a-z]))\w{1,}$/.test(pass.value) && 6 <= pass.value.length,
+        checkUrl = /^(((https?|ftp)\:\/\/)?([\w-]+\.)?([\w-])+\.(\w)+\/?[\w\?\.\=\&\-\#\+\/]+)$/.test(url.value),
+        checkMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value),
+        checkPhone = /^\(\d{3}\)\s\d{3}(\-\d{2}){2}$/.test(phone.value), // For it's work well with decimals input must have attribute step.
+        checkNum = /^[\d]+([.|,][\d])?$/.test(num.value) && 3 >= num.value.length,
+        checkDate = /^\d{4}(\-\d{2}){2}$/.test(date.value);
 
       fields.forEach(function(el) {
-        if (el === name && !checkTxtField(el, 3)) hasError.push(el);
-        if (el === date && !checkDate()) hasError.push(el);
-        if (el === phone && !checkPhone()) hasError.push(el);
-        if (el === mail && !checkMail()) hasError.push(el);
+        if (el.name === 'name' && !addStyles(el, checkTxtField)) hasError.push(el);
+        if (el.type === 'password' && !addStyles(el, checkPass)) hasError.push(el);
+        if (el.type === 'url' && !addStyles(el, checkUrl)) hasError.push(el);
+        if (el.type === 'email' && !addStyles(el, checkMail)) hasError.push(el);
+        if (el.type === 'tel' && !addStyles(el, checkPhone)) hasError.push(el);
+        if (el.type === 'number' && !addStyles(el, checkNum)) hasError.push(el);
+        if (el.type === 'date' && !addStyles(el, checkDate)) hasError.push(el);
       });
+
+      if (hasError.length !== 0) {
+        e.preventDefault();
+        form.classList.add('formError');
+      }
 
       setTimeout(function() {
         form.classList.remove('formError');
       }, 600);
-
-      setTimeout(function() {
-        removeStyles();
-      }, 10000);
-
-      if (hasError) {
-        e.preventDefault();
-        form.classList.add('formError');
-      }
     }
 
-    reset.onclick = removeStyles;
+    /*===================================================================*/
+
+    form.addEventListener('submit', checkForm.bind(form, form));
+    reset.addEventListener('click', removeStyles.bind(reset, form));
+
+    form1.addEventListener('submit', checkForm.bind(form1, form1));
+    reset1.addEventListener('click', removeStyles.bind(reset1, form1));
+
   });
+
 })();
 //# sourceMappingURL=bundle.js.map

@@ -20,48 +20,51 @@ article
 
 bgPrlx('https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR')
 
-.title
-  position: fixed
-  z-index: 5
-  top: 0
-  left: 0
-  display: flex
-  justify-content: center
-  align-items: center
-  width: 100%
-  height: 100%
-  animation: hideBg 2s 4s linear forwards
-  background-color: rgba($darkClr, .7)
 
-  &-txt
-    animation: slide-right 4s 1.5s cubic-bezier(.215, .610, .355, 1.000) forwards
-    text-shadow:
-      0 -5px 0 #7FDBFF,
-      0 -10px 0 #39CCCC,
-      0 -15px 0 #3D9970,
-      0 -20px 0 #2ECC40,
-      0 -25px 0 #01FF70,
-      0 -30px 0 #FFDC00,
-      0 -35px 0 #FF851B,
-      0 -40px 0 #FF4136,
-      0 -45px 0 #F012BE,
-      0 -50px 0 #B10DC9
-    fluidTxtInPx(60px, 20)
+// Styles for elements below are placed inline in Head
 
-@keyframes slide-right
-  0%
-    transform: skewX(0deg)
-  10%
-    transform: skewX(20deg) translateX(-50px)
-  100%
-    transform: translateX(200%)
-
-@keyframes hideBg
-  0%
-    opacity: 1
-  100%
-    top: -2000px
-    opacity: 0
+// .title
+//   position: fixed
+//   z-index: 5
+//   top: 0
+//   left: 0
+//   display: flex
+//   justify-content: center
+//   align-items: center
+//   width: 100%
+//   height: 100%
+//   animation: hideBg 2s 4s linear forwards
+//   background-color: rgba($darkClr, .7)
+//
+//   &-txt
+//     animation: slide-right 4s 1.5s cubic-bezier(.215, .610, .355, 1.000) forwards
+//     text-shadow:
+//       0 -5px 0 #7FDBFF,
+//       0 -10px 0 #39CCCC,
+//       0 -15px 0 #3D9970,
+//       0 -20px 0 #2ECC40,
+//       0 -25px 0 #01FF70,
+//       0 -30px 0 #FFDC00,
+//       0 -35px 0 #FF851B,
+//       0 -40px 0 #FF4136,
+//       0 -45px 0 #F012BE,
+//       0 -50px 0 #B10DC9
+//     fluidTxtInRem(6rem, 6)
+//
+// @keyframes slide-right
+//   0%
+//     transform: skewX(0deg)
+//   10%
+//     transform: skewX(20deg) translateX(-50px)
+//   100%
+//     transform: translateX(200%)
+//
+// @keyframes hideBg
+//   0%
+//     opacity: 1
+//   100%
+//     top: -2000px
+//     opacity: 0
 
 
 $header
@@ -83,12 +86,12 @@ $caption--styled
   margin-right: $indent
   margin-left: $indent
   padding: $indent $indent--lg
+  letter-spacing: 8px
+  word-break: keep-all
+  color: $lightClr
   border: 6px solid $lighterClr
   border-radius: $borderRad
   background-color: rgba(0, 0, 0, .6)
-  letter-spacing: 8px
-  color: $lightClr
-  word-break: keep-all
   text-transform: uppercase
   fluidTxtInRem(, 2)
 
@@ -206,14 +209,11 @@ $caption--styled
       color: $lightClr
       background-color: $primaryClr
     &:active
-      outline: none
       transform: translateY(4px)
       shadow()
-    &:focus
-      outline: none
     &--reset
       background-color: $lighterClr
-      &:hover
+      &:hover, &:focus
         background-color: lighten(red, 35%)
 
 

@@ -128,9 +128,9 @@ function php() {
 /* IMAGES
 =====================================================================*/
 function images() {
-  const clearImg = del('build/images/*.*');
+  const clearImg = del(['build/images/*.*', '!build/images/**/*.svg']);
 
-  return src('src/images/*.*', clearImg)
+  return src('src/images/**/*.*', clearImg)
     .pipe(dest('build/images/'));
 }
 
@@ -230,7 +230,7 @@ function server() {
   watch('src/stylus/**/*.styl', styles);
   watch('src/scripts/**/*.js', scripts);
   watch('src/php/**/*.php', php);
-  watch('src/images/*.*', images);
+  watch('src/images/**/*.{png,gif,jpg,jpeg}', images);
   watch('src/images/svg/*.svg', svg);
 }
 
@@ -238,8 +238,10 @@ function deploy() {
   return src('build/**')
     .pipe(rsync({
       root: 'build/',
-      hostname: 'example.com',
-      destination: 'absolute/path/to/site/',
+      // hostname: 'example.com',
+      hostname: 'bmax00@bmax00.ftp.tools',
+      // destination: 'absolute/path/to/site/',
+      destination: '/home/bmax00/b-max.site/www/',
       archive: true,
       silent: false,
       compress: true,

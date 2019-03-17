@@ -1,17 +1,17 @@
-# Стартовый шаблон Pognali
+# Staring template - Pognali
 
 ---
 
-[Здесь](https://b-lvlax.github.io/Pognali/) можно просмотреть реализацию базовых компонентов.
+[Here](https://b-lvlax.github.io/Pognali/) you can see what it represent.
 
-## Список инструментов, которые используются при сборке Gulp'ом:
-__NPM-модули, устанавливаемые глобально:__
+## List of tools that are used with Gulp:
+__NPM modules installed globally:__
 - [Node.js with NPM](https://nodejs.org/en/)
 - [Gulp-CLI](https://github.com/gulpjs/gulp-cli)
-- [imageOptim](https://imageoptim.com/) (опционально и только под Mac)
-- [imageOptim-CLI](https://github.com/JamieMason/ImageOptim-CLI) (опционально и только под Mac)
+- [imageOptim](https://imageoptim.com/) (optional and only for OS X)
+- [imageOptim-CLI](https://github.com/JamieMason/ImageOptim-CLI) (optional and only for OS X)
 
-__NPM-модули, устанавливаемые локально__
+__NPM modules:__
 - [browser-sync](https://www.browsersync.io/)
 - [del](https://www.npmjs.com/package/del)
 - [gulp](https://github.com/gulpjs/gulp)
@@ -28,25 +28,53 @@ __NPM-модули, устанавливаемые локально__
 - [gulp-stylus](https://github.com/stevelacy/gulp-stylus)
 - [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
 - [notification-logger](https://github.com/hkirat/notification-logger/)
+- [gulp-rsync](https://github.com/jerrysu/gulp-rsync/)
+- [pixel-glass](https://github.com/yoksel/pixel-glass-js/)
 
 ---
 
-## Работа с шаблоном Pognali
+## Work with template Pognali
 
-Прежде чем начать использовать данный шаблон, необходимо выполнить следующую последовательность действий:
+Before start using you need to do:
 
-1. Иметь устоновленные Node.js и NPM
-2. Скачать или клонировать с GitHub к себе на компьютер файлы.
-3. Перейти в необходимую папку и установить пакеты: `npm i`.
-4. Выполнить команду: `gulp`.
+1. Have installed Node.js & NPM.
+2. Download or clone from GitHub repository.
+3. Go to working directory and install packages: `npm i`.
+4. Type in Command Line: `gulp`.
 
-#### Есть два варианты Gulp-тасков:
-1. Стартовая комманда `gulp` - запуск сервера с отслеживанием изменений в файлах, создание спрайтов, компиляция Jade/Stylus, а также перемещение библиотек в одну общую папку.
-2. Финальная комманда `gulp public` - минимизация HTML/CSS/JS и оптимизация картинок в отдельную папку.
+#### This template have 2 main tasks:
+1. Command for devolopment `gulp` - it's launch server with watching of changes in files, creating of sprites, compiling Jade/Stylus files and moving used libraries to one folder.
+2. Production command `gulp public` - minifies HTML/CSS/JS and make optimization of images in folder. Also, all optimized files are send to server.
 
-#### Структура проекта
+#### Structure of project
+* Table of contents
+* Text
+  * Headings
+  * Paragraphs
+  * Font sizes
+  * Blockquotes
+  * Lists
+  * Inline elements
+  * Tabular data
+  * Code
+* Form elements
+  * Input fields
+* Grid system
+  * Columns
+  * Offsets
+* Embedded content
+  * Images
+  * Audio
+  * Video
+  * Canvas
+  * Meter
+  * Progress
+  * Inline SVG
+  * Iframe
+* Other content
+  * Lazy loading
 
-#### Особенности некоторых файлов
+#### Some other files
 - .csscomb.json
 - .jsbeautifyrc
 - .htaccess

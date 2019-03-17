@@ -238,8 +238,10 @@ function deploy() {
   return src('build/**')
     .pipe(rsync({
       root: 'build/',
-      hostname: 'example.com',
-      destination: 'absolute/path/to/site/',
+      // hostname: 'example.com',
+      hostname: 'bmax00@bmax00.ftp.tools',
+      // destination: 'absolute/path/to/site/',
+      destination: '/home/bmax00/b-max.site/www/',
       archive: true,
       silent: false,
       compress: true,

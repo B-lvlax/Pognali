@@ -27,7 +27,6 @@ __NPM modules:__
 - [gulp-rename](https://github.com/hparra/gulp-rename)
 - [gulp-stylus](https://github.com/stevelacy/gulp-stylus)
 - [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
-- [notification-logger](https://github.com/hkirat/notification-logger/)
 - [gulp-rsync](https://github.com/jerrysu/gulp-rsync/)
 - [pixel-glass](https://github.com/yoksel/pixel-glass-js/)
 

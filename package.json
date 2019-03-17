@@ -29,7 +29,6 @@
     "gulp-stylus": "^2.6.0",
     "gulp-svg-sprites": "^4.1.2",
     "gulp-sync": "^0.1.4",
-    "notification-logger": "0.0.0",
     "pixel-glass": "^1.0.13"
   }
 }

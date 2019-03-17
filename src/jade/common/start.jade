@@ -95,10 +95,5 @@ html(lang='ru')
       var head = document.querySelector('head');
       head.insertAdjacentHTML('beforeEnd', '<link rel="stylesheet" href="styles/styles.css">');
 
-    // For debugging scripts with console.log
-    script
-      include ../../../node_modules/notification-logger/notification-logger.min.js
-      | logger.init();
-
     // Polyfills and other scripts essentials here
     script(src='scripts/bundle.js')

@@ -24,7 +24,8 @@ const
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
   imgOptim = require('gulp-imageoptim'),
-  svgSprite = require('gulp-svg-sprites');
+  svgSprite = require('gulp-svg-sprites'),
+  rsync = require('gulp-rsync');
 
 
 /* CLEANING FILES
@@ -202,7 +203,7 @@ function toPublic(cb) {
 }
 
 
-/* STATIC SERVER & WATCHER
+/* STATIC SERVER, WATCHER & DEPLOYING
 =====================================================================*/
 function server() {
   // To work with PHP comment this
@@ -233,6 +234,20 @@ function server() {
   watch('src/images/svg/*.svg', svg);
 }
 
+function deploy() {
+  return src('build/**')
+    .pipe(rsync({
+      root: 'build/',
+      hostname: 'example.com',
+      destination: 'absolute/path/to/site/',
+      archive: true,
+      silent: false,
+      compress: true,
+      progress: true,
+      delete: true
+    }));
+}
+
 
 /* TASKS
 =====================================================================*/
@@ -243,9 +258,18 @@ exports.default = series(
   server
 );
 
+exports.build = series(
+  clearAll,
+  parallel(toSrc, toBuild, images),
+  parallel(svg, markup, styles, scripts, php)
+);
+
 exports.public = series(
   clearAll,
-  parallel(toSrc, toBuild, images, svg, markup, styles, scripts),
-  parallel(toPublic, minifyMarkup, minifyStyles, minifyScripts),
-  optImg
+  parallel(toSrc, toBuild, images, svg, markup, styles, scripts, php),
+  toPublic,
+  parallel(optImg, minifyMarkup, minifyStyles, minifyScripts),
+  deploy
 );
+
+exports.deploy = deploy;

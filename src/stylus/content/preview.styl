@@ -107,7 +107,7 @@ $caption--styled
   font-weight: bold
 
 
-//! Section INTRO
+/*! Section INTRO */
 .intro
   &-h2
     @extend $caption
@@ -118,7 +118,7 @@ $caption--styled
     margin-right: $indent
 
 
-//! Section TEXT
+/*! Section TEXT */
 .text
   &-header
     @extend $header
@@ -151,7 +151,8 @@ $caption--styled
     underline($accentClr, $primaryClr)
 
 
-//! Section FORMS
+/*! Section FORMS */
+/*===================================================================*/
 .forms
   &-header
     @extend $header
@@ -217,7 +218,8 @@ $caption--styled
         background-color: lighten(red, 35%)
 
 
-//! Section GRID
+/*! Section GRID */
+/*===================================================================*/
 .grid
   &-innerWrap
     overflow-x: auto
@@ -236,7 +238,7 @@ $caption--styled
     border: 1px solid
     border-radius: $borderRad
     background-color: rgba(0,0,0, .3)
-  //! Columns
+  /*! Columns */
   for num in(1..4)
     &-row--{num} > *
       col(num)
@@ -244,14 +246,15 @@ $caption--styled
     col(6)
   &-row--6 > *
     col(12)
-  //! Offsets
+  /*! Offsets */
   for num in (1..11)
     &-offset--{num}
       col(12 - num)
       offset(num)
 
 
-//! Section EMBEDDED
+/*! Section EMBEDDED */
+/*===================================================================*/
 .embedded
   &-header
     @extend $header
@@ -271,13 +274,14 @@ $caption--styled
     min-width: 250px
     flex-grow: 1
   &-iframeWrap
-    // Fix sizes on IOS 
+    /*! Fix sizes on IOS */
     overflow: auto
     -webkit-overflow-scrolling: touch
     height: 500px
 
 
-//! Section Other
+/*! Section Other */
+/*===================================================================*/
 .other
   &-header
     @extend $header

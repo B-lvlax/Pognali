@@ -141,6 +141,7 @@ section#text.text
               a.text-link.text-link--toLeft(href='#!') This is a Animated Text Underline to Left
             li
               a.text-link.text-link--through(href='#!') This is a Animated Text Underline Through
+        li
           strong Strong is used to indicate strong importance.
         li
           em This text has added emphasis.
@@ -157,9 +158,9 @@ section#text.text
           u &thinsp;u element&thinsp;
           | is text with an unarticulated, though explicitly rendered, non-textual annotation.
         li
-          del This text is deleted
-          | and
-          ins This text is inserted
+          del This text is deleted&thinsp;
+          | and&thinsp;
+          ins This text is inserted 
           | .
         li
           s This text has a strikethrough
@@ -182,15 +183,15 @@ section#text.text
         li
           cite This is a citation.
         li
-          | The
-          dfn dfn element
+          | The&thinsp;
+          dfn dfn element&thinsp;
           | indicates a definition.
         li
-          | The
-          mark mark element
+          | The&thinsp;
+          mark mark element&thinsp;
           | indicates a highlight.
         li
-          | The
+          | The&thinsp;
           var variable element
           | , such as
           var x
@@ -198,7 +199,7 @@ section#text.text
           var y
           | .
         li
-          | The time element:
+          | The time element:&thinsp;
           time(datetime='2013-04-06T12:32+00:00') 2 weeks ago
 
   article.text-hr
@@ -344,7 +345,7 @@ section#forms.forms
         .forms-helpTxt (Must contain only numbers)
       .forms-html5InputsGroup
         input#mobNumber(type='text' value='5' inputmode='numeric' pattern='[0-9]*' name='someNumbers')
-        label(for='mobNumber') ??? Number input for mobile devices ???
+        label(for='mobNumber') Number input for mobile devices
       .forms-html5InputsGroup
         input#range(type='range' name='range' value='10')
         label(for='range') Range input
@@ -377,8 +378,8 @@ section#forms.forms
         button(type='button' disabled) &lt;button disabled&gt;
 
     div.forms-actionBtns
-      input#btnReset.forms-btn.forms-btn--reset(type='reset' value='Reset')
-      input.forms-btn.forms-btn--submit(type='submit' value='Submit')
+      button#btnReset.forms-btn.forms-btn--reset(type='reset') Reset
+      button.forms-btn.forms-btn--submit(type='submit') Submit
         
   form#form-1.js-validate(method='post' action='send.php')
     fieldset.forms-inputs
@@ -393,8 +394,8 @@ section#forms.forms
         .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
       
     div.forms-actionBtns
-      input#btnReset-1.forms-btn.forms-btn--reset(type='reset' value='Reset')
-      input.forms-btn.forms-btn--submit(type='submit' value='Submit')
+      button#btnReset-1.forms-btn.forms-btn--reset(type='reset') Reset'
+      button.forms-btn.forms-btn--submit(type='submit') Submit'
 
 
 section#grid.grid
@@ -506,8 +507,8 @@ section#embedded.embedded
 
     article.embedded-iframe
       h2.embedded-h2 IFrame
-      div
-        iframe(src='index.html' height='300' width='100%' tabindex='-1')
+      div.embedded-iframeWrap
+        iframe(src='index.html' height='100%' width='100%' tabindex='-1')
 
 
 section#other.other

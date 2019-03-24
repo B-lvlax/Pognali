@@ -82,24 +82,6 @@ figcaption
 hr
   margin-bottom: $indent--lg
 
-.noscript
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  min-height: 50px
-  color: $lighterClr
-  background-color: rgba($darkerClr, .9)
-  shadow()
-  &-wrap
-    layoutCenter()
-    padding: $indent--sm
-    text-align: center
-  &-link
-    color: #007bff
-    &:hover
-      text-decoration: none
-
 ::selection
   color: #000
   background-color: $primaryClr
@@ -119,6 +101,7 @@ $disabled
 
 /*! Animations
 =====================================================================*/
+// animation: shake .6s ease
 @keyframes shake
   0%, 100%
     transform: translateX(0)
@@ -127,7 +110,7 @@ $disabled
   20%, 40%, 60%, 80%
     transform: translateX(10px)
 
-// animation: 1.5s ease-in-out infinite swing
+// animation: swing 1.5s ease-in-out infinite
 @keyframes swing
   0%, 100%
     transform: translateY(19px)
@@ -344,21 +327,6 @@ a
     @extend $disabled
     text-decoration: underline
 
-/*! Anchor to the begin of page */
-.scrollBtn
-  position: fixed
-  bottom: 5%
-  left: 46%
-  width: 64px
-  height: 32px
-  animation: 1.5s ease-in-out infinite swing
-  text-align: center
-  border-radius: 50%
-  &:hover svg
-    fill: $darkerClr
-  svg
-    fill: $middleClr
-
 
 /*! Tables
 =====================================================================*/
@@ -374,3 +342,38 @@ th, td
 th
   color: $lightClr
   background-color: $primaryClr
+
+
+/*! Components
+=====================================================================*/
+.scrollBtn
+  position: fixed
+  bottom: 5%
+  left: 46%
+  width: 64px
+  height: 32px
+  animation: swing 1.5s ease-in-out infinite
+  text-align: center
+  border-radius: 50%
+  &:hover svg
+    fill: $darkerClr
+  svg
+    fill: $middleClr
+
+.noscript
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  min-height: 50px
+  color: $lighterClr
+  background-color: rgba($darkerClr, .9)
+  shadow()
+  &-wrap
+    layoutCenter()
+    padding: $indent--sm
+    text-align: center
+  &-link
+    color: #007bff
+    &:hover
+      text-decoration: none

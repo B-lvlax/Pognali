@@ -1,3 +1,16 @@
+mixin scrollBtn
+  a#scrollBtn.scrollBtn(href='#top' title='Scroll Button' tabindex='0')
+    svg(width='37' height='21')
+      use(xlink:href='images/sprite-symbols.svg#icon-chevron-sm')
+
+//-===================================================================
+
+mixin noScript
+  noscript.noscript
+    .noscript-wrap Для полной функциональности этого сайта необходимо включить JavaScript. Вот <a class="noscript-link" href="https://www.enable-javascript.com/ru/" target="_blank"> инструкции, как включить JavaScript в вашем браузере</a>.
+
+//-===================================================================
+
 mixin social(name = '')
   div(class="#{name}")
     a(class="#{name}-link" href="#" title="Вконтакте" target="_blanc")

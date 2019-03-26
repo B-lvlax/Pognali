@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (scrollThrottleTimeout) clearTimeout(scrollThrottleTimeout);
 
       var scrollThrottleTimeout = setTimeout(function() {
-        if (window.pageYOffset <= document.body.scrollHeight / 2) {
+        if (window.pageYOffset <= document.body.scrollHeight / 1.75) {
           icon.style.transform = 'rotate(180deg)';
           flag = true;
         } else {

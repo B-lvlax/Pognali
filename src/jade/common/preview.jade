@@ -248,7 +248,8 @@ section#text.text
 section#forms.forms
   header#bgPrlx.forms-header.bgPrlx
     h1#moveTitle.forms-h1 Form elements
-  form#form.js-validate(method='post' action='send.php' enctype='multipart/form-data')
+  form#form.js-validate(method='post' enctype='multipart/form-data')
+    input(type='text' hidden)
     h2.forms-h2 Input fields
     .forms-requiredTxt <b>&#42;</b> Fields marked with an asterisk are required.
     fieldset.forms-inputs
@@ -381,7 +382,8 @@ section#forms.forms
       button#btnReset.forms-btn.forms-btn--reset(type='reset') Reset
       button.forms-btn.forms-btn--submit(type='submit') Submit
         
-  form#form-1.js-validate(method='post' action='send.php')
+  form#form-1.js-validate(method='post')
+    input(type='text' hidden)
     fieldset.forms-inputs
       legend Test for validation on second form
       .forms-inputsGroup

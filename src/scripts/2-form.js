@@ -45,12 +45,50 @@
 
     /*===================================================================*/
 
+    function sendRequest(someForm) {
+      var xhr = new XMLHttpRequest();
+      var formData = new FormData(someForm);
+
+      if(!xhr) {
+        alert('Cannot create an XMLHTTP instance.');
+        return false;
+      }
+
+      xhr.onreadystatechange = function() {
+        if(this.readyState === 4) {
+          if(this.status === 200) {
+            alert(this.responseText);
+          } else {
+            alert('There was a problem with the request.');
+          }
+        }
+      };
+
+      //- xhr.onerror = function() {
+        //- if (this.readyState == 4 && this.status == 200) {
+          //- alert(this.responseText);
+        //- }
+      //- };
+
+      xhr.open('POST', 'send.php', true);
+      //- xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      //- Set response headers to work in Internet Explorer.
+      //- xhr.setRequestHeader('Content-Type', 'application/xml');
+      xhr.send(formData);
+      //- xhr.send('userName=' + encodeURIComponent(userName));
+    }
+
+    /*===================================================================*/
+
     forms.forEach(function(el) {
       el.setAttribute('novalidate', true);
     });
 
     function checkForm(form, e) {
+      e.preventDefault();
+
       var
+        whisperer = select('input[hidden]', form),
         name = select('input[name="name"]', form),
         pass = select('input[type="password"]', form),
         url = select('input[type="url"]', form),
@@ -81,8 +119,11 @@
       });
 
       if (hasError.length !== 0) {
-        e.preventDefault();
         form.classList.add('formError');
+      } else if (whisperer.value.length !== 0) {
+        return;
+      } else {
+        sendRequest(form);
       }
 
       setTimeout(function() {

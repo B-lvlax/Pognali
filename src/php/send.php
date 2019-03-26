@@ -53,7 +53,7 @@
 
     $sendMail = mail($recepient, $subject, $message, $headers);
 
-    if($sendMail == 'true') {
+    if ($sendMail == 'true') {
       http_response_code(200);
       echo 'The data has been successfully sent!';
     } else {

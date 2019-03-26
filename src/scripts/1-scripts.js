@@ -19,13 +19,13 @@ function select(selector, parent) {
 
 function addEvent(elems, event, func) {
   if (elems.length === undefined) return elems.addEventListener(event, func);
-  for (var i = 0; i < elems.length; i++) {
+  for(var i = 0; i < elems.length; i++) {
     elems[i].addEventListener(event, func);
   }
 }
 function removeEvent(elems, event, func) {
   if (elems.length === undefined) return elems.removeEventListener(event, func);
-  for (var i = 0; i < elems.length; i++) {
+  for(var i = 0; i < elems.length; i++) {
     elems[i].remoEventListener(event, func);
   }
 }

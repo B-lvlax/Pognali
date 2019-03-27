@@ -86,15 +86,22 @@ function bgPrlx(elems, sizeX, sizeY, step) {
 /*===================================================================*/
 
 function elemPrlx(e) {
-  var bodyWidth = document.body.offsetWidth;
-  if (!isMobile.any() && bodyWidth >= 768) {
-    var elem = this.querySelector('#moveTitle');
+  var
+    bodyWidth = document.body.offsetWidth,
+    elems = select('.js-moveTitle');
 
-    elem.style.transform =
-      'translate3d(' +
-      (e.clientX / 4 - (elem.offsetWidth / 3)) + 'px, ' +
-      (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
-  }
+  elems.forEach(function(el) {
+    el.parentElement.addEventListener('mousemove', function(e) {
+      if (!isMobile.any() && bodyWidth >= 768) {
+        var elem = this.querySelector('.js-moveTitle');
+
+        elem.style.transform =
+        'translate3d(' +
+        (e.clientX / 4 - (elem.offsetWidth / 3)) + 'px, ' +
+        (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
+      }
+    });
+  });
 }
 
 
@@ -104,35 +111,31 @@ function elemPrlx(e) {
 =====================================================================*/
 document.addEventListener('DOMContentLoaded', function() {
 
-  /* Parallax effect
-  =====================================================================*/
   window.onscroll = function() {
-    bgPrlx('#bgPrlx', '100%', '140%', 5);
+    bgPrlx('.js-bgPrlx', '100%', '140%', 5);
   };
 
-
-  /* Fixed background image effect
-  =====================================================================*/
-  var parents = select('#bgPrlx');
-  parents.forEach(function(elem) {
-    elem.onmousemove = elemPrlx;
-  });
+  elemPrlx();
 
 
   /* Responsive tables
   =====================================================================*/
-  var
-    allTr = select('#table tr'),
-    labels = [];
+  (function() {
 
-  allTr.forEach(function(tr) {
-    var childs = tr.children;
+    var
+      allTr = select('.js-table tr'),
+      labels = [];
 
-    for(var i = 0; i < childs.length; i++) {
-      if (childs[i].tagName === 'TH') labels.push(childs[i].innerHTML);
-      else childs[i].dataset.label = labels[i];
-    };
-  });
+    allTr.forEach(function(tr) {
+      var childs = tr.children;
+
+      for(var i = 0; i < childs.length; i++) {
+        if (childs[i].tagName === 'TH') labels.push(childs[i].innerHTML);
+        else childs[i].dataset.label = labels[i];
+      };
+    });
+
+  })();
 
 
   /* Lazy loading
@@ -171,17 +174,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* Smooth scrolling
   =====================================================================*/
-  var anchors = select('a[href~="#"]');
+  (function() {
 
-  for (var i = 0; i < anchors.length; i++) {
-    addEvent(anchors[i], 'click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
+    var anchors = select('a[href~="#"]');
+
+    for (var i = 0; i < anchors.length; i++) {
+      addEvent(anchors[i], 'click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
-    });
-  }
+      });
+    }
+
+  })();
 
 
   /* Button to scroll Up or Down
@@ -189,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
   (function() {
 
     var
-      btn = select('#scrollBtn'),
+      btn = select('.js-scrollBtn'),
       icon = select('svg', btn),
       flag;
 
@@ -220,5 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
     addEvent(btn, 'click', moveTo);
 
   })();
+
 
 });

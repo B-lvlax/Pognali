@@ -7,12 +7,9 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     var
-      form = select('#form'),
-      form1 = select('#form-1'),
       forms = document.querySelectorAll('.js-validate'),
-      inputPhones = select('input[type="tel"]'),
-      reset = select('#btnReset'),
-      reset1 = select('#btnReset-1');
+      inputPhones = select('.js-phone'),
+      resets = select('.js-btnReset');
 
     /*===================================================================*/
 
@@ -56,33 +53,16 @@
 
       xhr.onreadystatechange = function() {
         if(this.readyState === 4) {
-          if(this.status === 200) {
-            alert(this.responseText);
-          } else {
-            alert('There was a problem with the request.');
-          }
+          if(this.status === 200) alert(this.responseText);
+          else alert('There was a problem with the request.');
         }
       };
 
-      //- xhr.onerror = function() {
-        //- if (this.readyState == 4 && this.status == 200) {
-          //- alert(this.responseText);
-        //- }
-      //- };
-
       xhr.open('POST', 'send.php', true);
-      //- xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      //- Set response headers to work in Internet Explorer.
-      //- xhr.setRequestHeader('Content-Type', 'application/xml');
       xhr.send(formData);
-      //- xhr.send('userName=' + encodeURIComponent(userName));
     }
 
     /*===================================================================*/
-
-    forms.forEach(function(el) {
-      el.setAttribute('novalidate', true);
-    });
 
     function checkForm(form, e) {
       e.preventDefault();
@@ -104,8 +84,8 @@
         checkPass = /^(?=(?:.*?\d){1})(?=(?:.*?[A-Z]))(?=(?:.*?[a-z]))\w{1,}$/.test(pass.value) && 6 <= pass.value.length,
         checkUrl = /^(((https?|ftp)\:\/\/)?([\w-]+\.)?([\w-])+\.(\w)+\/?[\w\?\.\=\&\-\#\+\/]+)$/.test(url.value),
         checkMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value),
-        checkPhone = /^\(\d{3}\)\s\d{3}(\-\d{2}){2}$/.test(phone.value), // For it's work well with decimals input must have attribute step.
-        checkNum = /^[\d]+([.|,][\d])?$/.test(num.value) && 3 >= num.value.length,
+        checkPhone = /^\(\d{3}\)\s\d{3}(\-\d{2}){2}$/.test(phone.value),
+        checkNum = /^[\d]+([.|,][\d])?$/.test(num.value) && 3 >= num.value.length, // For it's work well with decimals input must have attribute step.
         checkDate = /^\d{4}(\-\d{2}){2}$/.test(date.value);
 
       fields.forEach(function(el) {
@@ -118,13 +98,9 @@
         if (el.type === 'date' && !addStyles(el, checkDate)) hasError.push(el);
       });
 
-      if (hasError.length !== 0) {
-        form.classList.add('formError');
-      } else if (whisperer.value.length !== 0) {
-        return;
-      } else {
-        sendRequest(form);
-      }
+      if (hasError.length !== 0) form.classList.add('formError');
+      else if (whisperer.value.length !== 0) return;
+      else sendRequest(form);
 
       setTimeout(function() {
         form.classList.remove('formError');
@@ -133,12 +109,16 @@
 
     /*===================================================================*/
 
-    form.addEventListener('submit', checkForm.bind(form, form));
-    reset.addEventListener('click', removeStyles.bind(reset, form));
+    forms.forEach(function(form) {
+      form.setAttribute('novalidate', true);
+      form.addEventListener('submit', checkForm.bind(form, form));
 
-    form1.addEventListener('submit', checkForm.bind(form1, form1));
-    reset1.addEventListener('click', removeStyles.bind(reset1, form1));
+      resets.forEach(function(reset) {
+        reset.addEventListener('click', removeStyles.bind('reset', form));
+      });
+    });
 
   });
+
 
 })();

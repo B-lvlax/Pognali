@@ -51,8 +51,8 @@ section.intro
         li Lazy loading
 
 section#text.text
-  header#bgPrlx.text-header.bgPrlx
-    h1#moveTitle.text-h1 Text
+  header.text-header.bgPrlx.js-bgPrlx
+    h1.js-moveTitle.text-h1 Text
   article.text-headings
     h2.text-h2 Headings
     div
@@ -209,7 +209,7 @@ section#text.text
 
   article.text-tables
     h2.text-h2 Tabular data
-    table#table.text-table
+    table.js-table.text-table
       caption Table Caption
       thead
         tr
@@ -246,9 +246,9 @@ section#text.text
 
 
 section#forms.forms
-  header#bgPrlx.forms-header.bgPrlx
-    h1#moveTitle.forms-h1 Form elements
-  form#form.js-validate(method='post' enctype='multipart/form-data')
+  header.forms-header.bgPrlx
+    h1.js-moveTitle.forms-h1 Form elements
+  form.js-validate(method='post' enctype='multipart/form-data')
     input(type='text' hidden)
     h2.forms-h2 Input fields
     .forms-requiredTxt <b>&#42;</b> Fields marked with an asterisk are required.
@@ -271,7 +271,7 @@ section#forms.forms
         label.forms-groupTitle(for='mail') Email Address
         .forms-helpTxt (Example: name@email.com)
       .forms-inputsGroup
-        input#phone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' required)
+        input#phone.js-phone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' required)
         label.forms-groupTitle(for='phone') Phone Number
         .forms-helpTxt (Only numbers - length for 10 symbols)
       .forms-inputsGroup
@@ -379,10 +379,10 @@ section#forms.forms
         button(type='button' disabled) &lt;button disabled&gt;
 
     div.forms-actionBtns
-      button#btnReset.forms-btn.forms-btn--reset(type='reset') Reset
+      button.forms-btn.forms-btn--reset.js-btnReset(type='reset') Reset
       button.forms-btn.forms-btn--submit(type='submit') Submit
         
-  form#form-1.js-validate(method='post')
+  form.js-validate(method='post')
     input(type='text' hidden)
     fieldset.forms-inputs
       legend Test for validation on second form
@@ -396,13 +396,13 @@ section#forms.forms
         .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
       
     div.forms-actionBtns
-      button#btnReset-1.forms-btn.forms-btn--reset(type='reset') Reset
+      button.forms-btn.forms-btn--reset.js-btnReset(type='reset') Reset
       button.forms-btn.forms-btn--submit(type='submit') Submit
 
 
 section#grid.grid
-  header#bgPrlx.grid-header.bgPrlx
-    h1#moveTitle.grid-h1 Grid System
+  header.grid-header.bgPrlx.js-bgPrlx
+    h1.js-moveTitle.grid-h1 Grid System
   h2.grid-h2 Columns
   .grid-innerWrap
     // Twelwe Columns Per Row
@@ -438,8 +438,8 @@ section#grid.grid
 
 
 section#embedded.embedded
-  header#bgPrlx.embedded-header.bgPrlx
-    h1#moveTitle.embedded-h1 Embedded content
+  header.embedded-header.bgPrlx.js-bgPrlx
+    h1.js-moveTitle.embedded-h1 Embedded content
   article.embedded-images
     h2.embedded-h2 Images
     div
@@ -514,8 +514,8 @@ section#embedded.embedded
 
 
 section#other.other
-  header#bgPrlx.bgPrlx.other-header
-    h1#moveTitle.other-h1 Other content
+  header.bgPrlx.js-bgPrlx.other-header
+    h1.js-moveTitle.other-h1 Other content
   article.other-lazy
     h2.other-h2 Lazy loading
     img.js-lazy(data-src='https://monosnap.com/image/AS4vTixmTENPogVnLIjNFmYXKs6Edf' alt='Photo of racing 1')

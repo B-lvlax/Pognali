@@ -1,10 +1,40 @@
 // This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss 
 
-.title
-  .title-txt Pognali
+//- .title
+//-   .title-txt Pognali
+
+
+
+//- .modal.js-modal
+//-   .modal-content
+//-     button.modal-btnClose(type='button' title='Close') Close
+//-       svg.modal-btnIconClose(width='38' height='38')
+//-         use(xlink:href='#icon-close_with_border')
+//-     form.js-validate.modal-form(method='post')
+//-       input(type='text' hidden)
+//-       fieldset.forms-inputs
+//-         legend Test for validation on second form
+//-         .forms-inputsGroup
+//-           input#name-2(type='text' name='name' placeholder='Enter your name' required)
+//-           label.forms-groupTitle(for='name-2') Your name
+//-           .forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
+//-         .forms-inputsGroup
+//-           input#password-2(type='password' name='password' placeholder='Type your Password' required)
+//-           label.forms-groupTitle(for='password-2') Password
+//-           .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
+//- 
+//-       div.forms-actionBtns
+//-         button.forms-btn.forms-btn--reset.js-btnReset(type='reset') Reset
+//-         button.forms-btn.forms-btn--submit(type='submit') Submit
+
+
+
+
 
 .slogan Magic happens here
 
+// Openning
+//=====================================================================
 section.intro
   h2 Table of contents
   ol.intro-contents
@@ -50,6 +80,9 @@ section.intro
       ul
         li Lazy loading
 
+
+// Section TEXT
+//=====================================================================
 section#text.text
   header.text-header.bgPrlx.js-bgPrlx
     h1.js-moveTitle.text-h1 Text
@@ -131,6 +164,8 @@ section#text.text
           ul
             li
               a(href='#!') This is a Default text link
+            li
+              a.js-linkPhone(href='#!' data-phone="000-000-00-00") 000-000-00-00 - Link with phone number that work only on mobile
             li
               a.disabled(href='#!') This is a Disabled text link
             li
@@ -245,6 +280,8 @@ section#text.text
           p q r s t u v w x y z { | } ~
 
 
+// Section FORMS
+//=====================================================================
 section#forms.forms
   header.forms-header.bgPrlx
     h1.js-moveTitle.forms-h1 Form elements
@@ -400,6 +437,8 @@ section#forms.forms
       button.forms-btn.forms-btn--submit(type='submit') Submit
 
 
+// Section LAYOUT
+//=====================================================================
 section#grid.grid
   header.grid-header.bgPrlx.js-bgPrlx
     h1.js-moveTitle.grid-h1 Grid System
@@ -437,6 +476,8 @@ section#grid.grid
         div(class='grid-offset--#{i}')= 'Column ' + i
 
 
+// Section EMBEDDED
+//=====================================================================
 section#embedded.embedded
   header.embedded-header.bgPrlx.js-bgPrlx
     h1.js-moveTitle.embedded-h1 Embedded content
@@ -513,6 +554,8 @@ section#embedded.embedded
         iframe(src='index.html' height='100%' width='100%' tabindex='-1')
 
 
+// Section OTHER
+//=====================================================================
 section#other.other
   header.bgPrlx.js-bgPrlx.other-header
     h1.js-moveTitle.other-h1 Other content

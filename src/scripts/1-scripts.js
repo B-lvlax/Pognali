@@ -6,6 +6,13 @@ console.log('Погнали!');
   GLOBAL FUNCTIONS
 =====================================================================*/
 
+/* VARS
+=====================================================================*/
+var
+  bodyWidth = document.body.offsetWidth,
+  screenMD = 768;
+
+
 /* DOM
 =====================================================================*/
 function select(selector, parent) {
@@ -86,13 +93,11 @@ function bgPrlx(elems, sizeX, sizeY, step) {
 /*===================================================================*/
 
 function elemPrlx(e) {
-  var
-    bodyWidth = document.body.offsetWidth,
-    elems = select('.js-moveTitle');
+  var elems = select('.js-moveTitle');
 
   elems.forEach(function(el) {
     el.parentElement.addEventListener('mousemove', function(e) {
-      if (!isMobile.any() && bodyWidth >= 768) {
+      if (!isMobile.any() && bodyWidth >= screenMD) {
         var elem = this.querySelector('.js-moveTitle');
 
         elem.style.transform =
@@ -227,6 +232,26 @@ document.addEventListener('DOMContentLoaded', function() {
     addEvent(btn, 'click', moveTo);
 
   })();
+
+
+
+  /* Calls from link for mobile devices only
+  =====================================================================*/
+  (function() {
+
+    if (isMobile.any() && bodyWidth <= screenMD) {
+      var linksPhone = select('.js-linkPhone');
+
+      if (linksPhone.length === undefined) linksPhone.href = 'tel:' + linksPhone.dataset.phone;
+      else {
+        linksPhone.forEach(function(el) {
+          el.href = 'tel:' + el.dataset.phone;
+        });
+      }
+    }
+
+  })();
+
 
 
 });

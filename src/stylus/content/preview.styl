@@ -21,7 +21,7 @@ article
 bgPrlx('https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR')
 
 
-// Styles for elements below are placed inline in Head
+// Styles for elements below that are placed inline in Head
 
 // .title
 //   position: fixed
@@ -107,7 +107,8 @@ $caption--styled
   font-weight: bold
 
 
-/*! Section INTRO */
+/*! Section OPENNING
+===================================================================*/
 .intro
   &-h2
     @extend $caption
@@ -118,7 +119,8 @@ $caption--styled
     margin-right: $indent
 
 
-/*! Section TEXT */
+/*! Section TEXT
+===================================================================*/
 .text
   &-header
     @extend $header
@@ -145,8 +147,6 @@ $caption--styled
     col(6)
     min-width: 250px
     flex-grow: 1
-  &-links a
-    vertical-align: middle
   &-link
     underline($accentClr, $primaryClr)
 

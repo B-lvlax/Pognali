@@ -8,7 +8,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     var
       forms = document.querySelectorAll('.js-validate'),
-      inputPhones = select('.js-phone'),
+      inputPhones = select('.js-inpPhone'),
       resets = select('.js-btnReset');
 
     /*===================================================================*/

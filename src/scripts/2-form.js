@@ -9,7 +9,7 @@
     var
       forms = document.querySelectorAll('.js-validate'),
       inputPhones = select('.js-inpPhone'),
-      resets = select('.js-btnReset');
+      resets = document.querySelectorAll('.js-btnReset');
 
     /*===================================================================*/
 
@@ -42,19 +42,26 @@
 
     /*===================================================================*/
 
+    function showResponse(response) {
+      showModal();
+      modalTitle.innerHTML = 'Server response';
+      modalContent.innerHTML = response;
+    }
+
     function sendRequest(someForm) {
-      var xhr = new XMLHttpRequest();
-      var formData = new FormData(someForm);
+      var
+        xhr = new XMLHttpRequest(),
+        formData = new FormData(someForm);
 
       if(!xhr) {
-        alert('Cannot create an XMLHTTP instance.');
+        showResponse('Cannot create an XMLHTTP instance.');
         return false;
       }
 
       xhr.onreadystatechange = function() {
         if(this.readyState === 4) {
-          if(this.status === 200) alert(this.responseText);
-          else alert('There was a problem with the request.');
+          if(this.status === 200) showResponse(this.responseText);
+          else showResponse(this.responseText);
         }
       };
 

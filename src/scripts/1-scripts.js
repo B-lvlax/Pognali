@@ -109,10 +109,54 @@ function elemPrlx(e) {
   });
 }
 
+/* MODAL windows
+=====================================================================*/
+var modal = null, modalTitle, modalContent;
+
+function checkListener(e) {
+  if (e.target === modal && e.target.classList.contains('active')) hideModal();
+  if (e.keyCode === 27) hideModal();
+}
+
+function isModalLink(e) {
+  e.preventDefault();
+  if (e.target.hasAttribute('href')) modal = document.querySelector(e.target.getAttribute('href'));
+  e.target.addEventListener('click', showModal);
+}
+
+function showModal() {
+  if (modal === null) modal = document.querySelector('.js-modal');
+
+  modalTitle = modal.querySelector('.js-modalTitle');
+  modalContent = modal.querySelector('.js-modalContent');
+
+  modal.removeAttribute('aria-hidden');
+  modal.setAttribute('aria-modal', 'true');
+  modal.classList.add('active');
+  modal.querySelector('button[class$="-btnClose"]').addEventListener('click', hideModal);
+
+  window.addEventListener('keydown', checkListener);
+  window.addEventListener('click', checkListener);
+}
+
+function hideModal() {
+  if (modal === null) return;
+
+  modal.setAttribute('aria-hidden', 'true');
+  modal.removeAttribute('aria-modal');
+  modal.classList.remove('active');
+  modal.querySelector('button[class$="-btnClose"]').removeEventListener('click', hideModal);
+  modal = null;
+
+  window.removeEventListener('keydown', checkListener);
+  window.removeEventListener('click', checkListener);
+}
+
+
 
 
 /*===================================================================
-  OTHER SCRIPTS
+  OTHER SCRIPTS ONLOAD
 =====================================================================*/
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -121,6 +165,11 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   elemPrlx();
+
+  var btnShow = document.querySelectorAll('.js-showModal');
+  btnShow.forEach(function(el) {
+    el.addEventListener('click', isModalLink);
+  });
 
 
   /* Responsive tables
@@ -234,7 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
   })();
 
 
-
   /* Calls from link for mobile devices only
   =====================================================================*/
   (function() {
@@ -251,7 +299,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
   })();
-
 
 
 });

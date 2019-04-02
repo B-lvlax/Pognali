@@ -83,10 +83,19 @@ hr
   margin-bottom: $indent--lg
 
 ::selection
-  color: #000
+  color: $darkClr
   background-color: $primaryClr
   text-shadow: none
 
+
+/*! Animations
+=====================================================================*/
+shake()
+swing()
+
+
+/*! Components
+=====================================================================*/
 $disabled
   cursor: default
   text-decoration: none
@@ -98,24 +107,92 @@ $disabled
     color: $disabledClr
     background-color: $lightClr
 
-
-/*! Animations
-=====================================================================*/
-// animation: shake .6s ease
-@keyframes shake
-  0%, 100%
-    transform: translateX(0)
-  10%, 30%, 50%, 70%, 90%
-    transform: translateX(-10px)
-  20%, 40%, 60%, 80%
-    transform: translateX(10px)
-
-// animation: swing 1.5s ease-in-out infinite
-@keyframes swing
-  0%, 100%
-    transform: translateY(19px)
-  50%
+$button
+  margin-bottom: $indent
+  padding: $indent--xs $indent--sm
+  cursor: pointer
+  text-align: center
+  text-decoration: none
+  color: $darkClr
+  border: 1px solid $borderClr
+  border-radius: $borderRad
+  background-color: $lightClr
+  &:visited
+    color: $darkClr
+  &:hover, &:focus
+    color: $lightClr
+    background-color: $primaryClr
+  &:active
+    outline: none
     transform: translateY(4px)
+    shadow()
+$button--xl
+  width: 100%
+  padding: $indent--sm $indent
+
+.scrollBtn
+  scrollBtn()
+
+.noscript
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  min-height: 50px
+  color: $lighterClr
+  background-color: $bgOpaque
+  shadow()
+  &-content
+    layoutCenter()
+    padding: $indent--sm
+    text-align: center
+  &-link
+    color: #007bff
+    &:hover
+      text-decoration: none
+
+$modal
+  z-index: -101
+  position: fixed
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  min-height: 100%
+  transition: all ease .65s
+  opacity: 0
+  background-color: $bgOpaque
+  &.active
+    z-index: 1001
+    opacity: 1
+  &-innerWrap
+    position: relative
+    overflow: auto
+    min-width: 300px
+    max-width: 480px
+    padding: ($indent--lg + $indent) $indent--lg
+    border-radius: $borderRad
+    background-color: $lighterClr
+  &-btnClose
+    position: absolute
+    top: 8px
+    right: 8px
+    width: 32px
+    height: 32px
+    margin: 0
+    padding: 0
+    border: none
+    border-radius: 50%
+    background-color: transparent
+    font-size: 0
+  &-btnIconClose
+    width: 32px
+    height: 32px
+
+.modal
+  @extend $modal
 
 
 /*! Forms Elements
@@ -169,20 +246,7 @@ button,
 [type='submit'],
 [type='reset'],
 [type='button']
-  margin-bottom: $indent
-  padding: $indent--xs $indent--sm
-  cursor: pointer
-  color: $darkClr
-  border: 1px solid $borderClr
-  border-radius: $borderRad
-  background-color: $lightClr
-  &:hover, &:focus
-    color: $lightClr
-    background-color: $primaryClr
-  &:active
-    outline: none
-    transform: translateY(4px)
-    shadow()
+  @extend $button
 
 /*! Input fields */
 
@@ -342,27 +406,3 @@ th, td
 th
   color: $lightClr
   background-color: $primaryClr
-
-
-/*! Components
-=====================================================================*/
-.scrollBtn
-  scrollBtn()
-
-.noscript
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  min-height: 50px
-  color: $lighterClr
-  background-color: rgba($darkerClr, .9)
-  shadow()
-  &-wrap
-    layoutCenter()
-    padding: $indent--sm
-    text-align: center
-  &-link
-    color: #007bff
-    &:hover
-      text-decoration: none

@@ -1,34 +1,7 @@
 // This is all HTML elements taken from this resource: https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss 
 
-//- .title
-//-   .title-txt Pognali
-
-
-
-//- .modal.js-modal
-//-   .modal-content
-//-     button.modal-btnClose(type='button' title='Close') Close
-//-       svg.modal-btnIconClose(width='38' height='38')
-//-         use(xlink:href='#icon-close_with_border')
-//-     form.js-validate.modal-form(method='post')
-//-       input(type='text' hidden)
-//-       fieldset.forms-inputs
-//-         legend Test for validation on second form
-//-         .forms-inputsGroup
-//-           input#name-2(type='text' name='name' placeholder='Enter your name' required)
-//-           label.forms-groupTitle(for='name-2') Your name
-//-           .forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
-//-         .forms-inputsGroup
-//-           input#password-2(type='password' name='password' placeholder='Type your Password' required)
-//-           label.forms-groupTitle(for='password-2') Password
-//-           .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
-//- 
-//-       div.forms-actionBtns
-//-         button.forms-btn.forms-btn--reset.js-btnReset(type='reset') Reset
-//-         button.forms-btn.forms-btn--submit(type='submit') Submit
-
-
-
+.title
+  .title-txt Pognali
 
 
 .slogan Magic happens here
@@ -308,7 +281,7 @@ section#forms.forms
         label.forms-groupTitle(for='mail') Email Address
         .forms-helpTxt (Example: name@email.com)
       .forms-inputsGroup
-        input#phone.js-phone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' required)
+        input#phone.js-inpPhone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' required)
         label.forms-groupTitle(for='phone') Phone Number
         .forms-helpTxt (Only numbers - length for 10 symbols)
       .forms-inputsGroup
@@ -418,23 +391,34 @@ section#forms.forms
     div.forms-actionBtns
       button.forms-btn.forms-btn--reset.js-btnReset(type='reset') Reset
       button.forms-btn.forms-btn--submit(type='submit') Submit
-        
-  form.js-validate(method='post')
-    input(type='text' hidden)
-    fieldset.forms-inputs
-      legend Test for validation on second form
-      .forms-inputsGroup
-        input#name-1(type='text' name='name' placeholder='Enter your name' required)
-        label.forms-groupTitle(for='name-1') Your name
-        .forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
-      .forms-inputsGroup
-        input#password-1(type='password' name='password-1' placeholder='Type your Password' required)
-        label.forms-groupTitle(for='password-1') Password
-        .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
-      
-    div.forms-actionBtns
-      button.forms-btn.forms-btn--reset.js-btnReset(type='reset') Reset
-      button.forms-btn.forms-btn--submit(type='submit') Submit
+
+  hr
+
+  a.forms-btnShowModal.js-showModal(href='#modal1') Show form in modal window
+  #modal1.forms-modal.formsModal(aria-hidden='true' role='dialog' aria-labelledby='modalTitle-1')
+    .formsModal-innerWrap
+      h2#modalTitle-1.formsModal-title.js-modalTitle Submit contact form
+      hr
+      button.formsModal-btnClose(type='button' title='Close') Close
+        svg.formsModal-btnIconClose(width='38' height='38')
+          use(xlink:href='#icon-close_with_border')
+      .formsModal-content.js-modalContent
+        form.js-validate.formsModal-form(method='post')
+          input(type='text' hidden)
+          fieldset.forms-inputs
+            legend Test for validation on second form
+            .forms-inputsGroup
+              input#name-1(type='text' name='name' placeholder='Enter your name' required)
+              label.forms-groupTitle(for='name-1') Your name
+              .forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
+            .forms-inputsGroup
+              input#phone-1.js-inpPhone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' required)
+              label.forms-groupTitle(for='phone-1') Phone Number
+              .forms-helpTxt (Only numbers - length for 10 symbols)
+
+          div.forms-actionBtns
+            button.forms-btn.forms-btn--reset.js-btnReset(type='reset') Reset
+            button.forms-btn.forms-btn--submit(type='submit') Submit
 
 
 // Section LAYOUT

@@ -1,3 +1,14 @@
+mixin modal
+  .modal.js-modal(aria-hidden='true' role='dialog' aria-labelledby='modalTitle')
+    .modal-innerWrap
+      h2#modalTitle.modal-title.js-modalTitle Some title
+      hr
+      button.modal-btnClose(type='button' title='Close') Close
+        svg.modal-btnIconClose(width='38' height='38')
+          use(xlink:href='#icon-close_with_border')
+      .modal-content.js-modalContent
+
+//-===================================================================
 mixin scrollBtn
   a.js-scrollBtn.scrollBtn(href='#top' title='Scroll Button' tabindex='0')
     svg(width='37' height='21')

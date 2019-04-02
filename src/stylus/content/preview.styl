@@ -34,7 +34,7 @@ bgPrlx('https://monosnap.com/image/xDyAdvobNI1N0pY2JcZlZnxkb2LMwR')
 //   width: 100%
 //   height: 100%
 //   animation: hideBg 2s 4s linear forwards
-//   background-color: rgba($darkClr, .7)
+//   background-color: $bgOpaque
 //
 //   &-txt
 //     animation: slide-right 4s 1.5s cubic-bezier(.215, .610, .355, 1.000) forwards
@@ -147,6 +147,8 @@ $caption--styled
     col(6)
     min-width: 250px
     flex-grow: 1
+  &-links a
+    vertical-align: middle
   &-link
     underline($accentClr, $primaryClr)
 
@@ -216,6 +218,14 @@ $caption--styled
       background-color: $lighterClr
       &:hover, &:focus
         background-color: lighten(red, 35%)
+
+  &-btnShowModal
+    @extend $button
+    @extend $button--xl
+.formsModal
+  @extend $modal
+  &-form
+    margin-bottom: 0
 
 
 /*! Section GRID

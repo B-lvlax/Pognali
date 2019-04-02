@@ -68,8 +68,8 @@ bgPrlx($url)
 
   .bgPrlx--single::before
     content: ''
-    position: fixed
     z-index: -1
+    position: fixed
     top: 0
     left: 0
     width: 100%
@@ -157,13 +157,23 @@ phMoveDown()
 
 /*===================================================================*/
 
-// animation: radialPulse 1s infinite
-pulse()
-  @keyframes radialPulse
-    0%
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, .5)
-    100%
-      box-shadow: 0 0 0 30px rgba(0, 0, 0, 0)
+// animation: shake .6s ease
+shake()
+  @keyframes shake
+    0%, 100%
+      transform: translateX(0)
+    10%, 30%, 50%, 70%, 90%
+      transform: translateX(-10px)
+    20%, 40%, 60%, 80%
+      transform: translateX(10px)
+
+// animation: swing 1.5s ease-in-out infinite
+swing()
+  @keyframes swing
+    0%, 100%
+      transform: translateY(19px)
+    50%
+      transform: translateY(4px)
 
 /*===================================================================*/
 

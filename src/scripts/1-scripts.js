@@ -13,31 +13,6 @@ var
   screenMD = 768;
 
 
-/* DOM
-=====================================================================*/
-function select(selector, parent) {
-  parent = parent || document;
-  var selected = parent.querySelectorAll(selector);
-  if (selected.length === 1) return selected[0];
-  return selected;
-}
-
-/*===================================================================*/
-
-function addEvent(elems, event, func) {
-  if (elems.length === undefined) return elems.addEventListener(event, func);
-  for(var i = 0; i < elems.length; i++) {
-    elems[i].addEventListener(event, func);
-  }
-}
-function removeEvent(elems, event, func) {
-  if (elems.length === undefined) return elems.removeEventListener(event, func);
-  for(var i = 0; i < elems.length; i++) {
-    elems[i].remoEventListener(event, func);
-  }
-}
-
-
 /* TESTING
 =====================================================================*/
 function isNum(elem) {
@@ -71,29 +46,26 @@ var isMobile = {
 
 /* EFFECTS
 =====================================================================*/
-function bgPrlx(elems, sizeX, sizeY, step) {
-  elems = select(elems);
+function bgPrlx(items, sizeX, sizeY, step) {
+  var elems = document.querySelectorAll(items);
 
-  if (elems.length === undefined) addClass(elems, 'bgPrlx--single');
-  else {
-    if (isMobile.any()) {
-      var scrolledY = Math.round(window.pageYOffset);
+  if (isMobile.any()) {
+    var scrolledY = Math.round(window.pageYOffset);
 
-      elems.forEach(function(elem) {
-        elem.style.backgroundAttachment = 'scroll';
-        elem.style.backgroundSize = sizeX + ' ' + sizeY;
-        elem.style.backgroundPosition =
-          'center ' +
-          ((scrolledY - Math.round(elem.offsetTop)) / step) + 'px';
-      });
-    }
+    elems.forEach(function(elem) {
+      elem.style.backgroundAttachment = 'scroll';
+      elem.style.backgroundSize = sizeX + ' ' + sizeY;
+      elem.style.backgroundPosition =
+        'center ' +
+        ((scrolledY - Math.round(elem.offsetTop)) / step) + 'px';
+    });
   }
 }
 
 /*===================================================================*/
 
 function elemPrlx(e) {
-  var elems = select('.js-moveTitle');
+  var elems = document.querySelectorAll('.js-moveTitle');
 
   elems.forEach(function(el) {
     el.parentElement.addEventListener('mousemove', function(e) {
@@ -116,12 +88,6 @@ var modal = null, modalTitle, modalContent;
 function checkListener(e) {
   if (e.target === modal && e.target.classList.contains('active')) hideModal();
   if (e.keyCode === 27) hideModal();
-}
-
-function isModalLink(e) {
-  e.preventDefault();
-  if (e.target.hasAttribute('href')) modal = document.querySelector(e.target.getAttribute('href'));
-  e.target.addEventListener('click', showModal);
 }
 
 function showModal() {
@@ -154,7 +120,6 @@ function hideModal() {
 
 
 
-
 /*===================================================================
   OTHER SCRIPTS ONLOAD
 =====================================================================*/
@@ -168,7 +133,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var btnShow = document.querySelectorAll('.js-showModal');
   btnShow.forEach(function(el) {
-    el.addEventListener('click', isModalLink);
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (e.target.hasAttribute('href')) {
+        modal = document.querySelector(e.target.getAttribute('href'));
+        showModal();
+      }
+    });
   });
 
 
@@ -177,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
   (function() {
 
     var
-      allTr = select('.js-table tr'),
+      allTr = document.querySelectorAll('.js-table tr'),
       labels = [];
 
     allTr.forEach(function(tr) {
@@ -197,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
   (function() {
 
     var
-      lazyloadImages = select('.js-lazy'),
+      lazyloadImages = document.querySelectorAll('.js-lazy'),
       lazyloadThrottleTimeout;
 
     function lazyload() {
@@ -212,16 +183,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (lazyloadImages.length === 0) {
-          removeEvent(document, 'scroll', lazyload);
-          removeEvent(window, 'resize', lazyload);
-          removeEvent(window, 'orientationChange', lazyload);
+          document.removeEventListener('scroll', lazyload);
+          window.removeEventListener('resize', lazyload);
+          window.removeEventListener('orientationChange', lazyload);
         }
       }, 20);
     }
 
-    addEvent(document, 'scroll', lazyload);
-    addEvent(window, 'resize', lazyload);
-    addEvent(window, 'orientationChange', lazyload);
+    document.addEventListener('scroll', lazyload);
+    window.addEventListener('resize', lazyload);
+    window.addEventListener('orientationChange', lazyload);
 
   })();
 
@@ -230,10 +201,10 @@ document.addEventListener('DOMContentLoaded', function() {
   =====================================================================*/
   (function() {
 
-    var anchors = select('a[href~="#"]');
+    var anchors = document.querySelectorAll('a[href~="#"]');
 
     for (var i = 0; i < anchors.length; i++) {
-      addEvent(anchors[i], 'click', function(e) {
+      anchors[i].addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth',
@@ -250,8 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
   (function() {
 
     var
-      btn = select('.js-scrollBtn'),
-      icon = select('svg', btn),
+      btn = document.querySelector('.js-scrollBtn'),
+      icon = btn.querySelector('svg'),
       flag;
 
     icon.style.transform = 'rotate(180deg)';
@@ -270,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 20);
     }
 
-    addEvent(document, 'scroll', setScroll);
+    document.addEventListener('scroll', setScroll);
 
     function moveTo(e) {
       e.preventDefault();
@@ -278,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
       else window.scrollTo(0, 0);
     }
 
-    addEvent(btn, 'click', moveTo);
+    btn.addEventListener('click', moveTo);
 
   })();
 
@@ -288,14 +259,11 @@ document.addEventListener('DOMContentLoaded', function() {
   (function() {
 
     if (isMobile.any() && bodyWidth <= screenMD) {
-      var linksPhone = select('.js-linkPhone');
+      var linksPhone = document.querySelectorAll('.js-linkPhone');
 
-      if (linksPhone.length === undefined) linksPhone.href = 'tel:' + linksPhone.dataset.phone;
-      else {
-        linksPhone.forEach(function(el) {
-          el.href = 'tel:' + el.dataset.phone;
-        });
-      }
+      linksPhone.forEach(function(el) {
+        el.href = 'tel:' + el.dataset.phone;
+      });
     }
 
   })();

@@ -8,7 +8,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     var
       forms = document.querySelectorAll('.js-validate'),
-      inputPhones = select('.js-inpPhone'),
+      inputPhones = document.querySelectorAll('.js-inpPhone'),
       resets = document.querySelectorAll('.js-btnReset');
 
     /*===================================================================*/
@@ -33,19 +33,21 @@
       }
     }
 
-    addEvent(inputPhones, 'blur', function() {
-      if (this.value.length === 10) {
-        var x = this.value.replace(/\D/g, '').match(/(\d{3})(\d{3})(\d{2})(\d{2})/);
-        this.value = '(' + x[1] + ') ' + x[2] + '-' + x[3] + '-' + x[4];
-      }
+    inputPhones.forEach(function(el) {
+      el.addEventListener('blur', function() {
+        if (this.value.length === 10) {
+          var x = this.value.replace(/\D/g, '').match(/(\d{3})(\d{3})(\d{2})(\d{2})/);
+          this.value = '(' + x[1] + ') ' + x[2] + '-' + x[3] + '-' + x[4];
+        }
+      });
     });
 
     /*===================================================================*/
 
     function showResponse(response) {
       showModal();
-      modalTitle.innerHTML = 'Server response';
-      modalContent.innerHTML = response;
+      modalTitle.innerHTML = modalTitle.innerHTML;
+      modalContent.innerHTML = '<b>' + response + '</b>';
     }
 
     function sendRequest(someForm) {
@@ -75,34 +77,46 @@
       e.preventDefault();
 
       var
-        whisperer = select('input[hidden]', form),
-        name = select('input[name="name"]', form),
-        pass = select('input[type="password"]', form),
-        url = select('input[type="url"]', form),
-        mail = select('input[type="email"]', form),
-        phone = select('input[type="tel"]', form),
-        num = select('input[type="number"]', form),
-        date = select('input[type="date"]', form),
-        fields = [name, pass, url, mail, phone, num, date],
+        whisperer = form.querySelector('input[hidden]'),
+        name = form.querySelector('input[name="name"]'),
+        pass = form.querySelector('input[type="password"]'),
+        url = form.querySelector('input[type="url"]'),
+        mail = form.querySelector('input[type="email"]'),
+        phone = form.querySelector('input[type="tel"]'),
+        num = form.querySelector('input[type="number"]'),
+        date = form.querySelector('input[type="date"]'),
+        allFields = [name, pass, url, mail, phone, num, date],
         hasError = [];
 
-      var
-        checkTxtField = /^([a-zа-яё]+)$/i.test(name.value) && name.value.length >= 3,
-        checkPass = /^(?=(?:.*?\d){1})(?=(?:.*?[A-Z]))(?=(?:.*?[a-z]))\w{1,}$/.test(pass.value) && 6 <= pass.value.length,
-        checkUrl = /^(((https?|ftp)\:\/\/)?([\w-]+\.)?([\w-])+\.(\w)+\/?[\w\?\.\=\&\-\#\+\/]+)$/.test(url.value),
-        checkMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value),
-        checkPhone = /^\(\d{3}\)\s\d{3}(\-\d{2}){2}$/.test(phone.value),
-        checkNum = /^[\d]+([.|,][\d])?$/.test(num.value) && 3 >= num.value.length, // For it's work well with decimals input must have attribute step.
-        checkDate = /^\d{4}(\-\d{2}){2}$/.test(date.value);
-
-      fields.forEach(function(el) {
-        if (el.name === 'name' && !addStyles(el, checkTxtField)) hasError.push(el);
-        if (el.type === 'password' && !addStyles(el, checkPass)) hasError.push(el);
-        if (el.type === 'url' && !addStyles(el, checkUrl)) hasError.push(el);
-        if (el.type === 'email' && !addStyles(el, checkMail)) hasError.push(el);
-        if (el.type === 'tel' && !addStyles(el, checkPhone)) hasError.push(el);
-        if (el.type === 'number' && !addStyles(el, checkNum)) hasError.push(el);
-        if (el.type === 'date' && !addStyles(el, checkDate)) hasError.push(el);
+      allFields.forEach(function(el) {
+        if (el !== null && el.name === 'name') {
+          var test = /^([a-zа-яё]+)$/i.test(name.value) && name.value.length >= 3;
+          if (!addStyles(el, test)) hasError.push(el);
+        }
+        if (el !== null && el.type === 'password') {
+          var test = /^(?=(?:.*?\d){1})(?=(?:.*?[A-Z]))(?=(?:.*?[a-z]))\w{1,}$/.test(pass.value) && 6 <= pass.value.length;
+          if (!addStyles(el, test)) hasError.push(el);
+        }
+        if (el !== null && el.type === 'url') {
+          var test = /^(((https?|ftp)\:\/\/)?([\w-]+\.)?([\w-])+\.(\w)+\/?[\w\?\.\=\&\-\#\+\/]+)$/.test(url.value);
+          if (!addStyles(el, test)) hasError.push(el);
+        }
+        if (el !== null && el.type === 'email') {
+          var test = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value);
+          if (!addStyles(el, test)) hasError.push(el);
+        }
+        if (el !== null && el.type === 'tel') {
+          var test = /^\(\d{3}\)\s\d{3}(\-\d{2}){2}$/.test(phone.value);
+          if (!addStyles(el, test)) hasError.push(el);
+        }
+        if (el !== null && el.type === 'number') {
+          var test = /^[\d]+([.|,][\d])?$/.test(num.value) && 3 >= num.value.length; // For it's work well with decimals input must have attribute step.
+          if (!addStyles(el, test)) hasError.push(el);
+        }
+        if (el !== null && el.type === 'date') {
+          var test = /^\d{4}(\-\d{2}){2}$/.test(date.value);
+          if (!addStyles(el, test)) hasError.push(el);
+        }
       });
 
       if (hasError.length !== 0) form.classList.add('formError');

@@ -128,16 +128,16 @@ function php() {
 /* IMAGES
 =====================================================================*/
 function images() {
-  const clearImg = del(['build/images/*.*', '!build/images/**/*.svg']);
+  const clearImg = del(['build/images/*', '!build/images/svg/**/*.svg']);
 
-  return src('src/images/**/*.*', clearImg)
+  return src(['src/images/**/*.*', '!src/images/svg/**/*.svg'], clearImg)
     .pipe(dest('build/images/'));
 }
 
-function svg() {
-  const clearSvg = del('build/images/svg/*.svg');
+function spriteSvg() {
+  const clearSvg = del(['build/images/svg/**/*.svg', 'build/images/sprite-symbols.svg']);
 
-  return src('src/images/svg/*.svg')
+  return src('src/images/svg/**/*.svg', clearSvg)
     .pipe(dest('build/images/svg/'))
     .pipe(svgSprite({
       mode: "symbols",
@@ -196,7 +196,7 @@ function toPublic(cb) {
   const moveMedia = src('build/media/**/*.*')
     .pipe(dest('public/media/'));
 
-  const moveImg = src('build/images/*.{ico,svg}')
+  const moveImg = src('build/images/**/*.{ico,svg}')
     .pipe(dest('public/images/'));
 
   cb();
@@ -210,7 +210,7 @@ function server() {
   // bs.init({
   //   server: { baseDir: 'build' },
   //   open: false,
-  //   browser: 'Vivaldi'
+  //   browser: 'Vivaldi',
   //   tunnel: tunnelName,
   //   scrollThrottle: 100
   // });
@@ -230,24 +230,28 @@ function server() {
   watch('src/stylus/**/*.styl', styles);
   watch('src/scripts/**/*.js', scripts);
   watch('src/php/**/*.php', php);
-  watch('src/images/**/*.{png,gif,jpg,jpeg}', images);
-  watch('src/images/svg/*.svg', svg);
+  watch('src/images/**/*.*}', images);
+  watch('src/images/svg/**/*.svg', spriteSvg);
 }
 
+
 function deploy() {
-  return src('build/**')
+  var
+    args = process.argv.slice(2),
+    path = args[1] === '--build' ? 'build' : 'public';
+
+  return src(path + '/**')
     .pipe(rsync({
-      root: 'build/',
-      // hostname: 'example.com',
-      hostname: 'bmax00@bmax00.ftp.tools',
-      // destination: 'absolute/path/to/site/',
-      destination: '/home/bmax00/b-max.site/www/',
+      root: path + '/',
+      hostname: 'example.com',
+      destination: 'absolute/path/to/site/',
       archive: true,
+      recursive: true,
       silent: false,
       compress: true,
       progress: true,
-      delete: true
-    }));
+      clean: true
+  }));
 }
 
 
@@ -255,23 +259,23 @@ function deploy() {
 =====================================================================*/
 exports.default = series(
   clearAll,
-  parallel(toSrc, toBuild, images),
-  parallel(svg, markup, styles, scripts, php),
+  parallel(toSrc, toBuild, images, spriteSvg),
+  parallel(markup, styles, scripts, php),
   server
 );
 
 exports.build = series(
   clearAll,
-  parallel(toSrc, toBuild, images),
-  parallel(svg, markup, styles, scripts, php)
+  parallel(toSrc, toBuild, images, spriteSvg),
+  parallel(markup, styles, scripts, php)
 );
 
 exports.public = series(
   clearAll,
-  parallel(toSrc, toBuild, images, svg, markup, styles, scripts, php),
+  parallel(toSrc, toBuild, spriteSvg, images),
+  parallel(markup, styles, scripts, php),
   toPublic,
-  parallel(optImg, minifyMarkup, minifyStyles, minifyScripts),
-  deploy
+  parallel(optImg, minifyMarkup, minifyStyles, minifyScripts)
 );
 
 exports.deploy = deploy;

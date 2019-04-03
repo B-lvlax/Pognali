@@ -256,7 +256,7 @@ section#text.text
 // Section FORMS
 //=====================================================================
 section#forms.forms
-  header.forms-header.bgPrlx
+  header.forms-header.bgPrlx.js-bgPrlx
     h1.js-moveTitle.forms-h1 Form elements
   form.js-validate(method='post' enctype='multipart/form-data')
     input(type='text' hidden)
@@ -397,7 +397,7 @@ section#forms.forms
   a.forms-btnShowModal.js-showModal(href='#modal1') Show form in modal window
   #modal1.forms-modal.formsModal(aria-hidden='true' role='dialog' aria-labelledby='modalTitle-1')
     .formsModal-innerWrap
-      h2#modalTitle-1.formsModal-title.js-modalTitle Submit contact form
+      h2#modalTitle-1.formsModal-title.js-modalTitle Submit contact form in modal window
       hr
       button.formsModal-btnClose(type='button' title='Close') Close
         svg.formsModal-btnIconClose(width='38' height='38')
@@ -541,7 +541,7 @@ section#embedded.embedded
 // Section OTHER
 //=====================================================================
 section#other.other
-  header.bgPrlx.js-bgPrlx.other-header
+  header.other-header.bgPrlx.js-bgPrlx
     h1.js-moveTitle.other-h1 Other content
   article.other-lazy
     h2.other-h2 Lazy loading

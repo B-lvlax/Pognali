@@ -99,8 +99,8 @@ function showModal() {
   modal.removeAttribute('aria-hidden');
   modal.setAttribute('aria-modal', 'true');
   modal.classList.add('active');
-  modal.querySelector('button[class$="-btnClose"]').addEventListener('click', hideModal);
 
+  modal.querySelector('button[class$="-btnClose"]').addEventListener('click', hideModal);
   window.addEventListener('keydown', checkListener);
   window.addEventListener('click', checkListener);
 }
@@ -111,11 +111,12 @@ function hideModal() {
   modal.setAttribute('aria-hidden', 'true');
   modal.removeAttribute('aria-modal');
   modal.classList.remove('active');
-  modal.querySelector('button[class$="-btnClose"]').removeEventListener('click', hideModal);
-  modal = null;
 
+  modal.querySelector('button[class$="-btnClose"]').removeEventListener('click', hideModal);
   window.removeEventListener('keydown', checkListener);
   window.removeEventListener('click', checkListener);
+
+  modal = null;
 }
 
 

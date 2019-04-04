@@ -177,10 +177,15 @@ function toBuild(cb) {
   const moveMedia = src('src/media/**/*.*')
     .pipe(dest('build/media/'));
 
+  const movePreview = src('mockups/preview/*.png')
+    .pipe(dest('build/preview/'));
+
   cb();
 }
 
 function toPublic(cb) {
+  const clearPreview = del('build/preview/');
+
   const moveRootFiles = src(['.htaccess', '.gitignore', 'robots.txt'])
   .pipe(dest('public/'));
 

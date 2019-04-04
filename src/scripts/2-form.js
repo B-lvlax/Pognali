@@ -57,6 +57,7 @@
 
       if(!xhr) {
         showResponse('Cannot create an XMLHTTP instance.');
+        // showResponse('Не удалось установить XMLHTTP соединение.');
         return false;
       }
 

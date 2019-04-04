@@ -56,14 +56,17 @@
     if ($sendMail == 'true') {
       http_response_code(200);
       echo 'The data has been successfully sent!';
+      // echo 'Данные успешно отправлены!';
     } else {
       http_response_code(500);
       echo 'Unfortunately, the data has been not sent.';
+      // echo 'К сожалению, данные не удалось отправить.';
     }
 
   } else {
     http_response_code(403);
     echo 'Something went wrong... Try again.';
+    // echo 'Что-то пошло не так... Попробуйте ещё раз.';
   }
 
 ?>

@@ -11,7 +11,6 @@
 *.swo
 *.swp
 *.vi
-**/*.gitkeep
 *~
 
 
@@ -39,3 +38,8 @@ Thumbs.db
 node_modules
 npm-debug.log
 bower_components
+
+
+# Other
+#=====================================================================
+src

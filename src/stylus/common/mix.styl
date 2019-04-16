@@ -187,7 +187,7 @@ underline($clr, $hoverClr)
   position: relative
   transition: all .6s
   text-decoration: none
-  &:before
+  &::before
     content: ''
     position: absolute
     bottom: 0
@@ -195,26 +195,35 @@ underline($clr, $hoverClr)
     height: 2px
     transition: all .3s
     background: $clr
-  &:hover:before
+  &:hover::before
     width: 100%
     background: $hoverClr
-  &--toRight
-    &:before
-      left: 0
-    &:hover:before
-      left: 0
-  &--center
-    &:before
-      left: 50%
-    &:hover:before
-      left: 0
-  &--toLeft
-    &:before
-      right: 0
-    &:hover:before
-      right: 0
-  &--through
-    &:before
-      right: 0
-    &:hover:before
-      left: 0
+
+underline--right($clr, $hoverClr, $single = false)
+  if $single
+    underline($clr, $hoverClr)
+  &::before
+    left: 0
+  &:hover::before
+    left: 0
+underline--center($clr, $hoverClr, $single = false)
+  if $single
+    underline($clr, $hoverClr)
+  &::before
+    left: 50%
+  &:hover::before
+    left: 0
+underline--left($clr, $hoverClr, $single = false)
+  if $single
+    underline($clr, $hoverClr)
+  &::before
+    right: 0
+  &:hover::before
+    right: 0
+underline--through($clr, $hoverClr, $single = false)
+  if $single
+    underline($clr, $hoverClr)
+  &::before
+    right: 0
+  &:hover::before
+    left: 0

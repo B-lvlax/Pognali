@@ -132,6 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   elemPrlx();
 
+
+  /* Modals
+  =====================================================================*/
   var btnShow = document.querySelectorAll('.js-showModal');
   btnShow.forEach(function(el) {
     el.addEventListener('click', function(e) {
@@ -147,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
   /* Responsive tables
   =====================================================================*/
   (function() {
-
     var
       allTr = document.querySelectorAll('.js-table tr'),
       labels = [];
@@ -160,14 +162,12 @@ document.addEventListener('DOMContentLoaded', function() {
         else childs[i].dataset.label = labels[i];
       };
     });
-
   })();
 
 
   /* Lazy loading
   =====================================================================*/
   (function() {
-
     var
       lazyloadImages = document.querySelectorAll('.js-lazy'),
       lazyloadThrottleTimeout;
@@ -194,14 +194,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('scroll', lazyload);
     window.addEventListener('resize', lazyload);
     window.addEventListener('orientationChange', lazyload);
-
   })();
 
 
   /* Smooth scrolling
   =====================================================================*/
   (function() {
-
     var anchors = document.querySelectorAll('a[href~="#"]');
 
     for (var i = 0; i < anchors.length; i++) {
@@ -213,14 +211,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
     }
-
   })();
 
 
   /* Button to scroll Up or Down
   =====================================================================*/
   (function() {
-
     var
       btn = document.querySelector('.js-scrollBtn'),
       icon = btn.querySelector('svg'),
@@ -251,14 +247,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     btn.addEventListener('click', moveTo);
-
   })();
 
 
   /* Calls from link for mobile devices only
   =====================================================================*/
   (function() {
-
     if (isMobile.any() && bodyWidth <= screenMD) {
       var linksPhone = document.querySelectorAll('.js-linkPhone');
 
@@ -266,8 +260,5 @@ document.addEventListener('DOMContentLoaded', function() {
         el.href = 'tel:' + el.dataset.phone;
       });
     }
-
   })();
-
-
 });

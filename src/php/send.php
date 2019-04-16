@@ -68,5 +68,4 @@
     echo 'Something went wrong... Try again.';
     // echo 'Что-то пошло не так... Попробуйте ещё раз.';
   }
-
 ?>

@@ -4,7 +4,6 @@
 'use strict';
 
 (function() {
-
   document.addEventListener('DOMContentLoaded', function() {
     var
       forms = document.querySelectorAll('.js-validate'),
@@ -139,8 +138,5 @@
         reset.addEventListener('click', removeStyles.bind('reset', form));
       });
     });
-
   });
-
-
 })();

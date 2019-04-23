@@ -54,15 +54,15 @@
         xhr = new XMLHttpRequest(),
         formData = new FormData(someForm);
 
-      if(!xhr) {
+      if (!xhr) {
         showResponse('Cannot create an XMLHTTP instance.');
         // showResponse('Не удалось установить XMLHTTP соединение.');
         return false;
       }
 
       xhr.onreadystatechange = function() {
-        if(this.readyState === 4) {
-          if(this.status === 200) showResponse(this.responseText);
+        if (this.readyState === 4) {
+          if (this.status === 200) showResponse(this.responseText);
           else showResponse(this.responseText);
         }
       };

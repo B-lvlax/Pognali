@@ -18,6 +18,8 @@ $fontSize = 16px
 $lineHeight = 1.5
 
 $indent = 16px
+$indent--xxl = $indent * 4 // 64
+$indent--xl = $indent * 3 // 48
 $indent--lg = $indent * 2 // 32
 $indent--md = $indent / 2 + $indent // 24
 $indent--sm = $indent / 2 // 8
@@ -27,8 +29,15 @@ $fontSize--xl = 2.5rem // 40
 $fontSize--lg = 2rem // 32
 $fontSize--md = 1.25rem // 20
 $fontSize--sm = .875rem // 14
-// $fontSize-xs = $fontSize * .75 // 12
+// $fontSize--xs = $fontSize * .75 // 12
 $fontSize--xs = .625rem // 10
+
+$fontSize--h1 = 2.25rem // 36
+$fontSize--h2 = 1.875rem // 30
+$fontSize--h3 = 1.5rem // 24
+$fontSize--h4 = 1.375rem // 22
+$fontSize--h5 = 1.25rem // 20
+$fontSize--h6 = 1.125rem // 18
 
 
 /* Mixins
@@ -63,17 +72,17 @@ h1, h2, h3, h4, h5, h6
   line-height: 1.25
 
 h1
-  fluidTxtInRem(2.25rem, .5) // 36
+  fluidTxtInRem($fontSize--h1, .5) // 36
 h2
-  fluidTxtInRem(1.875rem, .5) // 30
+  fluidTxtInRem($fontSize--h2, .5) // 30
 h3
-  fluidTxtInRem(1.5rem, .5) // 24
+  fluidTxtInRem($fontSize--h3, .5) // 24
 h4
-  fluidTxtInRem(1.375rem, .5) // 22
+  fluidTxtInRem($fontSize--h4, .5) // 22
 h5
-  fluidTxtInRem(1.25rem, .5) // 20
+  fluidTxtInRem($fontSize--h5, .5) // 20
 h6
-  fluidTxtInRem(1.125rem, .5) // 18
+  fluidTxtInRem($fontSize--h6, .5) // 18
 
 p
   margin-top: 0

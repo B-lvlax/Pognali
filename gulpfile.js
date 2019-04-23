@@ -7,7 +7,7 @@
 const
   project = 'Pognali',
   tunnelName = project.toLowerCase(),
-  connect = require('gulp-connect-php'),
+  connect = require('gulp-connect-php'), // To work with PHP uncomment this
   bs = require('browser-sync').create();
 
 const

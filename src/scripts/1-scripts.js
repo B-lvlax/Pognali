@@ -73,9 +73,9 @@ function elemPrlx(e) {
         var elem = this.querySelector('.js-moveTitle');
 
         elem.style.transform =
-        'translate3d(' +
-        (e.clientX / 4 - (elem.offsetWidth / 3)) + 'px, ' +
-        (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
+          'translate3d(' +
+          (e.clientX / 4 - (elem.offsetWidth / 3)) + 'px, ' +
+          (e.clientY / 8 - (elem.offsetHeight / 2)) + 'px, 0)';
       }
     });
   });
@@ -83,7 +83,8 @@ function elemPrlx(e) {
 
 /* MODAL windows
 =====================================================================*/
-var modal = null, modalTitle, modalContent;
+var modal = null,
+  modalTitle, modalContent;
 
 function checkListener(e) {
   if (e.target === modal && e.target.classList.contains('active')) hideModal();
@@ -157,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
     allTr.forEach(function(tr) {
       var childs = tr.children;
 
-      for(var i = 0; i < childs.length; i++) {
+      for (var i = 0; i < childs.length; i++) {
         if (childs[i].tagName === 'TH') labels.push(childs[i].innerHTML);
         else childs[i].dataset.label = labels[i];
       };
@@ -169,31 +170,31 @@ document.addEventListener('DOMContentLoaded', function() {
   =====================================================================*/
   (function() {
     var
-      lazyloadImages = document.querySelectorAll('.js-lazy'),
-      lazyloadThrottleTimeout;
+      lazyLoadItems = document.querySelectorAll('.js-lazy'),
+      lazyLoadThrottleTimeout;
 
-    function lazyload() {
-      if (lazyloadThrottleTimeout) clearTimeout(lazyloadThrottleTimeout);
+    function lazyLoad() {
+      if (lazyLoadThrottleTimeout) clearTimeout(lazyLoadThrottleTimeout);
 
-      lazyloadThrottleTimeout = setTimeout(function() {
-        lazyloadImages.forEach(function(img) {
-          if (img.offsetTop < (window.innerHeight + window.pageYOffset)) {
-            img.src = img.dataset.src;
-            img.classList.remove('js-lazy');
+      lazyLoadThrottleTimeout = setTimeout(function() {
+        lazyLoadItems.forEach(function(item) {
+          if (item.offsetTop < (window.innerHeight + window.pageYOffset)) {
+            item.src = item.dataset.src;
+            item.classList.remove('js-lazy');
           }
         });
 
-        if (lazyloadImages.length === 0) {
-          document.removeEventListener('scroll', lazyload);
-          window.removeEventListener('resize', lazyload);
-          window.removeEventListener('orientationChange', lazyload);
+        if (lazyLoadItems.length === 0) {
+          document.removeEventListener('scroll', lazyLoad);
+          window.removeEventListener('resize', lazyLoad);
+          window.removeEventListener('orientationChange', lazyLoad);
         }
       }, 20);
     }
 
-    document.addEventListener('scroll', lazyload);
-    window.addEventListener('resize', lazyload);
-    window.addEventListener('orientationChange', lazyload);
+    document.addEventListener('scroll', lazyLoad);
+    window.addEventListener('resize', lazyLoad);
+    window.addEventListener('orientationChange', lazyLoad);
   })();
 
 

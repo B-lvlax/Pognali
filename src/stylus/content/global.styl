@@ -16,7 +16,7 @@ html, body
 
 body
   overflow-x: hidden /*! To hide horizontal scroll from extra margin in row */
-  // margin: 0 auto
+  margin: 0
   color: $darkClr
   background-color: $lightClr
   font-family: $defaultFont
@@ -94,107 +94,6 @@ shake()
 swing()
 
 
-/*! Components
-=====================================================================*/
-$disabled
-  cursor: default
-  text-decoration: none
-  pointer-events: none
-  opacity: .7
-  color: $disabledClr
-  border-color: $disabledClr
-  &:hover
-    color: $disabledClr
-    background-color: $lightClr
-
-$button
-  margin-bottom: $indent
-  padding: $indent--xs $indent--sm
-  cursor: pointer
-  text-align: center
-  text-decoration: none
-  color: $darkClr
-  border: 1px solid $borderClr
-  border-radius: $borderRad
-  background-color: $lightClr
-  &:visited
-    color: $darkClr
-  &:hover, &:focus
-    color: $lightClr
-    background-color: $primaryClr
-  &:active
-    outline: none
-    transform: translateY(4px)
-    shadow()
-$button--fullW
-  width: 100%
-  padding: $indent--sm $indent
-
-.scrollBtn
-  scrollBtn()
-
-.noscript
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  min-height: 50px
-  color: $lighterClr
-  background-color: $bgOpaque
-  shadow()
-  &-content
-    layoutCenter()
-    padding: $indent--sm
-    text-align: center
-  &-link
-    color: #007bff
-    &:hover
-      text-decoration: none
-
-$modal
-  z-index: -101
-  position: fixed
-  top: 0
-  left: 0
-  display: flex
-  justify-content: center
-  align-items: center
-  width: 100%
-  min-height: 100%
-  transition: all ease .65s
-  opacity: 0
-  background-color: $bgOpaque
-  &.active
-    z-index: 1001
-    opacity: 1
-  &-innerWrap
-    position: relative
-    overflow: auto
-    min-width: 300px
-    max-width: 480px
-    padding: ($indent--lg + $indent) $indent--lg
-    border-radius: $borderRad
-    background-color: $lighterClr
-  &-btnClose
-    position: absolute
-    top: 8px
-    right: 8px
-    width: 32px
-    height: 32px
-    margin: 0
-    padding: 0
-    border: none
-    border-radius: 50%
-    background-color: transparent
-    font-size: 0
-  &-btnIconClose
-    width: 32px
-    height: 32px
-
-.modal
-  @extend $modal
-
-
 /*! Forms Elements
 =====================================================================*/
 form
@@ -241,6 +140,29 @@ input, button, select, optgroup, textarea
   line-height: inherit
 
 /*! Buttons */
+
+$button
+  margin-bottom: $indent
+  padding: $indent--xs $indent--sm
+  cursor: pointer
+  text-align: center
+  text-decoration: none
+  color: $darkClr
+  border: 1px solid $borderClr
+  border-radius: $borderRad
+  background-color: $lightClr
+  &:visited
+    color: $darkClr
+  &:hover, &:focus
+    color: $lightClr
+    background-color: $primaryClr
+  &:active
+    outline: none
+    transform: translateY(4px)
+    shadow()
+$button--fullW
+  width: 100%
+  padding: $indent--sm $indent
 
 button,
 [type='submit'],
@@ -352,9 +274,25 @@ $inputGroup--labelHidden
       opacity: 1
       color: $darkClr
 
-/*! Styles for iteraction with inputs and links.
- * Must be placed below rules for inputs and on top of links.
- */
+.formError
+  animation: shake .6s ease
+.fieldValid
+  box-shadow: 0 0 0 2px $validClr
+.fieldError
+  box-shadow: 0 0 0 2px $errorClr
+
+/*! Disabled elements */
+
+$disabled
+  cursor: default
+  text-decoration: none
+  pointer-events: none
+  opacity: .7
+  color: $disabledClr
+  border-color: $disabledClr
+  &:hover
+    color: $disabledClr
+    background-color: $lightClr
 
 .disabled,
 [disabled],
@@ -363,12 +301,6 @@ $inputGroup--labelHidden
 label.disabled
   background-color: initial
 
-.formError
-  animation: shake .6s ease
-.fieldValid
-  box-shadow: 0 0 0 2px $validClr
-.fieldError
-  box-shadow: 0 0 0 2px $errorClr
 
 
 /*! Links and Buttons
@@ -406,3 +338,70 @@ th, td
 th
   color: $lightClr
   background-color: $primaryClr
+
+
+/*! Components
+=====================================================================*/
+.scrollBtn
+  scrollBtn()
+
+.noscript
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  min-height: 50px
+  color: $lighterClr
+  background-color: $bgOpaque
+  shadow()
+  &-content
+    layoutCenter()
+    padding: $indent--sm
+    text-align: center
+  &-link
+    color: #007bff
+    &:hover
+      text-decoration: none
+
+$modal
+  z-index: -101
+  position: fixed
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  min-height: 100%
+  transition: all ease .65s
+  opacity: 0
+  background-color: $bgOpaque
+  &.active
+    z-index: 1001
+    opacity: 1
+  &-innerWrap
+    position: relative
+    overflow: auto
+    min-width: 300px
+    max-width: 480px
+    padding: ($indent--lg + $indent) $indent--lg
+    border-radius: $borderRad
+    background-color: $lighterClr
+  &-btnClose
+    position: absolute
+    top: 8px
+    right: 8px
+    width: 32px
+    height: 32px
+    margin: 0
+    padding: 0
+    border: none
+    border-radius: 50%
+    background-color: transparent
+    font-size: 0
+  &-btnIconClose
+    width: 32px
+    height: 32px
+
+.modal
+  @extend $modal

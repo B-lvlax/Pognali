@@ -10,8 +10,7 @@ const
   connect = require('gulp-connect-php'), // To work with PHP uncomment this
   bs = require('browser-sync').create();
 
-const
-  { src, dest, watch, series, parallel } = require('gulp'),
+const { src, dest, watch, series, parallel } = require('gulp'),
   notify = require('gulp-notify'),
   del = require('del'),
   jade = require('gulp-jade'),
@@ -91,7 +90,7 @@ function minifyStyles() {
       minify: true,
       minifyCSS: true
     }))
-    .pipe(rename({ extname: '.min.css'}))
+    .pipe(rename({ extname: '.min.css' }))
     .pipe(dest('public/styles/'));
 }
 
@@ -131,7 +130,8 @@ function images() {
   const clearImg = del(['build/images/*', '!build/images/svg/**/*.svg']);
 
   return src(['src/images/**/*.*', '!src/images/svg/**/*.svg'], clearImg)
-    .pipe(dest('build/images/'));
+    .pipe(dest('build/images/'))
+    .on('end', bs.reload);
 }
 
 function spriteSvg() {
@@ -145,7 +145,8 @@ function spriteSvg() {
       preview: false
     }))
     .pipe(rename('sprite-symbols.svg'))
-    .pipe(dest('build/images/'));
+    .pipe(dest('build/images/'))
+    .on('end', bs.reload);
 }
 
 function optImg() {
@@ -187,7 +188,7 @@ function toPublic(cb) {
   const clearPreview = del('build/preview/');
 
   const moveRootFiles = src(['.htaccess', '.gitignore', 'robots.txt'])
-  .pipe(dest('public/'));
+    .pipe(dest('public/'));
 
   const movePhp = src('build/*.php')
     .pipe(dest('public/'));
@@ -235,7 +236,7 @@ function server() {
   watch('src/stylus/**/*.styl', styles);
   watch('src/scripts/**/*.js', scripts);
   watch('src/php/**/*.php', php);
-  watch('src/images/**/*.*}', images);
+  watch(['src/images/**/*.*', '!src/images/svg/**/*.svg'], images);
   watch('src/images/svg/**/*.svg', spriteSvg);
 }
 
@@ -247,6 +248,9 @@ function deploy() {
 
   return src(path + '/**')
     .pipe(rsync({
+      options: {
+        chmod: 'ugo=rwX'
+      },
       root: path + '/',
       hostname: 'example.com',
       destination: 'absolute/path/to/site/',
@@ -256,7 +260,7 @@ function deploy() {
       compress: true,
       progress: true,
       clean: true
-  }));
+    }));
 }
 
 

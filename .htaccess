@@ -675,7 +675,8 @@ AddDefaultCharset utf-8
 
 <IfModule mod_headers.c>
 
-#   Header set Content-Security-Policy "script-src 'self'; object-src 'self'"
+  # Header set Content-Security-Policy "script-src 'self'; object-src 'self'"
+  # Header set Content-Security-Policy-Report-Only: "default-src 'self'" - mode tell browsers only log resources that would be blocked to the console instead of blocking them.
 
   Header set Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src *; media-src 'self'; frame-src 'self'; font-src 'self'; connect-src 'self'"
   Header set X-Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src *; media-src 'self'; frame-src 'self'; font-src 'self'; connect-src 'self'"
@@ -1570,7 +1571,8 @@ FileETag None
 
   ExpiresActive On
   ExpiresDefault "access plus 1 week"
-  # ExpiresDefault A29030400
+  # ExpiresDefault A604800
+  Header set Cache-Control "max-age=604800, public"
 
   # Set up caching on media files for 1 month
   <FilesMatch "\.(flv|ico|avi|mov|mp3|mp4|webp|webm|wmv|gif|jpe?g|png|swf|svg|bmp)$">
@@ -1580,19 +1582,19 @@ FileETag None
 
   # Set up caching on text files for 1 week
   <FilesMatch "\.(xml|pdf|docx?|markdown|md|ppt|rtf|txt)$">
-    ExpiresDefault A29030400
+    ExpiresDefault A604800
     Header append Cache-Control "public"
   </FilesMatch>
 
   # Set up caching on fonts for 1 week
   <FilesMatch "\.(woff2?|ttf|ttc|eot|otf)$">
-    ExpiresDefault A29030400
+    ExpiresDefault A604800
     Header append Cache-Control "public"
   </FilesMatch>
 
   # Set up caching on text files for 1 week
   <FilesMatch "\.(html|js|css|manifest|map|json)$">
-    ExpiresDefault A29030400
+    ExpiresDefault A604800
     Header append Cache-Control "proxy-revalidate"
     # Header set Cache-Control "max-age=604800, public"
   </FilesMatch>

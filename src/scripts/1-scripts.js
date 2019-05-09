@@ -9,8 +9,9 @@ console.log('Погнали!');
 /* VARS
 =====================================================================*/
 var
-  bodyWidth = document.body.offsetWidth,
-  screenMD = 768;
+  screenMD = 768,
+  date = new Date(),
+  bodyWidth = document.body.offsetWidth;
 
 
 /* TESTING
@@ -19,6 +20,10 @@ function isNum(elem) {
   var val = elem.innerHTML || elem.value;
   return !isNaN(parseInt(val)) && val !== '' && val !== ' ';
 }
+
+window.addEventListener('resize', function() {
+  bodyWidth = document.body.offsetWidth;
+});
 
 /*===================================================================*/
 
@@ -102,6 +107,7 @@ function showModal() {
   modal.classList.add('active');
 
   modal.querySelector('button[class$="-btnClose"]').addEventListener('click', hideModal);
+  modal.querySelector('button[class$="-btnClose"]').addEventListener('touchstart', hideModal);
   window.addEventListener('keydown', checkListener);
   window.addEventListener('click', checkListener);
 }
@@ -263,3 +269,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   })();
 });
+
+
+/* Updating year in footer
+=====================================================================*/
+// (function() {
+//   var elem = document.querySelector('.js-year');
+//   elem.innerHTML = ' ' + date.getFullYear() + ' ';
+// })();

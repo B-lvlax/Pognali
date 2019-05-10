@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
       lazyLoadThrottleTimeout = setTimeout(function() {
         lazyLoadItems.forEach(function(item) {
           if (item.offsetTop < (window.innerHeight + window.pageYOffset)) {
+            if (item.tagName !== 'IMG' && item.tagName !== 'IFRAME') item.style.backgroundImage = 'url(' + item.dataset.src + ')';
             item.src = item.dataset.src;
             item.classList.remove('js-lazy');
           }

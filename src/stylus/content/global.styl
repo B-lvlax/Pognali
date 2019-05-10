@@ -277,8 +277,14 @@ $inputGroup--labelHidden
 .formError
   animation: shake .6s ease
 .fieldValid
+  border-radius: ($borderRad / 2)
+  -webkit-appearance: none
+  -webkit-box-shadow: 0 0 0 2px $validClr
   box-shadow: 0 0 0 2px $validClr
 .fieldError
+  border-radius: ($borderRad / 2)
+  -webkit-appearance: none
+  -webkit-box-shadow: 0 0 0 2px $errorClr
   box-shadow: 0 0 0 2px $errorClr
 
 /*! Disabled elements */
@@ -382,8 +388,10 @@ $modal
   &-innerWrap
     position: relative
     overflow: auto
-    min-width: 300px
+    min-width: 288px
     max-width: 480px
+    margin-right: $indent
+    margin-left: $indent
     padding: ($indent--lg + $indent) $indent--lg
     border-radius: $borderRad
     background-color: $lighterClr
@@ -391,8 +399,8 @@ $modal
     position: absolute
     top: 8px
     right: 8px
-    width: 32px
-    height: 32px
+    width: 54px
+    height: 48px
     margin: 0
     padding: 0
     border: none

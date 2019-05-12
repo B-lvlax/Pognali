@@ -183,46 +183,42 @@ shadow()
 /*===================================================================*/
 
 underline($clr, $hoverClr)
-  position: relative
-  transition: all .6s
+  transition: background-size cubic-bezier(0,.5,0,1) .3s
   text-decoration: none
-  &::before
-    content: ''
-    position: absolute
-    bottom: 0
-    width: 0
-    height: 2px
-    transition: all .3s
-    background: $clr
-  &:hover::before
-    width: 100%
-    background: $hoverClr
+  color: $clr
+  background-image: linear-gradient(currentColor, currentColor)
+  background-repeat: no-repeat
+  background-position: 0 100%
+  background-size: 0 2px
+  &:hover,
+  &:focus
+    color: $hoverClr
 
 underline--right($clr, $hoverClr, $single = false)
   if $single
     underline($clr, $hoverClr)
-  &::before
-    left: 0
-  &:hover::before
-    left: 0
+  &:hover,
+  &:focus
+    background-size: 100% 2px
 underline--center($clr, $hoverClr, $single = false)
   if $single
     underline($clr, $hoverClr)
-  &::before
-    left: 50%
-  &:hover::before
-    left: 0
+  background-position: 50% 100%
+  &:hover,
+  &:focus
+    background-size: 100% 2px
 underline--left($clr, $hoverClr, $single = false)
   if $single
     underline($clr, $hoverClr)
-  &::before
-    right: 0
-  &:hover::before
-    right: 0
+  background-position: 100% 100%
+  &:hover,
+  &:focus
+    background-size: 100% 2px
 underline--through($clr, $hoverClr, $single = false)
   if $single
     underline($clr, $hoverClr)
-  &::before
-    right: 0
-  &:hover::before
-    left: 0
+  background-position: 100% 100%
+  &:hover,
+  &:focus
+    background-position: 0 100%
+    background-size: 100% 2px

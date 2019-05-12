@@ -74,11 +74,7 @@ function styles() {
         message: error.message
       };
     })))
-    .pipe(prefixes({
-      browsers: ['> 0.15%'],
-      cascade: true,
-      grid: true
-    }))
+    .pipe(prefixes({ cascade: true }))
     .pipe(csscomb())
     .pipe(dest('build/styles/', { sourcemaps: '.' }))
     .pipe(bs.reload({ stream: true }));

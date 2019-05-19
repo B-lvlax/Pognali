@@ -6,57 +6,23 @@ html(lang='ru')
       title Pognali
     meta(name='description' content='A description of the page 150 chars')
     meta(name='keywords' content='your,keywords,here,comma,separated,no,spaces')
-    meta(name='theme-color' content='#282e34')
     meta(name='viewport' content='width=device-width initial-scale=1')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='theme-color' content='#282e34')
+    //- meta(name="robots" content="noindex, nofollow")
+    //- link(rel="me" href="http://your-site.com" type="text/html")
+    //- link(rel="author" href="humans.txt")
     base(href='./')
     link(rel='icon' href='images/favicon.ico' type='image/x-icon')
     link(rel='icon' href='images/favicon.png' size='any' type='image/png')
     link(rel='mask-icon' href='images/safari-pinned-tab.svg' color='#5bbad5')
-    // Inlined Critical Styles£
-    style.
-      .title {
-        position: fixed;
-        z-index: 5;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        animation: hideBg 2s 4s linear forwards;
-        background-color: rgba(0,0,0, .7);
-      }
-      .title-txt {
-        animation: slide-right 4s 1.5s cubic-bezier(.215, .610, .355, 1.000) forwards;
-        text-shadow:
-          0 -5px 0 #7fdbff,
-          0 -10px 0 #39cccc,
-          0 -15px 0 #3d9970,
-          0 -20px 0 #2ecc40,
-          0 -25px 0 #01ff70,
-          0 -30px 0 #ffdc00,
-          0 -35px 0 #ff851b,
-          0 -40px 0 #ff4136,
-          0 -45px 0 #f012be,
-          0 -50px 0 #b10dc9;
-        font-size: 6rem;
-        font-size: calc(6rem + 6 * ((100vw - 20rem) / 80));
-      }
-      @keyframes slide-right {
-        0% {transform: skewX(0deg); }
-        10% { transform: skewX(20deg) translateX(-50px); }
-        100% { transform: translateX(200%); }
-      }
-      @keyframes hideBg {
-        0% { opacity: 1; }
-        100% { top: -2000px; opacity: 0; }
-      }
+    // Critical Styles
+    style
+      block critical
     noscript
-      link(rel="stylesheet" href="styles/styles.css")
-    // Pixel Glass (For development purposes only)
-    style.
+      link(rel="stylesheet" href="styles/styles.min.css")
+    //- // Pixel Glass (For development purposes only)
+    //- style.
       html {
         background-repeat: no-repeat;
         background-position:  50% 0;
@@ -70,11 +36,11 @@ html(lang='ru')
       @media (min-width: 992px) {
         html { background-image: url('preview/desktop.png'); }
       }
-    style
+    //- style
       include ../../../node_modules/pixel-glass/styles.css
-    script
+    //- script
       include ../../../node_modules/pixel-glass/script.js
-    // Pixel Glass
+    //- // Pixel Glass
 
 
   body

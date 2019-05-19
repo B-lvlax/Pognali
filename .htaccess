@@ -482,8 +482,8 @@ AddDefaultCharset utf-8
 
 # <IfModule mod_rewrite.c>
 #   RewriteCond %{HTTP_REFERER} !^$
-#   RewriteCond %{HTTP_REFERER} !^https?://(www.)?yourdomain.com/ [nc]
-#   RewriteRule .*.(jpe?g|gif|bmp|png|svg)$ http://yourdomain.com/images/achtung.png [nc]
+#   RewriteCond %{HTTP_REFERER} !^https?://(www.)?b-max.site/.*$ [NC]
+#   RewriteRule .*.(jpe?g|gif|bmp|png|svg)$ http://b-max.site/images/achtung.jpg [F]
 # </IfModule>
 
 # ----------------------------------------------------------------------
@@ -678,9 +678,9 @@ AddDefaultCharset utf-8
   # Header set Content-Security-Policy "script-src 'self'; object-src 'self'"
   # Header set Content-Security-Policy-Report-Only: "default-src 'self'" - mode tell browsers only log resources that would be blocked to the console instead of blocking them.
 
-  Header set Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src *; media-src 'self'; frame-src 'self'; font-src 'self'; connect-src 'self'"
-  Header set X-Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src *; media-src 'self'; frame-src 'self'; font-src 'self'; connect-src 'self'"
-  Header set X-WebKit-CSP: "default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src *; media-src 'self'; frame-src 'self'; font-src 'self'; connect-src 'self'"
+  Header set Content-Security-Policy-Report-Only: "default-src 'self'; script-src 'self' 'unsafe-inline' maps.googleapis.com; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; media-src 'self'; frame-src www.google.com; font-src 'self'; connect-src 'self'"
+  Header set X-Content-Security-Policy-Report-Only: "default-src 'self'; script-src 'self' 'unsafe-inline' maps.googleapis.com; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; media-src 'self'; frame-src www.google.com; font-src 'self'; connect-src 'self'"
+  Header set X-WebKit-CSP-Report-Only: "default-src 'self'; script-src 'self' 'unsafe-inline' maps.googleapis.com; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; media-src 'self'; frame-src www.google.com; font-src 'self'; connect-src 'self'"
 
   # `mod_headers` cannot match based on the content-type, however,
   # the `Content-Security-Policy` response header should be send
@@ -1461,21 +1461,21 @@ FileETag None
 # https://httpd.apache.org/docs/current/mod/mod_expires.html
 
 # <IfModule mod_expires.c>
-
+#
 #     ExpiresActive on
-#     ExpiresDefault                                      "access plus 1 month"
-
+#     ExpiresDefault                                      "access plus 1 week"
+#
 #   # CSS
-
-#     ExpiresByType text/css                              "access plus 1 month"
-
-
+#
+#     ExpiresByType text/css                              "access plus 1 week"
+#
+#
 #   # Data interchange
-
+#
 #     ExpiresByType application/atom+xml                  "access plus 1 hour"
 #     ExpiresByType application/rdf+xml                   "access plus 1 hour"
 #     ExpiresByType application/rss+xml                   "access plus 1 hour"
-
+#
 #     ExpiresByType application/json                      "access plus 0 seconds"
 #     ExpiresByType application/ld+json                   "access plus 0 seconds"
 #     ExpiresByType application/schema+json               "access plus 0 seconds"
@@ -1483,39 +1483,39 @@ FileETag None
 #     ExpiresByType application/xml                       "access plus 0 seconds"
 #     ExpiresByType text/calendar                         "access plus 0 seconds"
 #     ExpiresByType text/xml                              "access plus 0 seconds"
-
-
+#
+#
 #   # Favicon (cannot be renamed!) and cursor images
-
+#
 #     ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
 #     ExpiresByType image/x-icon                          "access plus 1 week"
-
+#
 #   # HTML
-
+#
 #     ExpiresByType text/html                             "access plus 0 seconds"
-
-
+#
+#
 #   # JavaScript
-
-#     ExpiresByType application/javascript                "access plus 1 month"
-#     ExpiresByType application/x-javascript              "access plus 1 month"
-#     ExpiresByType text/javascript                       "access plus 1 month"
-
-
+#
+#     ExpiresByType application/javascript                "access plus 1 week"
+#     ExpiresByType application/x-javascript              "access plus 1 week"
+#     ExpiresByType text/javascript                       "access plus 1 week"
+#
+#
 #   # Manifest files
-
+#
 #     ExpiresByType application/manifest+json             "access plus 1 week"
 #     ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
 #     ExpiresByType text/cache-manifest                   "access plus 0 seconds"
-
-
+#
+#
 #   # Markdown
-
+#
 #     ExpiresByType text/markdown                         "access plus 0 seconds"
-
-
+#
+#
 #   # Media files
-
+#
 #     ExpiresByType audio/ogg                             "access plus 1 month"
 #     ExpiresByType image/bmp                             "access plus 1 month"
 #     ExpiresByType image/gif                             "access plus 1 month"
@@ -1526,83 +1526,80 @@ FileETag None
 #     ExpiresByType video/mp4                             "access plus 1 month"
 #     ExpiresByType video/ogg                             "access plus 1 month"
 #     ExpiresByType video/webm                            "access plus 1 month"
-
-
+#
+#
 #   # WebAssembly
-
-#     ExpiresByType application/wasm                      "access plus 1 month"
-
-
+#
+#     ExpiresByType application/wasm                      "access plus 1 week"
+#
+#
 #   # Web fonts
-
+#
 #     # Collection
-#     ExpiresByType font/collection                       "access plus 1 month"
-
+#     ExpiresByType font/collection                       "access plus 1 week"
+#
 #     # Embedded OpenType (EOT)
-#     ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
-#     ExpiresByType font/eot                              "access plus 1 month"
-
+#     ExpiresByType application/vnd.ms-fontobject         "access plus 1 week"
+#     ExpiresByType font/eot                              "access plus 1 week"
+#
 #     # OpenType
-#     ExpiresByType font/opentype                         "access plus 1 month"
-#     ExpiresByType font/otf                              "access plus 1 month"
-
+#     ExpiresByType font/opentype                         "access plus 1 week"
+#     ExpiresByType font/otf                              "access plus 1 week"
+#
 #     # TrueType
-#     ExpiresByType application/x-font-ttf                "access plus 1 month"
-#     ExpiresByType font/ttf                              "access plus 1 month"
-
+#     ExpiresByType application/x-font-ttf                "access plus 1 week"
+#     ExpiresByType font/ttf                              "access plus 1 week"
+#
 #     # Web Open Font Format (WOFF) 1.0
-#     ExpiresByType application/font-woff                 "access plus 1 month"
-#     ExpiresByType application/x-font-woff               "access plus 1 month"
-#     ExpiresByType font/woff                             "access plus 1 month"
-
+#     ExpiresByType application/font-woff                 "access plus 1 week"
+#     ExpiresByType application/x-font-woff               "access plus 1 week"
+#     ExpiresByType font/woff                             "access plus 1 week"
+#
 #     # Web Open Font Format (WOFF) 2.0
-#     ExpiresByType application/font-woff2                "access plus 1 month"
-#     ExpiresByType font/woff2                            "access plus 1 month"
-
-
+#     ExpiresByType application/font-woff2                "access plus 1 week"
+#     ExpiresByType font/woff2                            "access plus 1 week"
+#
+#
 #   # Other
-
+#
 #     ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
-
+#
 # </IfModule>
 
 # Caching with both mod_expires + mod_headers
+
 <IfModule mod_expires.c>
 
   ExpiresActive On
-  ExpiresDefault "access plus 1 week"
-  # ExpiresDefault A604800
-  Header set Cache-Control "max-age=604800, public"
+  ExpiresDefault A604800
 
   # Set up caching on media files for 1 month
   <FilesMatch "\.(flv|ico|avi|mov|mp3|mp4|webp|webm|wmv|gif|jpe?g|png|swf|svg|bmp)$">
     ExpiresDefault A2592000
-    Header append Cache-Control "public"
+    # Header append Cache-Control "public"
+    Header set Cache-Control "must-revalidate, max-age=2592000, public"
   </FilesMatch>
 
   # Set up caching on text files for 1 week
   <FilesMatch "\.(xml|pdf|docx?|markdown|md|ppt|rtf|txt)$">
-    ExpiresDefault A604800
-    Header append Cache-Control "public"
+    Header set Cache-Control "max-age=604800, public"
   </FilesMatch>
 
   # Set up caching on fonts for 1 week
   <FilesMatch "\.(woff2?|ttf|ttc|eot|otf)$">
-    ExpiresDefault A604800
-    Header append Cache-Control "public"
+    Header set Cache-Control "must-revalidate, max-age=604800, public"
   </FilesMatch>
 
   # Set up caching on text files for 1 week
   <FilesMatch "\.(html|js|css|manifest|map|json)$">
-    ExpiresDefault A604800
-    Header append Cache-Control "proxy-revalidate"
-    # Header set Cache-Control "max-age=604800, public"
+    Header set Cache-Control "must-revalidate, max-age=604800, private"
   </FilesMatch>
 
   # Force no caching for dynamic files
   <FilesMatch "\.(php|cgi|pl|html?)$">
     ExpiresActive Off
-    Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
+    # Header set Cache-Control "private, no-cache, no-store, must-revalidate, no-transform"
+    Header unset Cache-Control
     Header set Pragma "no-cache"
   </FilesMatch>
 

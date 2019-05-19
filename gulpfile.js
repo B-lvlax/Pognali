@@ -24,14 +24,15 @@ const { src, dest, watch, series, parallel } = require('gulp'),
   concat = require('gulp-concat'),
   imgOptim = require('gulp-imageoptim'),
   svgSprite = require('gulp-svg-sprites'),
+  critical = require('critical').stream,
   rsync = require('gulp-rsync');
 
 
 /* CLEANING FILES
 =====================================================================*/
-function clearAll() {
-  return del(['build/', 'public/']);
-}
+function clearBuild() { return del('build/'); }
+
+function clearPublic() { return del('public/'); }
 
 
 /* MARKUP
@@ -86,8 +87,31 @@ function minifyStyles() {
       minify: true,
       minifyCSS: true
     }))
-    .pipe(rename({ extname: '.min.css' }))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(dest('public/styles/'));
+}
+
+function criticalStyles(cb) {
+  return src(['build/*.html', '!build/404.html'])
+    .pipe(critical({
+      base: 'build/',
+      css: 'styles/styles.css',
+      inline: false,
+      minify: true,
+      extract: false,
+      ignore: {
+        atrule: ['@font-face']
+        // decl: (node, value) => /url\(/.test(value)
+      },
+      dimensions: [
+        { width: 768 },
+        { width: 992 }
+      ]
+    }))
+    .pipe(rename({ suffix: '-critical' }))
+    .pipe(dest('build/styles/'));
+
+  cb();
 }
 
 
@@ -123,7 +147,11 @@ function php() {
 /* IMAGES
 =====================================================================*/
 function images() {
-  const clearImg = del(['build/images/*', '!build/images/svg/**/*.svg']);
+  const clearImg = del([
+    'build/images/*',
+    '!build/images/svg/**/*.svg',
+    '!build/images/sprite-symbols.svg'
+  ]);
 
   return src(['src/images/**/*.*', '!src/images/svg/**/*.svg'], clearImg)
     .pipe(dest('build/images/'))
@@ -146,7 +174,6 @@ function spriteSvg() {
 }
 
 function optImg() {
-  // Another plugin for all types https://www.npmjs.com/package/gulp-imagemin
   return src('build/images/**/*.{png,gif,jpg,jpeg}')
     .pipe(imgOptim.optimize({ batchSize: 75 }))
     .pipe(dest('public/images/'));
@@ -181,24 +208,29 @@ function toBuild(cb) {
 }
 
 function toPublic(cb) {
-  const clearPreview = del('build/preview/');
-
   const moveRootFiles = src(['.htaccess', '.gitignore', 'robots.txt'])
     .pipe(dest('public/'));
 
   const movePhp = src('build/*.php')
     .pipe(dest('public/'));
 
-  const moveLibs = src('build/libs/**/*.*')
+  const moveLibs = src('src/libs/**/*.*')
     .pipe(dest('public/libs/'));
 
-  const moveFonts = src('build/fonts/**/*.*')
+  const moveFonts = src('src/fonts/**/*.*')
     .pipe(dest('public/fonts/'));
 
-  const moveMedia = src('build/media/**/*.*')
+  const moveMedia = src('src/media/**/*.*')
     .pipe(dest('public/media/'));
 
-  const moveImg = src('build/images/**/*.{ico,svg}')
+  const moveImg = src('build/images/*.{ico,svg}')
+    .pipe(dest('public/images/'));
+
+  cb();
+}
+
+function moveImg(cb) {
+  src('build/images/**/*.*')
     .pipe(dest('public/images/'));
 
   cb();
@@ -207,7 +239,7 @@ function toPublic(cb) {
 
 /* STATIC SERVER, WATCHER & DEPLOYING
 =====================================================================*/
-function server() {
+function server(cb) {
   // To work with PHP comment this
   // bs.init({
   //   server: { baseDir: 'build' },
@@ -234,8 +266,9 @@ function server() {
   watch('src/php/**/*.php', php);
   watch(['src/images/**/*.*', '!src/images/svg/**/*.svg'], images);
   watch('src/images/svg/**/*.svg', spriteSvg);
-}
 
+  cb();
+}
 
 function deploy() {
   var
@@ -245,7 +278,7 @@ function deploy() {
   return src(path + '/**')
     .pipe(rsync({
       options: {
-        chmod: 'ugo=rwX'
+        chmod: 'u=rwx,g=rx'
       },
       root: path + '/',
       hostname: 'example.com',
@@ -263,24 +296,31 @@ function deploy() {
 /* TASKS
 =====================================================================*/
 exports.default = series(
-  clearAll,
+  clearBuild,
   parallel(toSrc, toBuild, images, spriteSvg),
   parallel(markup, styles, scripts, php),
   server
 );
-
 exports.build = series(
-  clearAll,
+  clearBuild,
   parallel(toSrc, toBuild, images, spriteSvg),
   parallel(markup, styles, scripts, php)
 );
 
 exports.public = series(
-  clearAll,
-  parallel(toSrc, toBuild, spriteSvg, images),
-  parallel(markup, styles, scripts, php),
+  clearPublic,
+  parallel(markup, styles),
+  criticalStyles,
   toPublic,
   parallel(optImg, minifyMarkup, minifyStyles, minifyScripts)
 );
+exports.lightPublic = series(
+  clearPublic,
+  parallel(markup, styles),
+  criticalStyles,
+  parallel(toPublic, moveImg),
+  parallel(minifyMarkup, minifyStyles, minifyScripts)
+);
 
 exports.deploy = deploy;
+exports.critical = criticalStyles;

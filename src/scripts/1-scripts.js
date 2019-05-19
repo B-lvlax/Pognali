@@ -92,8 +92,8 @@ var modal = null,
   modalTitle, modalContent;
 
 function checkListener(e) {
-  if (e.target === modal && e.target.classList.contains('active')) hideModal();
-  if (e.keyCode === 27) hideModal();
+  if (e.target === modal && e.target.classList.contains('active')) return hideModal();
+  if (e.keyCode === 27) return hideModal();
 }
 
 function showModal() {
@@ -107,7 +107,7 @@ function showModal() {
   modal.classList.add('active');
 
   modal.querySelector('button[class$="-btnClose"]').addEventListener('click', hideModal);
-  modal.querySelector('button[class$="-btnClose"]').addEventListener('touchstart', hideModal);
+  if (isMobile.ios()) modal.querySelector('button[class$="-btnClose"]').addEventListener('touchstart', hideModal);
   window.addEventListener('keydown', checkListener);
   window.addEventListener('click', checkListener);
 }
@@ -120,6 +120,7 @@ function hideModal() {
   modal.classList.remove('active');
 
   modal.querySelector('button[class$="-btnClose"]').removeEventListener('click', hideModal);
+  if (isMobile.ios()) modal.querySelector('button[class$="-btnClose"]').removeEventListener('touchstart', hideModal);
   window.removeEventListener('keydown', checkListener);
   window.removeEventListener('click', checkListener);
 

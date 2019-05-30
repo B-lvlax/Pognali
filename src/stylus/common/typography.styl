@@ -50,11 +50,11 @@ $fontSize--h6 = 1.125rem // 18
 * 80 (1280px) - max width.
 */
 
-fluidTxtInRem($fz = 1rem, $step = .25) // .25=4px, .125-2px, 0.0625=1px
+fluidTxtInRem($fz = 1rem, $step = .25) // .25=4px, .125-2px, .0625=1px
   font-size: $fz
   font-size: 'calc(%s + %s * ((100vw - 20rem) / 80))' % ($fz $step)
 
-fluidTxtInPx($fz = 16px, $step = 4)
+fluidTxtInPx($fz = $fontSize, $step = 4)
   font-size: $fz
   font-size: 'calc(%s + %s * ((100vw - 20rem) / 80))' % ($fz $step)
 

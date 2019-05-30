@@ -8,7 +8,8 @@ const
   project = 'Pognali',
   tunnelName = project.toLowerCase(),
   connect = require('gulp-connect-php'), // To work with PHP uncomment this
-  bs = require('browser-sync').create();
+  bs = require('browser-sync').create(),
+  rsync = require('gulp-rsync');
 
 const { src, dest, watch, series, parallel } = require('gulp'),
   notify = require('gulp-notify'),
@@ -24,8 +25,14 @@ const { src, dest, watch, series, parallel } = require('gulp'),
   concat = require('gulp-concat'),
   imgOptim = require('gulp-imageoptim'),
   svgSprite = require('gulp-svg-sprites'),
-  critical = require('critical').stream,
-  rsync = require('gulp-rsync');
+  CacheBuster = require('gulp-cachebust'),
+  critical = require('critical').stream;
+
+// anoter good package https://www.npmjs.com/package/gulp-cache-break
+let cachebust = new CacheBuster({
+  checksumLength: 4,
+  random: true
+});
 
 
 /* CLEANING FILES
@@ -33,6 +40,14 @@ const { src, dest, watch, series, parallel } = require('gulp'),
 function clearBuild() { return del('build/'); }
 
 function clearPublic() { return del('public/'); }
+
+function clearPublicImg() {
+  return del([
+    'public/images/*',
+    '!public/images/svg/**/*.svg',
+    '!public/images/sprite-symbols.svg'
+  ]);
+}
 
 
 /* MARKUP
@@ -59,6 +74,7 @@ function markup() {
 function minifyMarkup() {
   return src('build/*.html')
     .pipe(htmlmin())
+    .pipe(cachebust.references())
     .pipe(dest('public/'));
 }
 
@@ -88,6 +104,7 @@ function minifyStyles() {
       minifyCSS: true
     }))
     .pipe(rename({ suffix: '.min' }))
+    .pipe(cachebust.resources())
     .pipe(dest('public/styles/'));
 }
 
@@ -131,6 +148,7 @@ function minifyScripts() {
       minifyJS: true
     }))
     .pipe(rename('bundle.min.js'))
+    .pipe(cachebust.resources())
     .pipe(dest('public/scripts/'));
 }
 
@@ -179,6 +197,17 @@ function optImg() {
     .pipe(dest('public/images/'));
 }
 
+function cacheBustImg(cb) {
+  return src([
+      'public/images/image-1.png',
+      'public/images/image-2.png'
+    ])
+    .pipe(cachebust.resources())
+    .pipe(dest('public/images/'));
+
+  cb();
+}
+
 
 /* MOVING FILES
 =====================================================================*/
@@ -217,8 +246,12 @@ function toPublic(cb) {
   const moveLibs = src('src/libs/**/*.*')
     .pipe(dest('public/libs/'));
 
-  const moveFonts = src('src/fonts/**/*.*')
-    .pipe(dest('public/fonts/'));
+  const moveFonts = src([
+      'src/fonts/OpenSans/font-1.{ttf,woff,woff2}',
+      'src/fonts/OpenSans/font-2.{ttf,woff,woff2}'
+    ])
+    // src('src/fonts/**/*.*')
+    .pipe(dest('public/fonts/fontName/'))
 
   const moveMedia = src('src/media/**/*.*')
     .pipe(dest('public/media/'));
@@ -230,7 +263,7 @@ function toPublic(cb) {
 }
 
 function moveImg(cb) {
-  src('build/images/**/*.*')
+  return src(['build/images/**/*.*', '!build/images/svg/**/*.*'])
     .pipe(dest('public/images/'));
 
   cb();
@@ -288,6 +321,7 @@ function deploy() {
       silent: false,
       compress: true,
       progress: true,
+      incremental: true,
       clean: true
     }));
 }
@@ -311,14 +345,14 @@ exports.public = series(
   clearPublic,
   parallel(markup, styles),
   criticalStyles,
-  toPublic,
-  parallel(optImg, minifyMarkup, minifyStyles, minifyScripts)
+  series(clearPublicImg, toPublic, optImg, cacheBustImg),
+  parallel(minifyMarkup, minifyStyles, minifyScripts)
 );
 exports.lightPublic = series(
   clearPublic,
   parallel(markup, styles),
   criticalStyles,
-  parallel(toPublic, moveImg),
+  series(clearPublicImg, toPublic, moveImg, cacheBustImg),
   parallel(minifyMarkup, minifyStyles, minifyScripts)
 );
 

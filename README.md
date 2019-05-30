@@ -29,6 +29,8 @@ __NPM modules:__
 - [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
 - [gulp-rsync](https://github.com/jerrysu/gulp-rsync/)
 - [pixel-glass](https://github.com/yoksel/pixel-glass-js/)
+- [gulp-cachebust](https://github.com/jhuesos/gulp-cachebust)
+- [critical](https://github.com/addyosmani/critical)
 
 ---
 
@@ -74,7 +76,7 @@ Before start using you need to do:
   * Lazy loading
 
 #### Some other files
-- .csscomb.json
-- .jsbeautifyrc
-- .htaccess
-- robots.txt
+- .csscomb.json - configurations for sorting propreties in CSS.
+- .jsbeautifyrc - configurations for beautifying common files.
+- .htaccess - configurations for Apache server.
+- robots.txt - configurations for indexing site files.

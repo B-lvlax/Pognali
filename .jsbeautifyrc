@@ -33,7 +33,7 @@
   },
   "css": {
     "allowed_file_extensions": ["css", "scss", "sass", "less", "styl"],
-    "end_with_newline": false, // End output with newline
+    "end_with_newline": true, // End output with newline
     "indent_char": " ", // Indentation character
     "indent_size": 2, // Indentation size
     "newline_between_rules": false, // Add a new line after every css rule

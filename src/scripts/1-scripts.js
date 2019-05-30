@@ -107,7 +107,10 @@ function showModal() {
   modal.classList.add('active');
 
   modal.querySelector('button[class$="-btnClose"]').addEventListener('click', hideModal);
-  if (isMobile.ios()) modal.querySelector('button[class$="-btnClose"]').addEventListener('touchstart', hideModal);
+  if (isMobile.ios()) {
+    modal.querySelector('button[class$="-btnClose"]').addEventListener('touchstart', hideModal);
+    window.addEventListener('touchend', checkListener);
+  }
   window.addEventListener('keydown', checkListener);
   window.addEventListener('click', checkListener);
 }
@@ -120,7 +123,10 @@ function hideModal() {
   modal.classList.remove('active');
 
   modal.querySelector('button[class$="-btnClose"]').removeEventListener('click', hideModal);
-  if (isMobile.ios()) modal.querySelector('button[class$="-btnClose"]').removeEventListener('touchstart', hideModal);
+  if (isMobile.ios()) {
+    modal.querySelector('button[class$="-btnClose"]').removeEventListener('touchstart', hideModal);
+    window.removeEventListener('touchend', checkListener);
+  }
   window.removeEventListener('keydown', checkListener);
   window.removeEventListener('click', checkListener);
 
@@ -133,6 +139,8 @@ function hideModal() {
   OTHER SCRIPTS ONLOAD
 =====================================================================*/
 document.addEventListener('DOMContentLoaded', function() {
+
+  if (isMobile.opera()) alert('В браузере Opera Mini сайт может неправильно выглядеть и работать. Если это так - попробуйте воспользоваться другим браузером.');
 
   window.onscroll = function() {
     bgPrlx('.js-bgPrlx', '100%', '140%', 5);

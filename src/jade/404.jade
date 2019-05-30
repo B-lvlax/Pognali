@@ -1,14 +1,15 @@
 doctype html
 html(lang='ru')
   head
-    title Pognali - Страница не найдена
     meta(charset='utf-8')
-    meta(name='theme-color' content='#000')
+    title Pognali - Страница не найдена
     meta(name='viewport' content='width=device-width initial-scale=1')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
-    base(href='./')
+    meta(name='theme-color' content='#000')
+    meta(name='google' content='notranslate')
+    base(href='/')
     link(rel='icon' href='images/favicon.ico' type='image/x-icon')
-    link(rel='icon' href='images/favicon.png' size='any' type='image/png')
+    link(rel='icon' href='images/favicon.png' sizes='any' type='image/png')
     link(rel='mask-icon' href='images/safari-pinned-tab.svg' color='#5bbad5')
   style.
     *, *:before, *:after {box-sizing: border-box;}
@@ -16,7 +17,7 @@ html(lang='ru')
     body {
       overflow-x: hidden /* To hide horizontal scroll from extra margin in row */;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
     }
     .page404 {
       min-height: 100%;
@@ -59,8 +60,8 @@ html(lang='ru')
       left: -95px;
       width: 360px;
       height: 360px;
-      -webkit-animation: shadowsDancing 4.8s infinite;
-              animation: shadowsDancing 4.8s infinite;
+      -webkit-animation: shadowsDancing 4s infinite;
+              animation: shadowsDancing 4s infinite;
       border-radius: 50%;
     }
     .page404-num:nth-of-type(2):before box-shadow,
@@ -206,5 +207,5 @@ block content
       span.page404-num 4
     div
       div.page404-txt К сожалению, данная страница отсутствует.
-      a.page404-link(href="#") Вернуться на главную 
+      a.page404-link(href="index.html") Вернуться на главную 
           span.page404-linkSign &rarr;

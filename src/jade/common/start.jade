@@ -9,18 +9,19 @@ html(lang='ru')
     meta(name='viewport' content='width=device-width initial-scale=1')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='theme-color' content='#282e34')
-    //- meta(name="robots" content="noindex, nofollow")
+    meta(name='google' content='notranslate')
+    meta(name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex")
     //- link(rel="me" href="http://your-site.com" type="text/html")
     //- link(rel="author" href="humans.txt")
-    base(href='./')
+    base(href='/')
     link(rel='icon' href='images/favicon.ico' type='image/x-icon')
-    link(rel='icon' href='images/favicon.png' size='any' type='image/png')
+    link(rel='icon' href='images/favicon.png' sizes='any' type='image/png')
     link(rel='mask-icon' href='images/safari-pinned-tab.svg' color='#5bbad5')
     // Critical Styles
     style
       block critical
     noscript
-      link(rel="stylesheet" href="styles/styles.min.css")
+      link(rel="stylesheet" type="text/css" href="styles/styles.min.css")
     //- // Pixel Glass (For development purposes only)
     //- style.
       html {
@@ -45,7 +46,7 @@ html(lang='ru')
 
   body
     noscript.noscript
-      .noscript-content Для полной функциональности этого сайта необходимо включить JavaScript. Вот <a class="noscript-link" href="https://www.enable-javascript.com/ru/" target="_blank"> инструкции, как включить JavaScript в вашем браузере</a>.
+      .noscript-content Для полной функциональности этого сайта необходимо включить JavaScript. Вот <a class="noscript-link" href="https://www.enable-javascript.com/ru/" target="_blank" rel="noopener noreferrer"> инструкции, как включить JavaScript в вашем браузере</a>.
 
 
     include ../../../build/images/sprite-symbols.svg
@@ -63,7 +64,7 @@ html(lang='ru')
     // Adds styles later for non render blocking
     script.
       var head = document.querySelector('head');
-      head.insertAdjacentHTML('beforeEnd', '<link rel="stylesheet" href="styles/styles.css">');
+      head.insertAdjacentHTML('beforeEnd', '<link rel="stylesheet" type="text/css" href="styles/styles.css">');
 
     // Polyfills and other scripts essentials here
     script(src='scripts/bundle.js' defer)

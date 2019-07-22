@@ -274,25 +274,25 @@ section#forms.forms
     fieldset.forms-inputs
       legend Basic fields
       .forms-inputsGroup
-        input#name(type='text' name='name' placeholder='Enter your name' required)
+        input#name(type='text' name='name' placeholder='Enter your name' aria-describedby='descName' required)
         label.forms-groupTitle(for='name') Your name
-        .forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
+        #descName.forms-helpTxt (1-2 words that contains only letters with length two and greater symbols)
       .forms-inputsGroup
-        input#password(type='password' name='password' placeholder='Type your Password' required)
+        input#password(type='password' name='password' placeholder='Type your Password' aria-describedby='descPass' required)
         label.forms-groupTitle(for='password') Password
-        .forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
+        #descPass.forms-helpTxt (Must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and without special characters. Total length must be greater than 6.)
       .forms-inputsGroup
-        input#url(type='url' name='url' placeholder='http://yoursite.com' required)
+        input#url(type='url' name='url' placeholder='http://yoursite.com' aria-describedby='descUrl' required)
         label.forms-groupTitle(for='url') Web Address
-        .forms-helpTxt (Example: http://yoursite.com or yoursite.com)
+        #descUrl.forms-helpTxt (Example: http://yoursite.com or yoursite.com)
       .forms-inputsGroup
-        input#mail(type='email' name='mail' placeholder='name@email.com' required)
+        input#mail(type='email' name='mail' placeholder='name@email.com' aria-describedby='descMail' required)
         label.forms-groupTitle(for='mail') Email Address
-        .forms-helpTxt (Example: name@email.com)
+        #descMail.forms-helpTxt (Example: name@email.com)
       .forms-inputsGroup
-        input#phone.js-inpPhone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' required)
+        input#phone.js-inpPhone(type='tel' name='phone' placeholder='(XXX) XXX-XX-XX' aria-describedby='descPhone' required)
         label.forms-groupTitle(for='phone') Phone Number
-        .forms-helpTxt (Only numbers - length for 10 symbols)
+        #descPhone.forms-helpTxt (Only numbers - length for 10 symbols)
       .forms-inputsGroup
         input#query(type='search' name='query' placeholder='Enter Search Term')
         label(for='query') Search
@@ -360,9 +360,9 @@ section#forms.forms
         input#color(type='color' name='color' value='#0000ff')
         label(for='color') Color input
       .forms-html5InputsGroup
-        input#number(type='number' name='number' min='0' max='100' value='5' step='any' placeholder='Enter a Number' required)
+        input#number(type='number' name='number' min='0' max='100' value='5' step='any' placeholder='Enter a Number' aria-describedby='descNum' required)
         label.forms-groupTitle(for='number') Number input
-        .forms-helpTxt (Must contain only numbers)
+        #descNum.forms-helpTxt (Must contain only numbers)
       .forms-html5InputsGroup
         input#mobNumber(type='text' value='5' inputmode='numeric' pattern='[0-9]*' name='someNumbers')
         label(for='mobNumber') Number input for mobile devices

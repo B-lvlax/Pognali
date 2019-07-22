@@ -343,15 +343,15 @@ exports.build = series(
 
 exports.public = series(
   clearPublic,
-  parallel(markup, styles),
   criticalStyles,
+  parallel(markup, styles),
   series(clearPublicImg, toPublic, optImg, cacheBustImg),
   parallel(minifyMarkup, minifyStyles, minifyScripts)
 );
 exports.lightPublic = series(
   clearPublic,
-  parallel(markup, styles),
   criticalStyles,
+  parallel(markup, styles),
   series(clearPublicImg, toPublic, moveImg, cacheBustImg),
   parallel(minifyMarkup, minifyStyles, minifyScripts)
 );

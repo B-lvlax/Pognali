@@ -17,6 +17,8 @@ html(lang='ru')
     link(rel='icon' href='images/favicon.ico' type='image/x-icon')
     link(rel='icon' href='images/favicon.png' sizes='any' type='image/png')
     link(rel='mask-icon' href='images/safari-pinned-tab.svg' color='#5bbad5')
+    //- Alternative way to loadind no render bloking CSS (https://www.filamentgroup.com/lab/load-css-simpler/)
+    link(rel='stylesheet' href='/styles/styles.css' media='print' onload="this.media='all'")
     // Critical Styles
     style
       block critical
@@ -61,10 +63,10 @@ html(lang='ru')
     +modal
 
 
-    // Adds styles later for non render blocking
-    script.
-      var head = document.querySelector('head');
-      head.insertAdjacentHTML('beforeEnd', '<link rel="stylesheet" type="text/css" href="styles/styles.css">');
+    //- // Adds styles later for non render blocking
+    //- script.
+    //-   var head = document.querySelector('head');
+    //-   head.insertAdjacentHTML('beforeEnd', '<link rel="stylesheet" type="text/css" href="styles/styles.css">');
 
     // Polyfills and other scripts essentials here
     script(src='scripts/bundle.js' defer)
